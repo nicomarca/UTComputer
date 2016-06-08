@@ -27,9 +27,7 @@
 
 QMainWindow {
 	background-color: rgb(50,50,50);
-}
-
-this-&gt;setFixedSize(500,500);</string>
+}</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QLineEdit" name="expression">
@@ -39,7 +37,7 @@ this-&gt;setFixedSize(500,500);</string>
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>250</y>
+      <y>240</y>
       <width>311</width>
       <height>31</height>
      </rect>
@@ -98,7 +96,7 @@ this-&gt;setFixedSize(500,500);</string>
     <property name="geometry">
      <rect>
       <x>340</x>
-      <y>250</y>
+      <y>240</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -148,7 +146,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>260</x>
-      <y>610</y>
+      <y>600</y>
       <width>121</width>
       <height>31</height>
      </rect>
@@ -188,7 +186,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>320</x>
-      <y>460</y>
+      <y>450</y>
       <width>61</width>
       <height>31</height>
      </rect>
@@ -228,9 +226,9 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>260</x>
-      <y>330</y>
+      <y>340</y>
       <width>121</width>
-      <height>71</height>
+      <height>51</height>
      </rect>
     </property>
     <property name="font">
@@ -269,7 +267,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>180</x>
-      <y>330</y>
+      <y>340</y>
       <width>82</width>
       <height>41</height>
      </rect>
@@ -310,7 +308,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>320</x>
-      <y>520</y>
+      <y>510</y>
       <width>61</width>
       <height>31</height>
      </rect>
@@ -393,7 +391,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>320</x>
-      <y>430</y>
+      <y>420</y>
       <width>61</width>
       <height>31</height>
      </rect>
@@ -433,7 +431,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>330</y>
+      <y>340</y>
       <width>82</width>
       <height>41</height>
      </rect>
@@ -474,9 +472,9 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>700</y>
+      <y>660</y>
       <width>241</width>
-      <height>51</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
@@ -514,7 +512,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>140</x>
-      <y>370</y>
+      <y>380</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -592,9 +590,9 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>410</y>
+      <y>420</y>
       <width>82</width>
-      <height>31</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="font">
@@ -635,7 +633,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>260</x>
-      <y>430</y>
+      <y>420</y>
       <width>61</width>
       <height>31</height>
      </rect>
@@ -675,9 +673,9 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>600</y>
+      <y>580</y>
       <width>81</width>
-      <height>51</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="palette">
@@ -890,7 +888,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>260</x>
-      <y>640</y>
+      <y>630</y>
       <width>121</width>
       <height>31</height>
      </rect>
@@ -1129,9 +1127,9 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>180</x>
-      <y>410</y>
+      <y>420</y>
       <width>81</width>
-      <height>31</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="font">
@@ -1172,7 +1170,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>370</y>
+      <y>380</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -1214,9 +1212,9 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>650</y>
+      <y>620</y>
       <width>81</width>
-      <height>51</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="palette">
@@ -1429,7 +1427,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>180</x>
-      <y>290</y>
+      <y>300</y>
       <width>201</width>
       <height>41</height>
      </rect>
@@ -1470,7 +1468,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>370</y>
+      <y>380</y>
       <width>82</width>
       <height>41</height>
      </rect>
@@ -1551,7 +1549,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>260</x>
-      <y>580</y>
+      <y>570</y>
       <width>121</width>
       <height>31</height>
      </rect>
@@ -1634,9 +1632,9 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>410</y>
+      <y>420</y>
       <width>82</width>
-      <height>31</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="font">
@@ -1677,9 +1675,9 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>180</x>
-      <y>650</y>
+      <y>620</y>
       <width>81</width>
-      <height>51</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="palette">
@@ -1889,9 +1887,9 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>180</x>
-      <y>600</y>
+      <y>580</y>
       <width>81</width>
-      <height>51</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="palette">
@@ -2105,7 +2103,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>180</x>
-      <y>370</y>
+      <y>380</y>
       <width>82</width>
       <height>41</height>
      </rect>
@@ -2188,7 +2186,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
       <x>100</x>
       <y>500</y>
       <width>81</width>
-      <height>51</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="palette">
@@ -2401,7 +2399,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>260</x>
-      <y>490</y>
+      <y>480</y>
       <width>121</width>
       <height>31</height>
      </rect>
@@ -2441,7 +2439,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>260</x>
-      <y>550</y>
+      <y>540</y>
       <width>121</width>
       <height>31</height>
      </rect>
@@ -2481,9 +2479,9 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>180</x>
-      <y>550</y>
+      <y>540</y>
       <width>81</width>
-      <height>51</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="palette">
@@ -2698,7 +2696,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
       <x>20</x>
       <y>500</y>
       <width>81</width>
-      <height>51</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="palette">
@@ -3000,9 +2998,9 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>600</y>
+      <y>580</y>
       <width>81</width>
-      <height>51</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="palette">
@@ -3215,7 +3213,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>260</x>
-      <y>400</y>
+      <y>390</y>
       <width>121</width>
       <height>31</height>
      </rect>
@@ -3255,9 +3253,9 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>550</y>
+      <y>540</y>
       <width>81</width>
-      <height>51</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="palette">
@@ -3470,9 +3468,9 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>260</x>
-      <y>670</y>
+      <y>660</y>
       <width>121</width>
-      <height>81</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
@@ -3511,9 +3509,9 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>550</y>
+      <y>540</y>
       <width>81</width>
-      <height>51</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="palette">
@@ -3726,7 +3724,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>330</y>
+      <y>340</y>
       <width>82</width>
       <height>41</height>
      </rect>
@@ -3767,7 +3765,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>260</x>
-      <y>520</y>
+      <y>510</y>
       <width>61</width>
       <height>31</height>
      </rect>
@@ -3807,9 +3805,9 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>650</y>
+      <y>620</y>
       <width>81</width>
-      <height>51</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="palette">
@@ -4104,7 +4102,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>260</x>
-      <y>460</y>
+      <y>450</y>
       <width>61</width>
       <height>31</height>
      </rect>
@@ -4147,7 +4145,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>290</y>
+      <y>300</y>
       <width>81</width>
       <height>41</height>
      </rect>
@@ -4261,7 +4259,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
       <x>20</x>
       <y>50</y>
       <width>361</width>
-      <height>191</height>
+      <height>181</height>
      </rect>
     </property>
    </widget>
@@ -4302,7 +4300,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>290</y>
+      <y>300</y>
       <width>81</width>
       <height>41</height>
      </rect>
@@ -4345,7 +4343,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
       <x>180</x>
       <y>500</y>
       <width>81</width>
-      <height>51</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="palette">
@@ -4554,6 +4552,27 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
      <string notr="true">buttonGroup</string>
     </attribute>
    </widget>
+   <widget class="QCheckBox" name="checkBox">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>270</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QCheckBox{
+			font: 7pt &quot;Calibri&quot;;
+	 color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string>HIDE KEYBOARD</string>
+    </property>
+   </widget>
+   <zorder>pushButtonPoint</zorder>
+   <zorder>pushButton3</zorder>
    <zorder>pushButtonLastargs</zorder>
    <zorder>pushButtonDup</zorder>
    <zorder>pushButtonDrop</zorder>
@@ -4589,15 +4608,12 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
    <zorder>pushButtonInf</zorder>
    <zorder>pushButtonDif</zorder>
    <zorder>pushButton5</zorder>
-   <zorder>pushButtonEnter</zorder>
    <zorder>pushButton4</zorder>
    <zorder>pushButtonLastop</zorder>
    <zorder>pushButtonBack</zorder>
    <zorder>pushButtonSupeq</zorder>
    <zorder>pushButtonRedo</zorder>
    <zorder>pushButton1</zorder>
-   <zorder>pushButton3</zorder>
-   <zorder>pushButtonPoint</zorder>
    <zorder>pushButtonNot</zorder>
    <zorder>pushButtonClear</zorder>
    <zorder>pushButtonRightPar</zorder>
@@ -4609,6 +4625,8 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
    <zorder>pushButtonQuote</zorder>
    <zorder>pushButtonLeftPar</zorder>
    <zorder>pushButtonSpace</zorder>
+   <zorder>pushButtonEnter</zorder>
+   <zorder>checkBox</zorder>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
