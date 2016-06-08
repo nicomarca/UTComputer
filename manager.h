@@ -270,7 +270,7 @@ public:
     QString infixePostfixe(const QString& s);
     
     void addAtom(const QString&s, Litterale* li);
-    void removeAtom(const QString& s, Litterale* li);
+    void removeAtom(const QString& s);
     bool alreadyExists(const QString& s);
     void afficherTousAtomes();
 };

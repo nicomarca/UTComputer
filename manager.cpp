@@ -587,6 +587,25 @@ void Calculatrice::operateur1(const QString& s) {
             }
             delete l1;
         }
+
+        if( s == "FORGET") {
+            l1 = pile->top();
+            if(typeid(*l1) == typeid(LiExpression)) {
+                LiExpression* liexp = dynamic_cast<LiExpression*>(l1);
+                if(alreadyExists(liexp->getExpression())) {
+                    removeAtom(liexp->getExpression());
+                    pile->drop();
+                    return;
+                }
+                else {
+                    throw LiException("FORGET not possible : Atome doesn't exist_n");
+                    return;
+                }
+            }
+            else {
+                throw LiException("FORGET : only on Atomes");
+            }
+        }
     }
     else {
         throw LiException("Mauvais operateur unaire, recommencez svp !");
@@ -709,14 +728,14 @@ bool estAtomeExp(const QString& s) {
 }
 
 bool is2operator(const QString& s) {
-    if(s == "+" || s == "-" || s == "*" || s == "/" || s == "$" || s == "<" || s == ">" || s == "=" || s == "DIV" || s == "MOD" || s == "<=" || s == ">=" || s == "!=" || s == "AND" || s == "OR" || s == "STO" || s == "FORGET") {
+    if(s == "+" || s == "-" || s == "*" || s == "/" || s == "$" || s == "<" || s == ">" || s == "=" || s == "DIV" || s == "MOD" || s == "<=" || s == ">=" || s == "!=" || s == "AND" || s == "OR" || s == "STO") {
         return true;
     }
     return false;
 }
 
 bool is1operator(const QString& s) {
-    if(s == "NOT" || s == "NEG" || s == "IM" || s == "RE" || s == "DEN" || s == "NUM") {
+    if(s == "NOT" || s == "NEG" || s == "IM" || s == "RE" || s == "DEN" || s == "NUM" || s == "FORGET") {
         return true;
     }
     return false;
@@ -1198,7 +1217,7 @@ void Calculatrice::addAtom(const QString& s, Litterale* li) {
     else throw LiException("Atome already exists");
 }
 
-void Calculatrice::removeAtom(const QString& s, Litterale* li) {
+void Calculatrice::removeAtom(const QString& s) {
     if( alreadyExists(s) ) {
         mapAtome.erase(s);
     }

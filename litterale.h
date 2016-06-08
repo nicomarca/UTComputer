@@ -275,7 +275,7 @@ public:
     /*!
      *  \brief DIV() method
      *
-     *  Division euclidienne (only between LiEntiere)
+     *  Euclidean division (only between LiEntiere)
      *
      *  \param const reference to Litterale
      *  \return pointer to Litterale
@@ -720,7 +720,9 @@ public:
      *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
      */
     Litterale* Not();
-    virtual Litterale* Clone() const {
+
+
+    Litterale* Clone() const {
              return new LiRationnelle(*this);
     }
 };
@@ -733,43 +735,321 @@ public:
 
 //////////////////////////////////////// LITTERALE REELLE ////////////////////////////////////////
 
+/// \class The LiReelle class
+///
+/// \brief Class which inherits from LiNumerique
+///
+/// 1 attribut of type double
+/// used to represent the real numbers (nombres à virgule) in the calculator
+///
 
 class LiReelle : public LiNumerique {
-	double value;
+    double value; /*!< value : attribut of type double*/
 public:
+
+    /*!
+     *  \brief Constructor
+     *
+     *  Constructor of the LiReelle class
+     *
+     *  \param without any parameters, value will be initialize to 0
+     *
+     */
     LiReelle():value(0) {}
+
+    /*!
+     *  \brief Constructor
+     *
+     *  Constructor of the LiRationnelle class
+     *
+     *  \param 1 parameter of type dpouble to initialize value
+     *
+     */
 	LiReelle(double v) :value(v) {}
+
+    /*!
+     *  \brief toString() method
+     *
+     *  Pure virtual method in Litterale, used in the afficher() method
+     *  Method which takes value (of type double), transforms them into a string and returns them
+     *
+     *  \param no parameter
+     *  \return string
+     */
 	string toString() const {stringstream ss; ss << value; return ss.str();}
 
+    /*!
+     *  \brief isZero() method
+     *
+     *  Pure virtual method in Litterale, used to test if value = 0
+     *
+     *  \param no parameter
+     *  \return bool
+     */
     bool isZero() const { if(value == 0.) return true; else return false;}
-	int getValue() const { throw LiException("error : pas de value dans une LiReelle"); }
-	int getNumerateur() const { throw LiException("error : pas de numerateur dans une LiReelle"); }
-	int getDenominateur() const { throw LiException("error : pas de denominateur dans une LiReelle"); }
-	double getReel() const { return value; }
-    string getAtom() const { throw LiException("error : pas d'atom dans une LiReelle"); }
 
+    /*!
+     *  \brief getValue() method
+     *
+     *  Pure virtual method in Litterale
+     *  Used to get the value of a LiEntiere
+     *  Throws an error used on LiReelle (can only e used on LiEntiere)
+     *
+     *  \param no parameter
+     *  \return int
+     */
+	int getValue() const { throw LiException("error : pas de value dans une LiReelle"); }
+
+    /*!
+     *  \brief getNumerateur() method
+     *
+     *  Pure virtual method in Litterale
+     *  Used to get the numerateur of a LiRationnelle
+     *  Throws an error used on LiReelle (can only e used on LiRationnelle)
+     *
+     *  \param no parameter
+     *  \return int
+     */
+	int getNumerateur() const { throw LiException("error : pas de numerateur dans une LiReelle"); }
+
+    /*!
+     *  \brief getDenominateur() method
+     *
+     *  Pure virtual method in Litterale
+     *  Used to get the denominateur of a LiRationnelle
+     *  Throws an error used on LiReelle (can only e used on LiRationnelle)
+     *
+     *  \param no parameter
+     *  \return int
+     */
+	int getDenominateur() const { throw LiException("error : pas de denominateur dans une LiReelle"); }
+
+    /*!
+     *  \brief getDenominateur() method
+     *
+     *  Pure virtual method in Litterale
+     *  Used to get the real part of a LiComplexe
+     *  Throws an error used on LiReelle (can only e used on LiRationnelle)
+     *
+     *  \param no parameter
+     *  \return int
+     */
+    double getReel() const { return value; }
+
+    /*!
+     *  \brief overloaded operator+
+     *
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to add a LiReelle object and a Litterale
+     *  const method (attributs sould not be modified)
+     *
+     *  \param 1 parameter of type const Litterale&
+     *  \return pointer to Litterale
+     */
 	Litterale* operator+ (const Litterale& li) const;
+
+    /*!
+     *  \brief overloaded operator-
+     *
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to substract a LiReelle object and a Litterale
+     *  const method (attributs sould not be modified)
+     *
+     *  \param 1 parameter of type const Litterale&
+     *  \return pointer to Litterale
+     */
 	Litterale* operator- (const Litterale& li) const;
+
+    /*!
+     *  \brief overloaded operator/
+     *
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to divid a LiReelle object by a Litterale
+     *  const method (attributs sould not be modified)
+     *
+     *  \param 1 parameter of type const Litterale&
+     *  \return pointer to Litterale
+     */
 	Litterale* operator/ (const Litterale& li) const;
+
+    /*!
+     *  \brief overloaded operator*
+     *
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to multiply a LiReelle object by a Litterale
+     *  const method (attributs sould not be modified)
+     *
+     *  \param 1 parameter of type const Litterale&
+     *  \return pointer to Litterale
+     */
 	Litterale* operator* (const Litterale& li) const;
+
+    /*!
+     *  \brief overloaded operator==
+     *
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to test if the value of a LiReelle equals the value of a Litterale
+     *  const method (attributs sould not be modified)
+     *
+     *  \param 1 parameter of type const Litterale&
+     *  \return pointer to Litterale
+     */
 	Litterale* operator== (const Litterale& li) const;
+
+    /*!
+     *  \brief overloaded operator!=
+     *
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to test if the value of a LiReelle does not equal the value of a Litterale
+     *  const method (attributs sould not be modified)
+     *
+     *  \param 1 parameter of type const Litterale&
+     *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
+     */
 	Litterale* operator!= (const Litterale& li) const;
+
+    /*!
+     *  \brief overloaded operator<=
+     *
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to test if the value of a LiReelle is less than or equal to the value of a Litterale
+     *  const method (attributs sould not be modified)
+     *
+     *  \param 1 parameter of type const Litterale&
+     *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
+     */
 	Litterale* operator<= (const Litterale& li) const;
+
+    /*!
+     *  \brief overloaded operator>=
+     *
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to test if the value of a LiReelle is greater than or equal to the value of a Litterale
+     *  const method (attributs sould not be modified)
+     *
+     *  \param 1 parameter of type const Litterale&
+     *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
+     */
 	Litterale* operator>= (const Litterale& li) const;
+
+    /*!
+     *  \brief overloaded operator<
+     *
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to test if the value of a LiReelle is less than the value of a Litterale
+     *  const method (attributs sould not be modified)
+     *
+     *  \param 1 parameter of type const Litterale&
+     *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
+     */
 	Litterale* operator< (const Litterale& li) const;
-	Litterale* operator> (const Litterale& li) const;
-	//LiReelle& operator= (Litterale& li);
+
+    /*!
+     *  \brief overloaded operator>
+     *
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to test if the value of a LiReelle is greater than the value of a Litterale
+     *  const method (attributs sould not be modified)
+     *
+     *  \param 1 parameter of type const Litterale&
+     *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
+     */
+    Litterale* operator> (const Litterale& li) const;
+
+    /*!
+     *  \brief NEG() method
+     *
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to change the sign of value
+     *
+     *  \param no parameter
+     *  \return pointer to LiReelle
+     */
 	LiReelle* Neg() { value = -value; return this; }
+
+    /*!
+     *  \brief NUM() method
+     *
+     *  Method which was defined in Litterale (pure virtual)
+     *  Throws an error used on a Lireelle (can only be used on LiRationnelle to return the numerator)
+     *
+     *  \param no
+     *  \return pointer to Litterale
+     */
 	Litterale* Num() { throw LiException("Error : LiReelle pas de num"); }
+
+    /*!
+     *  \brief DEN() method
+     *
+     *  Method which was defined in Litterale (pure virtual)
+     *  Throws an error used on a Lireelle (can only be used on LiRationnelle to return the denominator)
+     *
+     *  \param no
+     *  \return pointer to Litterale
+     */
 	Litterale* Den() { throw LiException("Error : LiReelle pas de den"); }
+
+    /*!
+     *  \brief RE() method
+     *
+     *  Method which was defined in Litterale (pure virtual)
+     *  Throws an error used on a Lireelle (can only be used on LiComplexe to return the real part)
+     *
+     *  \param no
+     *  \return pointer to Litterale
+     */
 	Litterale* Re() { return this; }
+
+    /*!
+     *  \brief RE() method
+     *
+     *  Method which was defined in Litterale (pure virtual)
+     *  Throws an error used on a Lireelle (can only be used on LiComplexe to return the imaginary part)
+     *
+     *  \param no
+     *  \return pointer to Litterale
+     */
 	Litterale* Im() { return new LiEntiere(0); }
-	Litterale* Div(const Litterale& li) { throw LiException("Error : pas de DIV entre LiReelles"); }
-	Litterale* Mod(const Litterale& li) { throw LiException("Error : pas de MOD entre LiReelles"); }
+
+    /*!
+     *  \brief AND() method
+     *
+     *  Method which was defined in Litterale (pure virtual)
+     *  Logic operator and
+     *
+     *
+     *  \param const reference to Litterale
+     *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
+     */
     Litterale* And(const Litterale* li);
+
+    /*!
+     *  \brief OR() method
+     *
+     *  Method which was defined in Litterale (pure virtual)
+     *  Logic operator or
+     *
+     *
+     *  \param const reference to Litterale
+     *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
+     */
     Litterale* Or(const Litterale* li);
+
+    /*!
+     *  \brief NOT() method
+     *
+     *  Method which was defined in Litterale (pure virtual)
+     *  Logic operator not
+     *
+     *
+     *  \param const reference to Litterale
+     *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
+     */
     Litterale* Not();
-    virtual Litterale* Clone() const {
+
+
+
+    Litterale* Clone() const {
              return new LiReelle(*this);
     }
 };
@@ -817,7 +1097,7 @@ public:
     Litterale* And(const Litterale* li);
     Litterale* Or(const Litterale* li);
     Litterale* Not();
-    virtual Litterale* Clone() const {
+    Litterale* Clone() const {
         LiNumerique* r = dynamic_cast<LiNumerique*>(re->Clone());
         LiNumerique* i = dynamic_cast<LiNumerique*>(im->Clone());
         return new LiComplexe(r, i);
