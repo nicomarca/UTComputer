@@ -84,6 +84,8 @@ private slots:
     void on_pushButtonAC_clicked(); //Clear the command line
     void on_pushButtonSound_clicked(); //Activate/Desactive sound
 
+    void on_checkBox_clicked(bool checked);
+
 public slots:
     void refresh(); //Slot to refresh the pile's display
     void getNextCommande(); //Slot to annalyse the command line

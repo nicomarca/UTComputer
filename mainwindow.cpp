@@ -12,8 +12,9 @@ MainWindow::MainWindow(QWidget *parent):QMainWindow(parent), ui(new Ui::MainWind
     ///INITIALIZATION OF THE ATTRIBUTES
     exp = false;
     undo = false;
-    m1 = nullptr;
     p = new Pile;
+    m1 = p->SaveStatetoMemento();
+    m2 = p->SaveStatetoMemento();
     cal = new Calculatrice(p);
     ui->setupUi(this);
     pop = new QMediaPlayer();
@@ -25,7 +26,7 @@ MainWindow::MainWindow(QWidget *parent):QMainWindow(parent), ui(new Ui::MainWind
     // Put a title on the application windows
     this->setWindowTitle("UTComputer");
     //size of the main window
-    this->setFixedSize(400,770);
+    this->setFixedSize(400,730);
 
     ui->nbLignes->setValue(p->getNbLitteralesToAffiche()); //Pile Display
     ui->Message->setAlignment(Qt::AlignHCenter);
@@ -53,9 +54,10 @@ MainWindow::MainWindow(QWidget *parent):QMainWindow(parent), ui(new Ui::MainWind
     ui->expression->setFocus(Qt::OtherFocusReason); //Focus directly on the command line (no need to click on it)
 
     // connections
-    connect(p,SIGNAL(modificationEtat()),this,SLOT(refresh()));
+    connect(p,SIGNAL(modificationEtat()), this,SLOT(refresh()));
     connect(ui->expression,SIGNAL(returnPressed()),this,SLOT(getNextCommande()));
-    connect(ui->pushButton0, SIGNAL(clicked(bool)), this,SLOT(playsound()));
+    connect(p, SIGNAL(newMessage()), this,SLOT(playsound()));
+
 
 
 }
@@ -95,10 +97,15 @@ void MainWindow::getNextCommande(){
     //(we suppose that <space> is the field separator)
     QTextStream stream(&c);
     QString com;
+    try{
     do {
         stream>>com; // element extraction
         if (com!="") cal->commande(com); // send the command to the controller
     }while (com!="");
+    } catch(LiException e) {
+        std::cout<<"OK\n";
+        //p->setMessage(QString::fromStdString(e.getInfo()));
+    }
     ui->expression->clear(); //clear the command line
 }
 
@@ -129,10 +136,10 @@ void MainWindow::on_pushButtonQuote_clicked() {
 }
 
 //clear the command line
-void MainWindow::on_pushButtonAC_clicked() {playsound(); ui->expression->clear();}
+void MainWindow::on_pushButtonAC_clicked() {ui->expression->clear();}
 
 //backspace on the command line
-void MainWindow::on_pushButtonBack_clicked() {playsound(); ui->expression->backspace();}
+void MainWindow::on_pushButtonBack_clicked() { ui->expression->backspace();}
 
 ///OPERATORS
 void MainWindow::on_pushButtonAdd_clicked() {
@@ -363,3 +370,10 @@ void MainWindow::on_nbLignes_valueChanged(int arg1)
     //refresh to put back the items of the pile
     if (p->taille() != 0) p->modificationEtat();
 }
+
+void MainWindow::on_checkBox_clicked(bool checked)
+{
+    if (checked == true) MainWindow::setFixedSize(400,320);
+    else MainWindow::setFixedSize(400,730);
+}
+

@@ -34,25 +34,13 @@ using namespace std;
 
 
 class LiException {
-	string info;
+        QString info;
+
 public:
-	LiException(const string& s) :info(s) {}
-	~LiException() { cout << info << endl; }
-	const string& getInfo() const {return info;}
+        LiException(const QString& s) :info(s) {}
+        ~LiException() {}
+        const QString& getInfo() const {return info;}
 };
-
-//////////////////////////////////////// CALCULATRICE EXCEPTION ////////////////////////////////////////
-
-class CalculatriceException {
-	string info;
-public:
-	CalculatriceException(const string& s) :info(s) {}
-	~CalculatriceException() { cout << info << endl; }
-	const string& getInfo() const {return info;}
-};
-
-
-
 
 
 //////////////////////////////////////// LITTERALE ////////////////////////////////////////
@@ -182,7 +170,7 @@ public:
     unsigned int taille() const { return nb; }
     void supprimerPile() { for (unsigned int i = 0; i < nb; i++) delete li[i]; delete[] li; nb=0; }
     void affiche() const;
-    void setMessage(const QString& m) { message = m; if (message != "") modificationEtat();}
+    void setMessage(const QString& m) { message = m; if (message != ""){std::cout<<"OK\n";newMessage(); modificationEtat();}}
     QString getMessage() const { return message; }
     unsigned int getNbLitteralesToAffiche()const { return nbAffiche; }
     Litterale** getLi()const { return li; }
@@ -234,6 +222,7 @@ public:
 
 signals:
     void modificationEtat();
+    void newMessage();
 };
 
 
@@ -244,30 +233,29 @@ signals:
 
 class Calculatrice {
     Pile* pile;
-    QString message;
     QString lastoperateur;
     Litterale* lastarg1;
     Litterale* lastarg2;
     map<QString,Litterale*> mapAtome;
 public:
     //Calculatrice():pile(0), message("") {}
-    Calculatrice(Pile* p):pile(p), message(""), lastoperateur(""), lastarg1(nullptr), lastarg2(nullptr) {}
+    Calculatrice(Pile* p):pile(p), lastoperateur(""), lastarg1(nullptr), lastarg2(nullptr) {}
     ~Calculatrice() {  delete pile; }
-    void setMessage(const QString& m) { message=m; }
-    QString getMessage() const { return message; }
-    //void afficherMessage() { cout << QString::toStdString(message) ; }
     QString getLastOp() const { return lastoperateur; }
     Litterale* getLastArg1() const { return lastarg1; }
     Litterale* getLastArg2() const { return lastarg2; }
+    Pile* getPile() const {return pile;}
     void operateur2(const QString& s);
     void operateur1(const QString& s);
     void operateurp(const QString& s);
     void enregistrerLast(const QString& s);
 
+
     void commande(const QString & s);
     void executer();
     void Eval(const QString& exp1);
     QString infixePostfixe(const QString& s);
+
     
     void addAtom(const QString&s, Litterale* li);
     void removeAtom(const QString& s, Litterale* li);
