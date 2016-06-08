@@ -31,6 +31,7 @@ using namespace std;
 class LiNumerique : public Litterale {
 public:
     virtual string toString() const = 0;
+    virtual Litterale* Clone() const = 0;
 };
 
 
@@ -370,6 +371,10 @@ public:
      *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
      */
     Litterale* Not();
+
+    virtual Litterale* Clone() const {
+             return new LiEntiere(*this);
+    }
 };
 
 
@@ -715,6 +720,9 @@ public:
      *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
      */
     Litterale* Not();
+    virtual Litterale* Clone() const {
+             return new LiRationnelle(*this);
+    }
 };
 
 
@@ -761,6 +769,9 @@ public:
     Litterale* And(const Litterale* li);
     Litterale* Or(const Litterale* li);
     Litterale* Not();
+    virtual Litterale* Clone() const {
+             return new LiReelle(*this);
+    }
 };
 
 
@@ -806,6 +817,11 @@ public:
     Litterale* And(const Litterale* li);
     Litterale* Or(const Litterale* li);
     Litterale* Not();
+    virtual Litterale* Clone() const {
+        LiNumerique* r = dynamic_cast<LiNumerique*>(re->Clone());
+        LiNumerique* i = dynamic_cast<LiNumerique*>(im->Clone());
+        return new LiComplexe(r, i);
+    }
 };
 
 

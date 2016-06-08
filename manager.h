@@ -11,9 +11,17 @@
 #include <cstdlib>
 #include <QString>
 #include <QStringBuilder>
-#include <QRegExp>
+#include <QTextStream>
+#include <QMainWindow>
+#include <QDebug>
+#include <QWidget>
+#include <QLineEdit>
+#include <QKeyEvent>
+#include <QTableWidget>
+#include <QRegexp>
 #include <QStack>
-#include <map>
+#include <Map>
+
 
 
 using namespace std;
@@ -82,6 +90,7 @@ public:
     virtual Litterale* And(const Litterale* li) = 0;
     virtual Litterale* Or(const Litterale* li) = 0;
     virtual Litterale* Not() = 0;
+    virtual Litterale* Clone() const = 0;
 };
 
 
@@ -126,6 +135,9 @@ public:
     virtual Litterale* And(const Litterale* li);
     virtual Litterale* Or(const Litterale* li);
     virtual Litterale* Not();
+    virtual Litterale* Clone() const {
+        return new LiExpression(exp);
+    }
 };
 
 
@@ -135,14 +147,34 @@ public:
 
 //////////////////////////////////////// PILE ////////////////////////////////////////
 
-
-class Pile {
+class Memento {
+    //Same attributes as in pile (except message which is not necessary)
     Litterale** li;
     unsigned int nb;
     unsigned int nbMax;
     unsigned int nbAffiche;
-    QString message;
-    void agrandissementCapacite();
+public:
+    //The constructor initializes all the attributes of the class with parameters from a pile
+    Memento(Litterale** l, unsigned int n, unsigned int nmax, unsigned int naff):li(l),nb(n),nbMax(nmax),nbAffiche(naff){}
+    //The destructor deletes all the Litterales of li
+    ~Memento() {for (unsigned int i = 0; i < nb; i++) delete li[i]; delete[] li;}
+    //Accessors
+    unsigned int getNb()const { return nb; }
+    unsigned int getNbMax()const { return nbMax; }
+    unsigned int getNbAffiche()const { return nbAffiche; }
+    Litterale** getLi()const { return li; }
+};
+
+class Pile : public QObject {
+    //The pile emits a signal when it is modified => Q_OBJECT
+    Q_OBJECT
+    //A table of Litterale*
+    Litterale** li;
+    unsigned int nb; //number of elements in the pile
+    unsigned int nbMax; //capacity of the pile
+    unsigned int nbAffiche; //number of elements to display
+    QString message; //A message about the state of the pile, a disfunctionment...
+    void agrandissementCapacite(); //Private method to reallocates some memory to the pile in order to increase its capacity
 public:
     Pile():li(0),nb(0),nbMax(0),nbAffiche(5),message("") {}
     ~Pile() { for (unsigned int i = 0; i < nb; i++) delete li[i]; delete[] li; }
@@ -150,10 +182,11 @@ public:
     unsigned int taille() const { return nb; }
     void supprimerPile() { for (unsigned int i = 0; i < nb; i++) delete li[i]; delete[] li; nb=0; }
     void affiche() const;
-    void setMessage(const QString& m) { message = m; }
+    void setMessage(const QString& m) { message = m; if (message != "") modificationEtat();}
     QString getMessage() const { return message; }
     unsigned int getNbLitteralesToAffiche()const { return nbAffiche; }
-    void setNbLitteralesToAffiche(unsigned int n) { nbAffiche = n; }
+    Litterale** getLi()const { return li; }
+    void setNbLitteralesToAffiche(int n) { if (n>0) nbAffiche = n; }
 
     void push(Litterale* li);
     //void pop(); <==> drop dans le sujet
@@ -162,12 +195,46 @@ public:
     void drop();
     void swap();
     Litterale* lastop();
-    void lastargs();
     void undo();
     void redo();
     void clear();
-};
 
+    void setMemento();
+    Memento* SaveStatetoMemento() {
+        Litterale** newtab = new Litterale*[nbMax];
+        for(unsigned int i=0; i<nb; i++) newtab[i]= li[i]->Clone();
+        return new Memento(newtab, nb, nbMax, nbAffiche);
+    }
+
+    void getStateFromMemento(Memento* m) {
+        Litterale** newtab = new Litterale*[nbMax];
+        for (unsigned int i = 0; i<m->getNb();i++) newtab[i]= (m->getLi())[i]->Clone();
+        li=newtab;
+        nb = m->getNb();
+        nbMax=m->getNbMax();
+        nbAffiche=m->getNbAffiche();
+        message = "";
+        modificationEtat();
+    }
+
+    class iterator {
+            Litterale** current;
+            iterator(Litterale** u):current(u){}
+            friend class Pile;
+    public:
+    iterator():current(0){}
+            Litterale& operator*() const { return **current; }
+            bool operator!=(iterator it) const { return current!=it.current; }
+            iterator& operator++(){ ++current; return *this; }
+            iterator& operator--(){ --current; return *this;}
+            bool operator>=(iterator it) {return current >= it.current;}
+    };
+    iterator begin() { return iterator(li); }
+    iterator end() { return iterator(li+nb); }
+
+signals:
+    void modificationEtat();
+};
 
 
 

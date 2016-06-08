@@ -1,5 +1,6 @@
 #include "litterale.h"
-
+#include "mainwindow.h"
+#include "manager.h"
 
 using namespace std;
 
@@ -37,6 +38,7 @@ void Pile::push(Litterale* l){
     if (nb==nbMax) agrandissementCapacite();
     li[nb] = l;
     nb++;
+    modificationEtat();
 }
 
 
@@ -62,12 +64,14 @@ void Pile::dup() {
         li[nb] = new LiExpression(lie->getExpression());
     }
     nb++;
+    modificationEtat();
 }
 
 
 void Pile::drop() {
     nb--;
     li[nb] = 0;
+    modificationEtat();
 }
 
 
@@ -75,6 +79,7 @@ void Pile::swap() {
     Litterale* tmp = li[nb-1];
     li[nb-1] = li[nb-2];
     li[nb-2] = tmp;
+    modificationEtat();
 }
 
 
@@ -102,6 +107,7 @@ void Pile::clear() {
         li[i] = 0;
     }
     nb = 0;
+    modificationEtat();
 }
 
 
@@ -600,6 +606,7 @@ void Calculatrice::operateurp(const QString& s) {
                 return;
             }
             commande(getLastOp());
+            pile->modificationEtat();
         }
         if(s == "LASTARGS") {
             if(getLastArg1()==nullptr) {

@@ -1,10 +1,10 @@
-#include "litterale.h"
+/*#include "litterale.h"
 
 
 
 int main()
 {
-    /*
+
     try {
     QString qs("1.3+2");
     Pile* p1 = new Pile;
@@ -14,7 +14,7 @@ int main()
     } catch(LiException e) {
         cout << e.getInfo() << endl;
     }
-    */
+
 
 
     try {
@@ -28,4 +28,17 @@ int main()
 
 
     return 1;
+
+
+}*/
+
+#include "mainwindow.h"
+#include <QApplication>
+
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.show();
+    return a.exec();
 }
