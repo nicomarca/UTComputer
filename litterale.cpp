@@ -37,6 +37,11 @@ Litterale* LiEntiere::operator+ (const Litterale& li) const {
         return new LiComplexe(lin, &lc1.getImage());
         delete resxa;
     }
+    if(typeid(li) == typeid(LiExpression)) {
+        const LiExpression& tmp = dynamic_cast<const LiExpression&>(li);
+        QString qs = QString::fromStdString(toString());
+        return new LiExpression("("% qs % ")+(" % tmp.getExpression() % ")");
+    }
 }
 
 
@@ -69,6 +74,11 @@ Litterale* LiEntiere::operator- (const Litterale& li) const {
         lin = dynamic_cast<LiNumerique*>(resxa);
         return new LiComplexe(lin, &lc1.getImage());
         delete resxa;
+    }
+    if(typeid(li) == typeid(LiExpression)) {
+        const LiExpression& tmp = dynamic_cast<const LiExpression&>(li);
+        QString qs = QString::fromStdString(toString());
+        return new LiExpression("("% qs % ")-(" % tmp.getExpression() % ")");
     }
 }
 
@@ -124,6 +134,11 @@ Litterale* LiEntiere::operator/ (const Litterale& li) const {
         delete resxa; delete resxb; delete resa2; delete resb2;
         delete resa2b2; delete resf1; delete resf2;
     }
+    if(typeid(li) == typeid(LiExpression)) {
+        const LiExpression& tmp = dynamic_cast<const LiExpression&>(li);
+        QString qs = QString::fromStdString(toString());
+        return new LiExpression("("% qs % ")/(" % tmp.getExpression() % ")");
+    }
 }
 
 
@@ -169,6 +184,11 @@ Litterale* LiEntiere::operator* (const Litterale& li) const {
         }
         delete resxa; delete resxb;
     }
+    if(typeid(li) == typeid(LiExpression)) {
+        const LiExpression& tmp = dynamic_cast<const LiExpression&>(li);
+        QString qs = QString::fromStdString(toString());
+        return new LiExpression("("% qs % ")*(" % tmp.getExpression() % ")");
+    }
 }
 
 
@@ -209,15 +229,29 @@ LiEntiere& LiEntiere::operator= (Litterale& li) {
 }
 */
 
-LiEntiere* LiEntiere::Div(const Litterale& li) {
-    if (typeid(li) != typeid(LiEntiere)) throw LiException("Error : DIV uniquement entre LiEntiere");
-    else return new LiEntiere(getValue() / li.getValue());
+Litterale* LiEntiere::Div(const Litterale& li) {
+    if(typeid(li) == typeid(LiExpression)) {
+        const LiExpression& liexp = dynamic_cast<const LiExpression&>(li);
+        QString qs1 = QString::fromStdString(toString());
+        return new LiExpression("DIV(" % qs1 % "," % liexp.getExpression() % ")");
+    }
+    else {
+        if (typeid(li) != typeid(LiEntiere)) throw LiException("Error : DIV uniquement entre LiEntiere");
+        else return new LiEntiere(getValue() / li.getValue());
+    }
 }
 
 
-LiEntiere* LiEntiere::Mod(const Litterale& li) {
-    if (typeid(li) != typeid(LiEntiere)) throw LiException("Error : MOD uniquement entre LiEntiere");
-    return new LiEntiere(getValue() % li.getValue());
+Litterale* LiEntiere::Mod(const Litterale& li) {
+    if(typeid(li) == typeid(LiExpression)) {
+        const LiExpression& liexp = dynamic_cast<const LiExpression&>(li);
+        QString qs1 = QString::fromStdString(toString());
+        return new LiExpression("MOD(" % qs1 % "," % liexp.getExpression() % ")");
+    }
+    else {
+        if (typeid(li) != typeid(LiEntiere)) throw LiException("Error : Mod uniquement entre LiEntiere");
+        else return new LiEntiere(getValue() % li.getValue());
+    }
 }
 
 
@@ -364,6 +398,11 @@ Litterale* LiRationnelle::operator+ (const Litterale& li) const {
         return new LiComplexe(lin, &lc1.getImage());
         delete resxa;
     }
+    if(typeid(li) == typeid(LiExpression)) {
+        const LiExpression& tmp = dynamic_cast<const LiExpression&>(li);
+        QString qs = QString::fromStdString(toString());
+        return new LiExpression("("% qs % ")+(" % tmp.getExpression() % ")");
+    }
 }
 
 
@@ -400,6 +439,11 @@ Litterale* LiRationnelle::operator- (const Litterale& li) const {
         lin = dynamic_cast<LiNumerique*>(resxa);
         return new LiComplexe(lin, &lc1.getImage());
         delete resxa;
+    }
+    if(typeid(li) == typeid(LiExpression)) {
+        const LiExpression& tmp = dynamic_cast<const LiExpression&>(li);
+        QString qs = QString::fromStdString(toString());
+        return new LiExpression("("% qs % ")-(" % tmp.getExpression() % ")");
     }
 }
 
@@ -456,6 +500,11 @@ Litterale* LiRationnelle::operator/ (const Litterale& li) const {
         delete resxa; delete resxb; delete resa2; delete resb2;
         delete resa2b2; delete resf1; delete resf2;
     }
+    if(typeid(li) == typeid(LiExpression)) {
+        const LiExpression& tmp = dynamic_cast<const LiExpression&>(li);
+        QString qs = QString::fromStdString(toString());
+        return new LiExpression("("% qs % ")/(" % tmp.getExpression() % ")");
+    }
 }
 
 
@@ -504,6 +553,11 @@ Litterale* LiRationnelle::operator* (const Litterale& li) const {
             return new LiComplexe(lin, lin2);
         }
         delete resxa; delete resxb;
+    }
+    if(typeid(li) == typeid(LiExpression)) {
+        const LiExpression& tmp = dynamic_cast<const LiExpression&>(li);
+        QString qs = QString::fromStdString(toString());
+        return new LiExpression("("% qs % ")*(" % tmp.getExpression() % ")");
     }
 }
 
@@ -696,6 +750,11 @@ Litterale* LiReelle::operator+ (const Litterale& li) const {
         return new LiComplexe(lin, &lc1.getImage());
         delete resxa;
     }
+    if(typeid(li) == typeid(LiExpression)) {
+        const LiExpression& tmp = dynamic_cast<const LiExpression&>(li);
+        QString qs = QString::fromStdString(toString());
+        return new LiExpression("("% qs % ")+(" % tmp.getExpression() % ")");
+    }
 }
 
 
@@ -727,6 +786,11 @@ Litterale* LiReelle::operator- (const Litterale& li) const {
         lin = dynamic_cast<LiNumerique*>(resxa);
         return new LiComplexe(lin, &lc1.getImage());
         delete resxa;
+    }
+    if(typeid(li) == typeid(LiExpression)) {
+        const LiExpression& tmp = dynamic_cast<const LiExpression&>(li);
+        QString qs = QString::fromStdString(toString());
+        return new LiExpression("("% qs % ")-(" % tmp.getExpression() % ")");
     }
 }
 
@@ -778,6 +842,11 @@ Litterale* LiReelle::operator/ (const Litterale& li) const {
         delete resxa; delete resxb; delete resa2; delete resb2;
         delete resa2b2; delete resf1; delete resf2;
     }
+    if(typeid(li) == typeid(LiExpression)) {
+        const LiExpression& tmp = dynamic_cast<const LiExpression&>(li);
+        QString qs = QString::fromStdString(toString());
+        return new LiExpression("("% qs % ")/(" % tmp.getExpression() % ")");
+    }
 }
 
 
@@ -821,6 +890,11 @@ Litterale* LiReelle::operator* (const Litterale& li) const {
             return new LiComplexe(lin, lin2);
         }
         delete resxa; delete resxb;
+    }
+    if(typeid(li) == typeid(LiExpression)) {
+        const LiExpression& tmp = dynamic_cast<const LiExpression&>(li);
+        QString qs = QString::fromStdString(toString());
+        return new LiExpression("("% qs % ")*(" % tmp.getExpression() % ")");
     }
 }
 
@@ -1024,6 +1098,11 @@ LiComplexe& LiComplexe::operator=(const LiComplexe& lc) {
 
 
 Litterale* LiComplexe::operator+ (const Litterale& li) const {
+    if(typeid(li) == typeid(LiExpression)) {
+        const LiExpression& tmp = dynamic_cast<const LiExpression&>(li);
+        QString qs = QString::fromStdString(toString());
+        return new LiExpression("("% qs % ")+(" % tmp.getExpression() % ")");
+    }
 
     if (typeid(li) == typeid(LiComplexe)) {
 
@@ -1065,6 +1144,11 @@ Litterale* LiComplexe::operator+ (const Litterale& li) const {
 
 
 Litterale* LiComplexe::operator- (const Litterale& li) const {
+    if(typeid(li) == typeid(LiExpression)) {
+        const LiExpression& tmp = dynamic_cast<const LiExpression&>(li);
+        QString qs = QString::fromStdString(toString());
+        return new LiExpression("("% qs % ")-(" % tmp.getExpression() % ")");
+    }
 
     if (typeid(li) == typeid(LiComplexe)) {
 
@@ -1106,6 +1190,11 @@ Litterale* LiComplexe::operator- (const Litterale& li) const {
 
 
 Litterale* LiComplexe::operator/ (const Litterale& li) const {
+    if(typeid(li) == typeid(LiExpression)) {
+        const LiExpression& tmp = dynamic_cast<const LiExpression&>(li);
+        QString qs = QString::fromStdString(toString());
+        return new LiExpression("("% qs % ")/(" % tmp.getExpression() % ")");
+    }
 
     if (typeid(li) == typeid(LiComplexe)) {
         const LiComplexe& lc1 = dynamic_cast<const LiComplexe&>(li);
@@ -1153,12 +1242,17 @@ Litterale* LiComplexe::operator/ (const Litterale& li) const {
     LiNumerique* lc3 = dynamic_cast<LiNumerique*>(lc4);
     return new LiComplexe(lc2, lc3);
 
-    delete lc1;
+    delete lc1; delete lc4;
 }
 
 
 
 Litterale* LiComplexe::operator* (const Litterale& li) const {
+    if(typeid(li) == typeid(LiExpression)) {
+        const LiExpression& tmp = dynamic_cast<const LiExpression&>(li);
+        QString qs = QString::fromStdString(toString());
+        return new LiExpression("("% qs % ")*(" % tmp.getExpression() % ")");
+    }
 
     if (typeid(li) == typeid(LiComplexe)) {
         const LiComplexe& lc1 = dynamic_cast<const LiComplexe&>(li);
@@ -1195,11 +1289,12 @@ Litterale* LiComplexe::operator* (const Litterale& li) const {
     Litterale& pt1 = getReelle();
     Litterale& pt2 = getImage();
     Litterale* lc1 = pt1 * li;
+    Litterale* lc4 = pt2 * li;
     LiNumerique* lc2 = dynamic_cast<LiNumerique*>(lc1);
-    LiNumerique* lc3 = dynamic_cast<LiNumerique*>(&pt2);
+    LiNumerique* lc3 = dynamic_cast<LiNumerique*>(lc4);
     return new LiComplexe(lc2, lc3);
 
-    delete lc1;
+    delete lc1; delete lc4;
 }
 
 
@@ -1276,31 +1371,31 @@ string LiComplexe::toString() const {
     Litterale* lin = im;
     if(typeid(*lin) == typeid(LiEntiere)) {
         if(lin->getValue() < 0) {
-            ss << re->toString() << " " << im->toString() << "i";
+            ss << re->toString() << "" << im->toString() << "i";
             return ss.str();
         }
         else {
-            ss << re->toString() << " + " << im->toString() << "i";
+            ss << re->toString() << "+" << im->toString() << "i";
             return ss.str();
         }
     }
     if(typeid(*lin) == typeid(LiReelle)) {
         if(lin->getReel() < 0) {
-            ss << re->toString() << " " << im->toString() << "i";
+            ss << re->toString() << "" << im->toString() << "i";
             return ss.str();
         }
         else {
-            ss << re->toString() << " + " << im->toString() << "i";
+            ss << re->toString() << "+" << im->toString() << "i";
             return ss.str();
         }
     }
     if(typeid(*lin) == typeid(LiRationnelle)) {
         if(lin->getNumerateur() < 0) {
-            ss << re->toString() << " " << im->toString() << "i";
+            ss << re->toString() << "" << im->toString() << "i";
             return ss.str();
         }
         else {
-            ss << re->toString() << " + " << im->toString() << "i";
+            ss << re->toString() << "+" << im->toString() << "i";
             return ss.str();
         }
     }

@@ -1,10 +1,31 @@
-#include "mainwindow.h"
-#include <QApplication>
+#include "litterale.h"
 
-int main(int argc, char *argv[])
+
+
+int main()
 {
-    QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
-    return a.exec();
+    /*
+    try {
+    QString qs("1.3+2");
+    Pile* p1 = new Pile;
+    p1->setMessage("Bienvenue");
+    Calculatrice c1(p1);
+    c1.Eval(qs);
+    } catch(LiException e) {
+        cout << e.getInfo() << endl;
+    }
+    */
+
+
+    try {
+    Pile* p1 = new Pile;
+    p1->setMessage("Bienvenue");
+    Calculatrice c1(p1);
+    c1.executer();
+    } catch(LiException e) {
+        cout << e.getInfo() << endl;
+    }
+
+
+    return 1;
 }
