@@ -103,8 +103,7 @@ void MainWindow::getNextCommande(){
         if (com!="") cal->commande(com); // send the command to the controller
     }while (com!="");
     } catch(LiException e) {
-        std::cout<<"OK\n";
-        //p->setMessage(QString::fromStdString(e.getInfo()));
+        p->setMessage(e.getInfo());
     }
     ui->expression->clear(); //clear the command line
 }

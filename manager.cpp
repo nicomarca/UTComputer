@@ -597,12 +597,12 @@ void Calculatrice::operateur1(const QString& s) {
 
 void Calculatrice::operateurp(const QString& s) {
     if(estUnOperateurDePile(s)) {
-        if(s == "DUP") { if (pile->taille() < 1) { pile->setMessage("Pas assez de litterales dans la pile."); return; } pile->dup(); }
-        if(s == "SWAP") {if (pile->taille() < 2) { pile->setMessage("Pas assez de litterales dans la pile."); return; } pile->swap(); }
-        if(s == "DROP") {if (pile->taille() < 1) { pile->setMessage("Pas assez de litterales dans la pile."); return; } pile->drop(); }
+        if(s == "DUP") { if (pile->taille() < 1) { throw LiException("Pas assez de litterales dans la pile."); return; } pile->dup(); }
+        if(s == "SWAP") {if (pile->taille() < 2) { throw LiException("Pas assez de litterales dans la pile."); return; } pile->swap(); }
+        if(s == "DROP") {if (pile->taille() < 1) { throw LiException("Pas assez de litterales dans la pile."); return; } pile->drop(); }
         if(s == "LASTOP") {
             if(getLastOp()=="") {
-                pile->setMessage("Aucune operation a appliquer.");
+                throw LiException("Aucune operation a appliquer.");
                 return;
             }
             commande(getLastOp());
@@ -610,7 +610,7 @@ void Calculatrice::operateurp(const QString& s) {
         }
         if(s == "LASTARGS") {
             if(getLastArg1()==nullptr) {
-                pile->setMessage("Aucun argument a empiler.");
+                throw LiException("Aucun argument a empiler.");
                 return;
             }
             else {
@@ -838,7 +838,7 @@ void Calculatrice::commande(const QString& c){
             else {
                 if(estUnOperateurBinaire(c)) {
                     if (pile->taille() < 2) {
-                        pile->setMessage("Pas assez de litterales dans la pile.");
+                        throw LiException("Pas assez de litterales dans la pile.");
                         return;
                     }
                     enregistrerLast(c);
@@ -848,7 +848,7 @@ void Calculatrice::commande(const QString& c){
                 else {
                     if(estUnOperateurUnaire(c)) {
                        if (pile->taille() < 1) {
-                           pile->setMessage("Pas assez de litterales dans la pile.");
+                           throw LiException("Pas assez de litterales dans la pile.");
                            return;
                        }
                        //cout << "avant enregistrer last" << endl;
@@ -912,7 +912,6 @@ void Calculatrice::commande(const QString& c){
     }
     catch(LiException e) {
             pile->setMessage(e.getInfo());
-            //cout << e.getInfo() << endl;
         }
 }
 
