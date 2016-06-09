@@ -1,6 +1,15 @@
 #ifndef MANAGER_H_INCLUDED
 #define MANAGER_H_INCLUDED
 
+/**
+ * \file manager.h
+ * \brief file where the class managing the calculator are defined
+ * \author Virgile VANCON and Nicolas MARCADET
+ * \version 0.1
+ * \date 12 Juin 2016
+ *
+ */
+
 #include <iostream>
 #include <stdio.h>
 #include <string.h>
@@ -18,14 +27,6 @@
 #include <QLineEdit>
 #include <QKeyEvent>
 #include <QTableWidget>
-/**
- * \file litterale.h
- * \brief file where the different class which inherits from Litterale are defined
- * \author Virgile VANCON and Nicolas MARCADET
- * \version 0.1
- * \date 12 Juin 2016
- *
- */
 
 
 
