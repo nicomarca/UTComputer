@@ -1,3 +1,16 @@
+
+/**
+ * \file litterale.h
+ * \brief file all the methods of the different Litterale class are defined
+ * \author Virgile VANCON and Nicolas MARCADET
+ * \version 0.1
+ * \date 12 Juin 2016
+ *
+ */
+
+
+
+
 #include "litterale.h"
 
 
@@ -6,7 +19,16 @@
 //////////////////////////////////////// LITTERALE ENTIERE ////////////////////////////////////////
 
 
-
+/*!
+ *  \brief overloaded operator+
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to add an LiEntiere object and a Litterale
+ *  const method (attribut sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale
+ */
 Litterale* LiEntiere::operator+ (const Litterale& li) const {
     if (typeid(li) == typeid(LiEntiere))
         return new LiEntiere(getValue() + li.getValue());
@@ -45,6 +67,16 @@ Litterale* LiEntiere::operator+ (const Litterale& li) const {
 }
 
 
+/*!
+ *  \brief overloaded operator-
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to substract to a LiEntiere object a Litterale
+ *  const method (attribut sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale
+ */
 Litterale* LiEntiere::operator- (const Litterale& li) const {
     if (typeid(li) == typeid(LiEntiere))
         return new LiEntiere(getValue() - li.getValue());
@@ -83,6 +115,16 @@ Litterale* LiEntiere::operator- (const Litterale& li) const {
 }
 
 
+/*!
+ *  \brief overloaded operator/
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to divide a LiEntiere by a Litterale
+ *  const method (attribut sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale
+ */
 Litterale* LiEntiere::operator/ (const Litterale& li) const {
     if (typeid(li) == typeid(LiEntiere)) {
         if (getValue() % li.getValue() == 0)
@@ -142,6 +184,16 @@ Litterale* LiEntiere::operator/ (const Litterale& li) const {
 }
 
 
+/*!
+ *  \brief overloaded operator*
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to multiply to a LiEntiere object a Litterale oject
+ *  const method (attribut sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale
+ */
 Litterale* LiEntiere::operator* (const Litterale& li) const {
     if (typeid(li) == typeid(LiEntiere))
         return new LiEntiere(getValue()*li.getValue());
@@ -192,6 +244,16 @@ Litterale* LiEntiere::operator* (const Litterale& li) const {
 }
 
 
+/*!
+ *  \brief overloaded operator==
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to test if a LiEntiere equals a Litterale
+ *  const method (attribut sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to LiEntiere (with value = 1 if true, value = 0 otherwise)
+ */
 LiEntiere* LiEntiere::operator== (const Litterale& li) const {
     if (typeid(li) == typeid(LiEntiere))
         if(getValue() == li.getValue())
@@ -206,7 +268,16 @@ LiEntiere* LiEntiere::operator== (const Litterale& li) const {
 }
 
 
-
+/*!
+ *  \brief overloaded operator!=
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to test if a LiEntiere does not equal a Litterale
+ *  const method (attribut sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to LiEntiere (with value = 1 if true, value = 0 otherwise)
+ */
 LiEntiere* LiEntiere::operator!= (const Litterale& li) const {
     if (typeid(li) == typeid(LiEntiere))
         if(getValue() == li.getValue())
@@ -219,16 +290,16 @@ LiEntiere* LiEntiere::operator!= (const Litterale& li) const {
     return new LiEntiere(1);
 }
 
-/*
-LiEntiere& LiEntiere::operator= (Litterale& li) {
-    if (typeid(li) == typeid(LiEntiere)) {
-        value = li.getValue();
-        return *this;
-    }
-    else throw LiException("Error : no affectation LiEntiere <-- other");
-}
-*/
 
+/*!
+ *  \brief DIV() method
+ *
+ *  Euclidean division (only between LiEntiere)
+ *  Throws an error if parameter not of type LiEntiere
+ *
+ *  \param const reference to Litterale
+ *  \return pointer to Litterale
+ */
 Litterale* LiEntiere::Div(const Litterale& li) {
     if(typeid(li) == typeid(LiExpression)) {
         const LiExpression& liexp = dynamic_cast<const LiExpression&>(li);
@@ -242,6 +313,15 @@ Litterale* LiEntiere::Div(const Litterale& li) {
 }
 
 
+/*!
+ *  \brief MOD() method
+ *
+ *  Modulo method (only between LiEntiere)
+ *  Throws an error if parameter not of type LiEntiere
+ *
+ *  \param const reference to Litterale
+ *  \return pointer to Litterale
+ */
 Litterale* LiEntiere::Mod(const Litterale& li) {
     if(typeid(li) == typeid(LiExpression)) {
         const LiExpression& liexp = dynamic_cast<const LiExpression&>(li);
@@ -255,6 +335,16 @@ Litterale* LiEntiere::Mod(const Litterale& li) {
 }
 
 
+/*!
+ *  \brief overloaded operator<=
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to test if a LiEntiere value is less than or equals to a Litterale value
+ *  const method (attribut sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
+ */
 Litterale* LiEntiere::operator<= (const Litterale& li) const {
     if(typeid(li) == typeid(LiEntiere))
         if(getValue() <= li.getValue())
@@ -271,6 +361,16 @@ Litterale* LiEntiere::operator<= (const Litterale& li) const {
 }
 
 
+/*!
+ *  \brief overloaded operator>=
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to test if a LiEntiere value is greater than or equals to a Litterale value
+ *  const method (attribut sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
+ */
 Litterale* LiEntiere::operator>= (const Litterale& li) const {
     if(typeid(li) == typeid(LiEntiere))
         if(getValue() >= li.getValue())
@@ -287,6 +387,16 @@ Litterale* LiEntiere::operator>= (const Litterale& li) const {
 }
 
 
+/*!
+ *  \brief overloaded operator<
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to test if a LiEntiere value is less than a Litterale value
+ *  const method (attribut sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
+ */
 Litterale* LiEntiere::operator< (const Litterale& li) const {
     if(typeid(li) == typeid(LiEntiere))
         if(getValue() < li.getValue())
@@ -303,6 +413,16 @@ Litterale* LiEntiere::operator< (const Litterale& li) const {
 }
 
 
+/*!
+ *  \brief overloaded operator>
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to test if a LiEntiere value is greater than a Litterale value
+ *  const method (attribut sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
+ */
 Litterale* LiEntiere::operator> (const Litterale& li) const {
     if(typeid(li) == typeid(LiEntiere))
         if(getValue() > li.getValue())
@@ -319,6 +439,17 @@ Litterale* LiEntiere::operator> (const Litterale& li) const {
 }
 
 
+/*!
+ *  \brief AND() method
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Logic operator and
+ *  Use the isZero() method
+ *
+ *
+ *  \param const reference to Litterale
+ *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
+ */
 Litterale* LiEntiere::And(const Litterale* li) {
     if(isZero() || li->isZero())
         return new LiEntiere(0);
@@ -326,6 +457,16 @@ Litterale* LiEntiere::And(const Litterale* li) {
 }
 
 
+/*!
+ *  \brief OR() method
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Logic operator or
+ *  Use the isZero() method
+ *
+ *  \param const reference to Litterale
+ *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
+ */
 Litterale* LiEntiere::Or(const Litterale* li) {
     if(isZero() && li->isZero())
         return new LiEntiere(0);
@@ -333,6 +474,17 @@ Litterale* LiEntiere::Or(const Litterale* li) {
 }
 
 
+/*!
+ *  \brief NOT() method
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Logic operator and
+ *  Use the isZero() method
+ *
+ *
+ *  \param no parameter
+ *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
+ */
 Litterale* LiEntiere::Not() {
     if(isZero())
         return new LiEntiere(1);
@@ -351,7 +503,17 @@ Litterale* LiEntiere::Not() {
 
 
 
-
+/*!
+ *  \brief simplification() method
+ *
+ *  Method which transforms this fraction into an irreductible one
+ *  Use of the setValue method()
+ *  Euclide algorithm : Find the greater commun divisor (gcd)
+ *  Divide the numerator and the denominator by the gcd
+ *
+ *  \param no parameter
+ *  \return void
+ */
 void LiRationnelle::simplification() {
     if (numerateur.getValue() == 0) { denominateur.setValue(1); return; } // si le numerateur est 0, le denominateur prend la valeur 1
     if (denominateur.getValue() == 0) return; /* un denominateur ne devrait pas être 0; si c’est le cas, on sort de la méthode */
@@ -363,7 +525,16 @@ void LiRationnelle::simplification() {
 }
 
 
-
+/*!
+ *  \brief overloaded operator+
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to add a LiRationnelle object and a Litterale
+ *  const method (attributs sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale
+ */
 Litterale* LiRationnelle::operator+ (const Litterale& li) const {
     if (typeid(li) == typeid(LiEntiere)) {
         LiRationnelle newli(getDenominateur() * li.getValue() + getNumerateur(), getDenominateur());
@@ -406,6 +577,16 @@ Litterale* LiRationnelle::operator+ (const Litterale& li) const {
 }
 
 
+/*!
+ *  \brief overloaded operator-
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to substract to a LiRationnelle object a Litterale
+ *  const method (attributs sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale
+ */
 Litterale* LiRationnelle::operator- (const Litterale& li) const {
     if (typeid(li) == typeid(LiEntiere)) {
         LiRationnelle newli(getDenominateur() * li.getValue() - getNumerateur(), getDenominateur());
@@ -448,6 +629,16 @@ Litterale* LiRationnelle::operator- (const Litterale& li) const {
 }
 
 
+/*!
+ *  \brief overloaded operator/
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to divide a LiRationnelle object by a Litterale
+ *  const method (attributs sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale
+ */
 Litterale* LiRationnelle::operator/ (const Litterale& li) const {
     if (typeid(li) == typeid(LiEntiere)) {
         LiRationnelle newli(getNumerateur(), getDenominateur()*li.getValue());
@@ -508,6 +699,16 @@ Litterale* LiRationnelle::operator/ (const Litterale& li) const {
 }
 
 
+/*!
+ *  \brief overloaded operator*
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to multiply a LiRationnelle object and a Litterale
+ *  const method (attributs sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale
+ */
 Litterale* LiRationnelle::operator* (const Litterale& li) const {
     if (typeid(li) == typeid(LiEntiere)) {
         LiRationnelle newli(getNumerateur() * li.getValue(), getDenominateur());
@@ -562,6 +763,16 @@ Litterale* LiRationnelle::operator* (const Litterale& li) const {
 }
 
 
+/*!
+ *  \brief overloaded operator==
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to test if a LiRationnelle equals a Litterale
+ *  const method (attributs sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale (LiEntiere(1) if true, LiEntiere(0) if false)
+ */
 Litterale* LiRationnelle::operator== (const Litterale& li) const {
     Litterale* newli;
     if (typeid(li) == typeid(LiEntiere))
@@ -588,6 +799,16 @@ Litterale* LiRationnelle::operator== (const Litterale& li) const {
 }
 
 
+/*!
+ *  \brief overloaded operator!=
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to test if a LiRationnelle does not equal a Litterale
+ *  const method (attributs sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale (LiEntiere(1) if true, LiEntiere(0) if false)
+ */
 Litterale* LiRationnelle::operator!= (const Litterale& li) const {
     Litterale* newli;
     if (typeid(li) == typeid(LiEntiere)) {
@@ -612,19 +833,17 @@ Litterale* LiRationnelle::operator!= (const Litterale& li) const {
     return newli;
 }
 
-/*
-LiRationnelle& LiRationnelle::operator= (Litterale& li) {
-    if(typeid(li) == typeid(LiRationnelle)) {
-        LiRationnelle& newli = dynamic_cast<LiRationnelle&>(li);
-        numerateur = newli.numerateur;
-        denominateur = newli.denominateur;
-        return *this;
-    }
-    else throw LiException("Error, no affectation LiRationnelle <-- other");
-}
-*/
 
-
+/*!
+ *  \brief overloaded operator<=
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to test if a LiEntiere value is less than or equals to a Litterale value
+ *  const method (attribut sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
+ */
 Litterale* LiRationnelle::operator<= (const Litterale& li) const {
     if(typeid(li) == typeid(LiEntiere))
         if (((double)getNumerateur() / (double)getDenominateur()) <= li.getValue())
@@ -641,6 +860,16 @@ Litterale* LiRationnelle::operator<= (const Litterale& li) const {
 }
 
 
+/*!
+ *  \brief overloaded operator>=
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to test if a LiEntiere value is greater than or equals to a Litterale value
+ *  const method (attribut sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
+ */
 Litterale* LiRationnelle::operator>= (const Litterale& li) const {
     if(typeid(li) == typeid(LiEntiere))
         if (((double)getNumerateur() / (double)getDenominateur()) >= li.getValue())
@@ -657,6 +886,16 @@ Litterale* LiRationnelle::operator>= (const Litterale& li) const {
 }
 
 
+/*!
+ *  \brief overloaded operator<
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to test if a LiEntiere value is less than a Litterale value
+ *  const method (attribut sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
+ */
 Litterale* LiRationnelle::operator< (const Litterale& li) const {
     if(typeid(li) == typeid(LiEntiere))
         if (((double)getNumerateur() / (double)getDenominateur()) < li.getValue())
@@ -673,6 +912,16 @@ Litterale* LiRationnelle::operator< (const Litterale& li) const {
 }
 
 
+/*!
+ *  \brief overloaded operator>
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to test if a LiEntiere value is greater than a Litterale value
+ *  const method (attribut sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
+ */
 Litterale* LiRationnelle::operator> (const Litterale& li) const {
     if(typeid(li) == typeid(LiEntiere))
         if (((double)getNumerateur() / (double)getDenominateur()) > li.getValue())
@@ -689,6 +938,16 @@ Litterale* LiRationnelle::operator> (const Litterale& li) const {
 }
 
 
+/*!
+ *  \brief AND() method
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Logic operator and
+ *
+ *
+ *  \param const reference to Litterale
+ *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
+ */
 Litterale* LiRationnelle::And(const Litterale* li) {
     if(isZero() || li->isZero())
         return new LiEntiere(0);
@@ -696,6 +955,16 @@ Litterale* LiRationnelle::And(const Litterale* li) {
 }
 
 
+/*!
+ *  \brief OR() method
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Logic operator or
+ *
+ *
+ *  \param const reference to Litterale
+ *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
+ */
 Litterale* LiRationnelle::Or(const Litterale* li) {
     if(isZero() && li->isZero())
         return new LiEntiere(0);
@@ -703,6 +972,16 @@ Litterale* LiRationnelle::Or(const Litterale* li) {
 }
 
 
+/*!
+ *  \brief NOT() method
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Logic operator not
+ *
+ *
+ *  \param no parameter
+ *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
+ */
 Litterale* LiRationnelle::Not() {
     if(isZero())
         return new LiEntiere(1);
@@ -720,7 +999,16 @@ Litterale* LiRationnelle::Not() {
 
 
 
-
+/*!
+ *  \brief overloaded operator+
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to add a LiReelle object and a Litterale
+ *  const method (attributs sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale
+ */
 Litterale* LiReelle::operator+ (const Litterale& li) const {
     if (typeid(li) == typeid(LiEntiere))
         return new LiReelle(getReel() + li.getValue());
@@ -758,6 +1046,16 @@ Litterale* LiReelle::operator+ (const Litterale& li) const {
 }
 
 
+/*!
+ *  \brief overloaded operator-
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to substract a LiReelle object and a Litterale
+ *  const method (attributs sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale
+ */
 Litterale* LiReelle::operator- (const Litterale& li) const {
     if (typeid(li) == typeid(LiEntiere))
         return new LiReelle(getReel() - li.getValue());
@@ -795,6 +1093,16 @@ Litterale* LiReelle::operator- (const Litterale& li) const {
 }
 
 
+/*!
+ *  \brief overloaded operator/
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to divid a LiReelle object by a Litterale
+ *  const method (attributs sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale
+ */
 Litterale* LiReelle::operator/ (const Litterale& li) const {
     if (typeid(li) == typeid(LiEntiere))
         return new LiReelle(getReel() / li.getValue());
@@ -850,6 +1158,16 @@ Litterale* LiReelle::operator/ (const Litterale& li) const {
 }
 
 
+/*!
+ *  \brief overloaded operator*
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to multiply a LiReelle object by a Litterale
+ *  const method (attributs sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale
+ */
 Litterale* LiReelle::operator* (const Litterale& li) const {
     if (typeid(li) == typeid(LiEntiere))
         return new LiReelle(getReel() * li.getValue());
@@ -900,6 +1218,16 @@ Litterale* LiReelle::operator* (const Litterale& li) const {
 
 
 
+/*!
+ *  \brief overloaded operator==
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to test if the value of a LiReelle equals the value of a Litterale
+ *  const method (attributs sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
+ */
 Litterale* LiReelle::operator== (const Litterale& li) const {
     Litterale* newli;
     if (typeid(li) == typeid(LiEntiere))
@@ -926,6 +1254,16 @@ Litterale* LiReelle::operator== (const Litterale& li) const {
 }
 
 
+/*!
+ *  \brief overloaded operator!=
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to test if the value of a LiReelle does not equal the value of a Litterale
+ *  const method (attributs sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
+ */
 Litterale* LiReelle::operator!= (const Litterale& li) const {
     Litterale* newli;
     if (typeid(li) == typeid(LiEntiere))
@@ -951,17 +1289,17 @@ Litterale* LiReelle::operator!= (const Litterale& li) const {
     return newli;
 }
 
-/*
-LiReelle& LiReelle::operator= (Litterale& li) {
-    if(typeid(li) == typeid(LiReelle)) {
-        LiReelle& newli = dynamic_cast<LiReelle&>(li);
-        value = newli.value;
-        return *this;
-    }
-    else throw LiException("Error, no affectation LiReelle <-- other");
-}
-*/
 
+/*!
+ *  \brief overloaded operator<=
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to test if the value of a LiReelle is less than or equal to the value of a Litterale
+ *  const method (attributs sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
+ */
 Litterale* LiReelle::operator<= (const Litterale& li) const {
     if(typeid(li) == typeid(LiEntiere))
         if(getReel() <= li.getValue())
@@ -978,6 +1316,16 @@ Litterale* LiReelle::operator<= (const Litterale& li) const {
 }
 
 
+/*!
+ *  \brief overloaded operator>=
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to test if the value of a LiReelle is greater than or equal to the value of a Litterale
+ *  const method (attributs sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
+ */
 Litterale* LiReelle::operator>= (const Litterale& li) const {
     if(typeid(li) == typeid(LiEntiere))
         if(getReel() >= li.getValue())
@@ -994,6 +1342,16 @@ Litterale* LiReelle::operator>= (const Litterale& li) const {
 }
 
 
+/*!
+ *  \brief overloaded operator<
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to test if the value of a LiReelle is less than the value of a Litterale
+ *  const method (attributs sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
+ */
 Litterale* LiReelle::operator< (const Litterale& li) const {
     if(typeid(li) == typeid(LiEntiere))
         if(getReel() < li.getValue())
@@ -1010,6 +1368,16 @@ Litterale* LiReelle::operator< (const Litterale& li) const {
 }
 
 
+/*!
+ *  \brief overloaded operator>
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to test if the value of a LiReelle is greater than the value of a Litterale
+ *  const method (attributs sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
+ */
 Litterale* LiReelle::operator> (const Litterale& li) const {
     if(typeid(li) == typeid(LiEntiere))
         if(getReel() > li.getValue())
@@ -1026,6 +1394,16 @@ Litterale* LiReelle::operator> (const Litterale& li) const {
 }
 
 
+/*!
+ *  \brief AND() method
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Logic operator and
+ *
+ *
+ *  \param const reference to Litterale
+ *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
+ */
 Litterale* LiReelle::And(const Litterale* li) {
     if(isZero() || li->isZero())
         return new LiEntiere(0);
@@ -1033,6 +1411,16 @@ Litterale* LiReelle::And(const Litterale* li) {
 }
 
 
+/*!
+ *  \brief OR() method
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Logic operator or
+ *
+ *
+ *  \param const reference to Litterale
+ *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
+ */
 Litterale* LiReelle::Or(const Litterale* li) {
     if(isZero() && li->isZero())
         return new LiEntiere(0);
@@ -1040,6 +1428,16 @@ Litterale* LiReelle::Or(const Litterale* li) {
 }
 
 
+/*!
+ *  \brief NOT() method
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Logic operator not
+ *
+ *
+ *  \param const reference to Litterale
+ *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
+ */
 Litterale* LiReelle::Not() {
     if(isZero())
         return new LiEntiere(1);
@@ -1058,7 +1456,15 @@ Litterale* LiReelle::Not() {
 //////////////////////////////////////// LITTERALE COMPLEXE ////////////////////////////////////////
 
 
-
+/*!
+ *  \brief Constructor
+ *
+ *  Constructor of the LiComplexe class
+ *  Needed because the attributes are pointers, so we have to make a copy
+ *
+ *  \param 2 parameters of type LiNumerique*, to initialize the real and the imaginary part
+ *
+ */
 LiComplexe::LiComplexe(LiNumerique* r, LiNumerique* i) {
 
     if (typeid(*r) == typeid(LiEntiere)) re = new LiEntiere(r->getValue());
@@ -1071,6 +1477,15 @@ LiComplexe::LiComplexe(LiNumerique* r, LiNumerique* i) {
 
 }
 
+/*!
+ *  \brief Copy Constructor
+ *
+ *  Copy Constructor of the LiComplexe class
+ *  Needed ecause the attributes are pointers, so we have to make a copy
+ *
+ *  \param 1 parameter of type const LiComplexe&
+ *
+ */
 LiComplexe::LiComplexe(const LiComplexe& lc):re(0), im(0) {
     if (typeid(lc.getReelle()) == typeid(LiEntiere)) re = new LiEntiere(lc.getReelle().getValue());
     if (typeid(lc.getReelle()) == typeid(LiReelle)) re = new LiReelle(lc.getReelle().getReel());
@@ -1082,6 +1497,15 @@ LiComplexe::LiComplexe(const LiComplexe& lc):re(0), im(0) {
 }
 
 
+/*!
+ *  \brief Assignment operator (operator=)
+ *
+ *  Assignment operator of the LiComplexe class
+ *  Needed ecause the attributes are pointers, so we have to make a copy
+ *
+ *  \param 1 parameter of type const LiComplexe&
+ *
+ */
 LiComplexe& LiComplexe::operator=(const LiComplexe& lc) {
     if(re != 0) { delete re; re = 0; }
     if(im != 0) { delete im; im = 0; }
@@ -1096,7 +1520,16 @@ LiComplexe& LiComplexe::operator=(const LiComplexe& lc) {
 }
 
 
-
+/*!
+ *  \brief overloaded operator+
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to add a LiComplexe object and a Litterale
+ *  const method (attributs sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale
+ */
 Litterale* LiComplexe::operator+ (const Litterale& li) const {
     if(typeid(li) == typeid(LiExpression)) {
         const LiExpression& tmp = dynamic_cast<const LiExpression&>(li);
@@ -1143,6 +1576,16 @@ Litterale* LiComplexe::operator+ (const Litterale& li) const {
 }
 
 
+/*!
+ *  \brief overloaded operator-
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to substract to a LiComplexe object a Litterale
+ *  const method (attributs sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale
+ */
 Litterale* LiComplexe::operator- (const Litterale& li) const {
     if(typeid(li) == typeid(LiExpression)) {
         const LiExpression& tmp = dynamic_cast<const LiExpression&>(li);
@@ -1189,6 +1632,17 @@ Litterale* LiComplexe::operator- (const Litterale& li) const {
 }
 
 
+/*!
+ *  \brief overloaded operator/
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to divid a LiComplexe object and a Litterale
+ *  const method (attributs sould not be modified)
+ *  If the attribut is of type LiComplexe : multiplication by the conjugated
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale
+ */
 Litterale* LiComplexe::operator/ (const Litterale& li) const {
     if(typeid(li) == typeid(LiExpression)) {
         const LiExpression& tmp = dynamic_cast<const LiExpression&>(li);
@@ -1246,7 +1700,16 @@ Litterale* LiComplexe::operator/ (const Litterale& li) const {
 }
 
 
-
+/*!
+ *  \brief overloaded operator*
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to multiply a LiComplexe object by a Litterale
+ *  const method (attributs sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale
+ */
 Litterale* LiComplexe::operator* (const Litterale& li) const {
     if(typeid(li) == typeid(LiExpression)) {
         const LiExpression& tmp = dynamic_cast<const LiExpression&>(li);
@@ -1298,7 +1761,17 @@ Litterale* LiComplexe::operator* (const Litterale& li) const {
 }
 
 
-
+/*!
+ *  \brief overloaded operator==
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to test if the value of a LiComplexe equals the value of a Litterale
+ *  If the other object is not of type LiComplexe, returns false
+ *  const method (attributs sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale  (with value = 1 if true, value = 0 otherwise)
+ */
 Litterale* LiComplexe::operator== (const Litterale& li) const {
     Litterale* newli;
     if (typeid(li) == typeid(LiComplexe)) {
@@ -1317,6 +1790,17 @@ Litterale* LiComplexe::operator== (const Litterale& li) const {
 }
 
 
+/*!
+ *  \brief overloaded operator!=
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Used to test if the value of a LiComplexe does not equal the value of a Litterale
+ *  If the other object is not of type LiComplexe, returns true
+ *  const method (attributs sould not be modified)
+ *
+ *  \param 1 parameter of type const Litterale&
+ *  \return pointer to Litterale  (with value = 1 if true, value = 0 otherwise)
+ */
 Litterale* LiComplexe::operator!= (const Litterale& li) const {
     Litterale* newli;
     if (typeid(li) == typeid(LiComplexe)) {
@@ -1334,24 +1818,33 @@ Litterale* LiComplexe::operator!= (const Litterale& li) const {
     return newli;
 }
 
-/*
-LiComplexe& LiComplexe::operator= (Litterale& li) {
-    if(typeid(li) == typeid(LiComplexe)) {
-        LiComplexe& newli = dynamic_cast<LiComplexe&>(li);
-        *this = newli;
-        return *this;
-    }
-    else throw LiException("Error : no affectation LiComplexe <-- other");
-}
-*/
 
+/*!
+ *  \brief AND() method
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Logic operator and
+ *
+ *
+ *  \param const reference to Litterale
+ *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
+ */
 Litterale* LiComplexe::And(const Litterale* li) {
     if(isZero() || li->isZero())
         return new LiEntiere(0);
     return new LiEntiere(1);
 }
 
-
+/*!
+ *  \brief OR() method
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Logic operator or
+ *
+ *
+ *  \param const reference to Litterale
+ *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
+ */
 Litterale* LiComplexe::Or(const Litterale* li) {
     if(isZero() && li->isZero())
         return new LiEntiere(0);
@@ -1359,6 +1852,16 @@ Litterale* LiComplexe::Or(const Litterale* li) {
 }
 
 
+/*!
+ *  \brief NOT() method
+ *
+ *  Method which was defined in Litterale (pure virtual)
+ *  Logic operator not
+ *
+ *
+ *  \param no paramter
+ *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
+ */
 Litterale* LiComplexe::Not() {
     if(isZero())
         return new LiEntiere(1);
@@ -1366,6 +1869,15 @@ Litterale* LiComplexe::Not() {
 }
 
 
+/*!
+ *  \brief toString() method
+ *
+ *  Pure virtual method in Litterale, used in the afficher() method
+ *  Method which takes re and im (of type LiNUmerique*), transforms them into a string and returns them
+ *
+ *  \param no parameter
+ *  \return string
+ */
 string LiComplexe::toString() const {
     stringstream ss;
     Litterale* lin = im;

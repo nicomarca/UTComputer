@@ -23,9 +23,10 @@ using namespace std;
 
 /// \class The LiNumerique class
 ///
-/// \brief abstract class which inherits from litterale
+/// \brief abstract class which inherits from the abstract class Litterale
 ///
 /// used to define liEntiere, LiReelle and LiRationnelle
+/// no attributes
 ///
 
 class LiNumerique : public Litterale {
@@ -56,6 +57,7 @@ public:
      *  \brief Constructor
      *
      *  Constructor of the LiEntiere class
+     *  Inline Method
      *
      *  \param without any parameters, value will be initialize to 0.
      */
@@ -65,6 +67,7 @@ public:
      *  \brief Constructor
      *
      *  Constructor of the LiEntiere class
+     *  Inline Method
      *
      *  \param with one parameter of type int to initialize value
      */
@@ -75,6 +78,7 @@ public:
      *
      *  Method which takes value (integer) transforms it into a string and returns it
      *  Pure virtual method in Litterale, used in the afficher() method
+     *  Inline Method
      *
      *  \param no parameter
      *  \return string
@@ -86,6 +90,7 @@ public:
      *
      *  Method which inform us if the attribut is 0
      *  Pure virtual method in Litterale
+     *  Inline Method
      *
      *  \param no parameter
      *  \return true if value == 0 false otherwise
@@ -97,6 +102,7 @@ public:
      *
      *  Method which returns the value of an object LiEntiere
      *  Pure virtual method in Litterale
+     *  Inline Method
      *
      *  \param no parameter
      *  \return integer
@@ -107,6 +113,7 @@ public:
      *  \brief setValue() method
      *
      *  Method to set a new value to the attribut
+     *  Inline Method
      *
      *  \param 1 parameter of type int
      *  \return integer
@@ -118,6 +125,7 @@ public:
      *
      *  Method which was defined in Litterale (pure virtual) for the LiRationnelle class
      *  Throws an error if called on an LiEntiere object (doesn't have numerateur)
+     *  Inline Method
      *
      *  \param no parameter
      *  \return int
@@ -129,6 +137,7 @@ public:
      *
      *  Method which was defined in Litterale (pure virtual) for the LiRationnelle class
      *  Throws an error if called on an LiEntiere object (doesn't have denominateur)
+     *  Inline Method
      *
      *  \param no parameter
      *  \return int
@@ -140,6 +149,7 @@ public:
      *
      *  Method which was defined in Litterale (pure virtual) for the LiReelle class
      *  Throws an error if called on an LiEntiere object (doesn't have reel attribut)
+     *  Inline Method
      *
      *  \param no parameter
      *  \return int
@@ -149,10 +159,6 @@ public:
     /*!
      *  \brief overloaded operator+
      *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Used to add an LiEntiere object and a Litterale
-     *  const method (attribut sould not be modified)
-     *
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale
      */
@@ -161,20 +167,13 @@ public:
     /*!
      *  \brief overloaded operator-
      *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Used to substract to a LiEntiere object a Litterale
-     *  const method (attribut sould not be modified)
-     *
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale
      */
 	Litterale* operator- (const Litterale& li) const;
+
     /*!
      *  \brief overloaded operator/
-     *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Used to divide a LiEntiere by a Litterale
-     *  const method (attribut sould not be modified)
      *
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale
@@ -184,10 +183,6 @@ public:
     /*!
      *  \brief overloaded operator*
      *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Used to multiply to a LiEntiere object a Litterale oject
-     *  const method (attribut sould not be modified)
-     *
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale
      */
@@ -196,20 +191,13 @@ public:
     /*!
      *  \brief overloaded operator==
      *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Used to test if a LiEntiere equals a Litterale
-     *  const method (attribut sould not be modified)
-     *
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to LiEntiere (with value = 1 if true, value = 0 otherwise)
      */
 	LiEntiere* operator== (const Litterale& li) const;
+
     /*!
      *  \brief overloaded operator!=
-     *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Used to test if a LiEntiere does not equal a Litterale
-     *  const method (attribut sould not be modified)
      *
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to LiEntiere (with value = 1 if true, value = 0 otherwise)
@@ -219,10 +207,6 @@ public:
     /*!
      *  \brief overloaded operator<=
      *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Used to test if a LiEntiere value is less than or equals to a Litterale value
-     *  const method (attribut sould not be modified)
-     *
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
      */
@@ -230,10 +214,6 @@ public:
 
     /*!
      *  \brief overloaded operator>=
-     *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Used to test if a LiEntiere value is greater than or equals to a Litterale value
-     *  const method (attribut sould not be modified)
      *
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
@@ -243,29 +223,24 @@ public:
     /*!
      *  \brief overloaded operator<
      *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Used to test if a LiEntiere value is less than a Litterale value
-     *  const method (attribut sould not be modified)
-     *
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
      */
 	Litterale* operator< (const Litterale& li) const;
+
     /*!
      *  \brief overloaded operator>
-     *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Used to test if a LiEntiere value is greater than a Litterale value
-     *  const method (attribut sould not be modified)
      *
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
      */
     Litterale* operator> (const Litterale& li) const;
+
     /*!
      *  \brief Neg() method
      *
      *  Changes the sign of value
+     *  Inline Method
      *
      *  \param no parameters
      *  \return pointer to LiEntiere (with value = 1 if true, value = 0 otherwise)
@@ -275,8 +250,6 @@ public:
     /*!
      *  \brief DIV() method
      *
-     *  Euclidean division (only between LiEntiere)
-     *
      *  \param const reference to Litterale
      *  \return pointer to Litterale
      */
@@ -284,8 +257,6 @@ public:
 
     /*!
      *  \brief MOD() method
-     *
-     *  Modulo method (only between LiEntiere)
      *
      *  \param const reference to Litterale
      *  \return pointer to Litterale
@@ -296,7 +267,7 @@ public:
      *  \brief NUM() method
      *
      *  Returns the numerator of a LiEntiere (so itself)
-     *
+     *  Inline Method
      *
      *  \param no parameter
      *  \return pointer to Litterale
@@ -307,6 +278,7 @@ public:
      *  \brief DEN() method
      *
      *  Returns the numerator of a LiEntiere (LiEntiere(1))
+     *  Inline Method
      *
      *
      *  \param no parameter
@@ -318,6 +290,7 @@ public:
      *  \brief RE() method
      *
      *  Returns the real part of a LiEntiere (so itself)
+     *  Inline Method
      *
      *
      *  \param no parameter
@@ -329,6 +302,7 @@ public:
      *  \brief IM() method
      *
      *  Returns the imaginay part of a LiEntiere (LiEntiere(0))
+     *  Inline Method
      *
      *
      *  \param no parameter
@@ -339,10 +313,6 @@ public:
     /*!
      *  \brief AND() method
      *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Logic operator and
-     *
-     *
      *  \param const reference to Litterale
      *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
      */
@@ -350,10 +320,6 @@ public:
 
     /*!
      *  \brief OR() method
-     *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Logic operator or
-     *
      *
      *  \param const reference to Litterale
      *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
@@ -403,6 +369,7 @@ public:
      *  \brief Constructor
      *
      *  Constructor of the LiRationnelle class
+     *  Inline Method
      *
      *  \param without any parameters, numerateur will be initialize to 0 and denominateur to 1 (no division by 0)
      *
@@ -415,6 +382,7 @@ public:
      *  Constructor of the LiRationnelle class
      *  Call of the LiEntiere constructor
      *  Call of the simplification method to make an irreductible fraction
+     *  Inline Method
      *
      *  \param 2 parameters of type int to intialize numerator and denominator
      *
@@ -425,6 +393,7 @@ public:
      *  \brief Constructor
      *
      *  Constructor of the LiRationnelle class
+     *  Inline Method
      *  Call of the simplification method to make an irreductible fraction
      *
      *  \param 2 parameters (const references to LiEntiere) to intialize numerator and denominator
@@ -436,6 +405,7 @@ public:
      *  \brief toString() method
      *
      *  Pure virtual method in Litterale, used in the afficher() method
+     *  Inline Method
      *  Method which takes numerator and denominator, transforms them into a string and returns them
      *
      *  \param no parameter
@@ -458,6 +428,7 @@ public:
      *
      *  Pure virtual method in Litterale, used to test if this LiRationnelle is 0
      *  A LiRationnal is 0 if its numerator is 0 (its denominator can't be 0)
+     *  Inline Method
      *
      *  \param no parameter
      *  \return bool
@@ -468,6 +439,7 @@ public:
      *  \brief getValue() method
      *
      *  Pure virtual method in Litterale
+     *  Inline Method
      *  Throws an error used on LiRationnelle (only on LiEntiere)
      *
      *  \param no parameter
@@ -479,6 +451,7 @@ public:
      *  \brief getNumerator() method
      *
      *  Pure virtual method in Litterale
+     *  Inline Method
      *  Returns the numerator's value
      *
      *  \param no parameter
@@ -490,6 +463,7 @@ public:
      *  \brief getNumerator() method
      *
      *  Pure virtual method in Litterale
+     *  Inline Method
      *  Returns the denominator's value
      *
      *  \param no parameter
@@ -501,6 +475,7 @@ public:
      *  \brief getReel() method
      *
      *  Pure virtual method in Litterale
+     *  Inline Method
      *  Throws an error used on LiRationnelle (only on LiReelle)
      *
      *  \param no parameter
@@ -511,10 +486,6 @@ public:
     /*!
      *  \brief overloaded operator+
      *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Used to add a LiRationnelle object and a Litterale
-     *  const method (attributs sould not be modified)
-     *
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale
      */
@@ -522,10 +493,6 @@ public:
 
     /*!
      *  \brief overloaded operator-
-     *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Used to substract to a LiRationnelle object a Litterale
-     *  const method (attributs sould not be modified)
      *
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale
@@ -535,10 +502,6 @@ public:
     /*!
      *  \brief overloaded operator/
      *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Used to divide a LiRationnelle object by a Litterale
-     *  const method (attributs sould not be modified)
-     *
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale
      */
@@ -546,10 +509,6 @@ public:
 
     /*!
      *  \brief overloaded operator*
-     *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Used to multiply a LiRationnelle object and a Litterale
-     *  const method (attributs sould not be modified)
      *
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale
@@ -559,10 +518,6 @@ public:
     /*!
      *  \brief overloaded operator==
      *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Used to test if a LiRationnelle equals a Litterale
-     *  const method (attributs sould not be modified)
-     *
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale (LiEntiere(1) if true, LiEntiere(0) if false)
      */
@@ -570,10 +525,6 @@ public:
 
     /*!
      *  \brief overloaded operator!=
-     *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Used to test if a LiRationnelle does not equal a Litterale
-     *  const method (attributs sould not be modified)
      *
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale (LiEntiere(1) if true, LiEntiere(0) if false)
@@ -583,10 +534,6 @@ public:
     /*!
      *  \brief overloaded operator<=
      *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Used to test if a LiEntiere value is less than or equals to a Litterale value
-     *  const method (attribut sould not be modified)
-     *
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
      */
@@ -594,10 +541,6 @@ public:
 
     /*!
      *  \brief overloaded operator>=
-     *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Used to test if a LiEntiere value is greater than or equals to a Litterale value
-     *  const method (attribut sould not be modified)
      *
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
@@ -607,21 +550,13 @@ public:
     /*!
      *  \brief overloaded operator<
      *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Used to test if a LiEntiere value is less than a Litterale value
-     *  const method (attribut sould not be modified)
-     *
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
      */
 	Litterale* operator< (const Litterale& li) const;
 
     /*!
-     *  \brief overloaded operator>=
-     *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Used to test if a LiEntiere value is greater than a Litterale value
-     *  const method (attribut sould not be modified)
+     *  \brief overloaded operator>
      *
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
@@ -631,7 +566,7 @@ public:
     /*!
      *  \brief NEG() method
      *
-     *  Method which was defined in Litterale (pure virtual)
+     *  Inline Method which was defined in Litterale (pure virtual)
      *  Changes the sign of a LiRationnelle
      *  Calls the simplification method
      *
@@ -643,7 +578,7 @@ public:
     /*!
      *  \brief NUM() method
      *
-     *  Method which was defined in Litterale (pure virtual)
+     *  Inline Method which was defined in Litterale (pure virtual)
      *  Returns a pointer to the numerator
      *
      *  \param 1 no parameters
@@ -654,7 +589,7 @@ public:
     /*!
      *  \brief DEN() method
      *
-     *  Method which was defined in Litterale (pure virtual)
+     *  Inline Method which was defined in Litterale (pure virtual)
      *  Returns a pointer to the denominator
      *
      *  \param 1 no parameters
@@ -665,7 +600,7 @@ public:
     /*!
      *  \brief RE() method
      *
-     *  Method which was defined in Litterale (pure virtual)
+     *  Inline Method which was defined in Litterale (pure virtual)
      *  Returns a pointer to the real part of a LiRationnelle (so itself)
      *
      *  \param 1 no parameters
@@ -676,7 +611,7 @@ public:
     /*!
      *  \brief IM() method
      *
-     *  Method which was defined in Litterale (pure virtual)
+     *  Inline Method which was defined in Litterale (pure virtual)
      *  Returns a pointer to the imaginary part of a LiRationnelle
      *  It does not have any so LiEntiere(0)
      *
@@ -688,10 +623,6 @@ public:
     /*!
      *  \brief AND() method
      *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Logic operator and
-     *
-     *
      *  \param const reference to Litterale
      *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
      */
@@ -700,10 +631,6 @@ public:
     /*!
      *  \brief OR() method
      *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Logic operator or
-     *
-     *
      *  \param const reference to Litterale
      *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
      */
@@ -711,10 +638,6 @@ public:
 
     /*!
      *  \brief NOT() method
-     *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Logic operator not
-     *
      *
      *  \param no parameter
      *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
@@ -745,12 +668,14 @@ public:
 
 class LiReelle : public LiNumerique {
     double value; /*!< value : attribut of type double*/
+
 public:
 
     /*!
      *  \brief Constructor
      *
      *  Constructor of the LiReelle class
+     *  Inline Method
      *
      *  \param without any parameters, value will be initialize to 0
      *
@@ -760,7 +685,8 @@ public:
     /*!
      *  \brief Constructor
      *
-     *  Constructor of the LiRationnelle class
+     *  Constructor of the LiReelle class
+     *  Inline Method
      *
      *  \param 1 parameter of type dpouble to initialize value
      *
@@ -772,6 +698,7 @@ public:
      *
      *  Pure virtual method in Litterale, used in the afficher() method
      *  Method which takes value (of type double), transforms them into a string and returns them
+     *  Inline Method
      *
      *  \param no parameter
      *  \return string
@@ -782,6 +709,7 @@ public:
      *  \brief isZero() method
      *
      *  Pure virtual method in Litterale, used to test if value = 0
+     *  Inline Method
      *
      *  \param no parameter
      *  \return bool
@@ -794,6 +722,7 @@ public:
      *  Pure virtual method in Litterale
      *  Used to get the value of a LiEntiere
      *  Throws an error used on LiReelle (can only e used on LiEntiere)
+     *  Inline Method
      *
      *  \param no parameter
      *  \return int
@@ -806,6 +735,7 @@ public:
      *  Pure virtual method in Litterale
      *  Used to get the numerateur of a LiRationnelle
      *  Throws an error used on LiReelle (can only e used on LiRationnelle)
+     *  Inline Method
      *
      *  \param no parameter
      *  \return int
@@ -818,6 +748,7 @@ public:
      *  Pure virtual method in Litterale
      *  Used to get the denominateur of a LiRationnelle
      *  Throws an error used on LiReelle (can only e used on LiRationnelle)
+     *  Inline Method
      *
      *  \param no parameter
      *  \return int
@@ -830,6 +761,7 @@ public:
      *  Pure virtual method in Litterale
      *  Used to get the real part of a LiComplexe
      *  Throws an error used on LiReelle (can only e used on LiRationnelle)
+     *  Inline Method
      *
      *  \param no parameter
      *  \return int
@@ -839,10 +771,6 @@ public:
     /*!
      *  \brief overloaded operator+
      *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Used to add a LiReelle object and a Litterale
-     *  const method (attributs sould not be modified)
-     *
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale
      */
@@ -850,10 +778,6 @@ public:
 
     /*!
      *  \brief overloaded operator-
-     *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Used to substract a LiReelle object and a Litterale
-     *  const method (attributs sould not be modified)
      *
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale
@@ -863,10 +787,6 @@ public:
     /*!
      *  \brief overloaded operator/
      *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Used to divid a LiReelle object by a Litterale
-     *  const method (attributs sould not be modified)
-     *
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale
      */
@@ -874,10 +794,6 @@ public:
 
     /*!
      *  \brief overloaded operator*
-     *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Used to multiply a LiReelle object by a Litterale
-     *  const method (attributs sould not be modified)
      *
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale
@@ -887,21 +803,13 @@ public:
     /*!
      *  \brief overloaded operator==
      *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Used to test if the value of a LiReelle equals the value of a Litterale
-     *  const method (attributs sould not be modified)
-     *
      *  \param 1 parameter of type const Litterale&
-     *  \return pointer to Litterale
+     *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
      */
 	Litterale* operator== (const Litterale& li) const;
 
     /*!
      *  \brief overloaded operator!=
-     *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Used to test if the value of a LiReelle does not equal the value of a Litterale
-     *  const method (attributs sould not be modified)
      *
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
@@ -911,10 +819,6 @@ public:
     /*!
      *  \brief overloaded operator<=
      *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Used to test if the value of a LiReelle is less than or equal to the value of a Litterale
-     *  const method (attributs sould not be modified)
-     *
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
      */
@@ -922,10 +826,6 @@ public:
 
     /*!
      *  \brief overloaded operator>=
-     *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Used to test if the value of a LiReelle is greater than or equal to the value of a Litterale
-     *  const method (attributs sould not be modified)
      *
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
@@ -935,10 +835,6 @@ public:
     /*!
      *  \brief overloaded operator<
      *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Used to test if the value of a LiReelle is less than the value of a Litterale
-     *  const method (attributs sould not be modified)
-     *
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
      */
@@ -946,10 +842,6 @@ public:
 
     /*!
      *  \brief overloaded operator>
-     *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Used to test if the value of a LiReelle is greater than the value of a Litterale
-     *  const method (attributs sould not be modified)
      *
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
@@ -961,6 +853,7 @@ public:
      *
      *  Method which was defined in Litterale (pure virtual)
      *  Used to change the sign of value
+     *  Inline Method
      *
      *  \param no parameter
      *  \return pointer to LiReelle
@@ -972,8 +865,9 @@ public:
      *
      *  Method which was defined in Litterale (pure virtual)
      *  Throws an error used on a Lireelle (can only be used on LiRationnelle to return the numerator)
+     *  Inline Method
      *
-     *  \param no
+     *  \param no parameter
      *  \return pointer to Litterale
      */
 	Litterale* Num() { throw LiException("Error : LiReelle pas de num"); }
@@ -983,8 +877,9 @@ public:
      *
      *  Method which was defined in Litterale (pure virtual)
      *  Throws an error used on a Lireelle (can only be used on LiRationnelle to return the denominator)
+     *  Inline Method
      *
-     *  \param no
+     *  \param no parameter
      *  \return pointer to Litterale
      */
 	Litterale* Den() { throw LiException("Error : LiReelle pas de den"); }
@@ -994,8 +889,9 @@ public:
      *
      *  Method which was defined in Litterale (pure virtual)
      *  Throws an error used on a Lireelle (can only be used on LiComplexe to return the real part)
+     *  Inline Method
      *
-     *  \param no
+     *  \param no parameter
      *  \return pointer to Litterale
      */
 	Litterale* Re() { return this; }
@@ -1005,18 +901,15 @@ public:
      *
      *  Method which was defined in Litterale (pure virtual)
      *  Throws an error used on a Lireelle (can only be used on LiComplexe to return the imaginary part)
+     *  Inline Method
      *
-     *  \param no
+     *  \param no parameter
      *  \return pointer to Litterale
      */
 	Litterale* Im() { return new LiEntiere(0); }
 
     /*!
      *  \brief AND() method
-     *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Logic operator and
-     *
      *
      *  \param const reference to Litterale
      *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
@@ -1026,10 +919,6 @@ public:
     /*!
      *  \brief OR() method
      *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Logic operator or
-     *
-     *
      *  \param const reference to Litterale
      *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
      */
@@ -1037,10 +926,6 @@ public:
 
     /*!
      *  \brief NOT() method
-     *
-     *  Method which was defined in Litterale (pure virtual)
-     *  Logic operator not
-     *
      *
      *  \param const reference to Litterale
      *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
@@ -1060,42 +945,277 @@ public:
 
 //////////////////////////////////////// LITTERALE COMPLEXE ////////////////////////////////////////
 
+/// \class The LiComplexe class
+///
+/// \brief Class which inherits from LiNumerique
+///
+/// 2 attributes of type pointer to LiNumerique.
+/// The real and the imaginary part of a LiComplexe can either be a LiEntiere, a LiReelle or a LiRationnelle.
+/// used to represent the complexe objects in the calculator.
+///
+
 
 class LiComplexe : public Litterale {
-	LiNumerique* re;
-	LiNumerique* im;
+    LiNumerique* re; /*!< re : attribute of type LiNumerique* : the real part of LiComplexe can be  LiEntiere, LiReelle or LiRationnelle*/
+    LiNumerique* im; /*!< im : attribute of type LiNumerique* : the imaginary part of LiComplexe can be  LiEntiere, LiReelle or LiRationnelle*/
 public:
+
+    /*!
+     *  \brief Constructor
+     *
+     *  \param 2 parameters of type LiNumerique*, to initialize the real and the imaginary part
+     *
+     */
 	LiComplexe(LiNumerique* r, LiNumerique* i);
+
+    /*!
+     *  \brief Copy Constructor
+     *
+     *  \param 1 parameter of type const LiComplexe& (needed because the attributs are pointers to LiNumerique*
+     *
+     */
 	LiComplexe(const LiComplexe& lc);
+
+    /*!
+     *  \brief Assignment operator (operator=)
+     *
+     *  \param 1 parameter of type const LiComplexe& (needed because the attributs are pointers to LiNumerique*
+     *
+     */
 	LiComplexe& operator=(const LiComplexe& lc);
+
+    /*!
+     *  \brief Destructor
+     *
+     *  Destructor of the LiComplexe class
+     *  Inline Method
+     *
+     *  \param 1 no parameters
+     *  Delete the attributes that are allocated dynamically
+     *
+     */
 	~LiComplexe() { delete re; delete im; }
 
+    /*!
+     *  \brief toString() method
+     *
+     *  \param no parameter
+     *  \return string
+     */
 	string toString() const;
+
+    /*!
+     *  \brief isZero() method
+     *
+     *  Pure virtual method in Litterale, used to test if re and im are equal to 0
+     *  Use the isZero mehtods defined in the other classes
+     *  Inline Method
+     *
+     *  \param no parameter
+     *  \return bool
+     */
     bool isZero() const { return (re->isZero() && im->isZero()); }
 
+    /*!
+     *  \brief getReelle() method
+     *
+     *  Accessor to the real part of a LiComplexe
+     *  Inline Method
+     *
+     *  \param no parameter
+     *  \return reference to LiNumerique
+     */
 	LiNumerique& getReelle() const { return *re; }
+
+    /*!
+     *  \brief getReelle() method
+     *
+     *  Accessor to the imaginary part of a LiComplexe
+     *  Inline Method
+     *
+     *  \param no parameter
+     *  \return reference to LiNumerique
+     */
 	LiNumerique& getImage() const { return *im; }
 
+    /*!
+     *  \brief overloaded operator+
+     *
+     *  \param 1 parameter of type const Litterale&
+     *  \return pointer to Litterale
+     */
 	Litterale* operator+ (const Litterale& li) const;
+
+    /*!
+     *  \brief overloaded operator-
+     *
+     *  \param 1 parameter of type const Litterale&
+     *  \return pointer to Litterale
+     */
 	Litterale* operator- (const Litterale& li) const;
+
+    /*!
+     *  \brief overloaded operator/
+     *
+     *  \param 1 parameter of type const Litterale&
+     *  \return pointer to Litterale
+     */
 	Litterale* operator/ (const Litterale& li) const;
+
+    /*!
+     *  \brief overloaded operator*
+     *
+     *  \param 1 parameter of type const Litterale&
+     *  \return pointer to Litterale
+     */
 	Litterale* operator* (const Litterale& li) const;
+
+    /*!
+     *  \brief overloaded operator==
+     *
+     *  \param 1 parameter of type const Litterale&
+     *  \return pointer to Litterale  (with value = 1 if true, value = 0 otherwise)
+     */
 	Litterale* operator== (const Litterale& li) const;
+
+    /*!
+     *  \brief overloaded operator!=
+     *
+     *  \param 1 parameter of type const Litterale&
+     *  \return pointer to Litterale  (with value = 1 if true, value = 0 otherwise)
+     */
 	Litterale* operator!= (const Litterale& li) const;
+
+    /*!
+     *  \brief overloaded operator<=
+     *
+     *  Method which was defined in Litterale (pure virtual)
+     *  Throws an exception : can't compare complexes
+     *  Inline Method
+     *
+     *  \param 1 parameter of type const Litterale&
+     *  \return pointer to Litterale
+     */
 	Litterale* operator<= (const Litterale& li) const { throw LiException("Error : pas de comparaison LiComplexe"); }
+
+    /*!
+     *  \brief overloaded operator>=
+     *
+     *  Method which was defined in Litterale (pure virtual)
+     *  Throws an exception : can't compare complexes
+     *  Inline Method
+     *
+     *  \param 1 parameter of type const Litterale&
+     *  \return pointer to Litterale
+     */
 	Litterale* operator>= (const Litterale& li) const { throw LiException("Error : pas de comparaison LiComplexe"); }
+
+    /*!
+     *  \brief overloaded operator<
+     *
+     *  Method which was defined in Litterale (pure virtual)
+     *  Throws an exception : can't compare complexes
+     *  Inline Method
+     *
+     *  \param 1 parameter of type const Litterale&
+     *  \return pointer to Litterale
+     */
 	Litterale* operator< (const Litterale& li) const { throw LiException("Error : pas de comparaison LiComplexe"); }
-	Litterale* operator> (const Litterale& li) const { throw LiException("Error : pas de comparaison LiComplexe"); }
-	//LiComplexe& operator= (Litterale& li);
+
+    /*!
+     *  \brief overloaded operator>
+     *
+     *  Method which was defined in Litterale (pure virtual)
+     *  Throws an exception : can't compare complexes
+     *  Inline Method
+     *
+     *  \param 1 parameter of type const Litterale&
+     *  \return pointer to Litterale
+     */
+    Litterale* operator> (const Litterale& li) const { throw LiException("Error : pas de comparaison LiComplexe"); }
+
+    /*!
+     *  \brief NEG() method
+     *
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to change the sign of value
+     *  Inline Method
+     *
+     *  \param no parameter
+     *  \return pointer to LiReelle
+     */
     LiComplexe* Neg() { re->Neg(); return this; }
+
+    /*!
+     *  \brief NUM() method
+     *
+     *  Method which was defined in Litterale (pure virtual)
+     *  Throws an error used on a Lireelle (can only be used on LiRationnelle to return the numerator)
+     *  Inline Method
+     *
+     *  \param no parameter
+     *  \return pointer to Litterale
+     */
 	Litterale* Num() { throw LiException("Error : LiComplexe pas de num"); }
+
+    /*!
+     *  \brief DEN() method
+     *
+     *  Method which was defined in Litterale (pure virtual)
+     *  Throws an error used on a Lireelle (can only be used on LiRationnelle to return the denominator)
+     *  Inline Method
+     *
+     *  \param no parameter
+     *  \return pointer to Litterale
+     */
 	Litterale* Den() { throw LiException("Error : LiComplexe pas de den"); }
+
+    /*!
+     *  \brief RE() method
+     *
+     *  Method which was defined in Litterale (pure virtual)
+     *  Accessor to the real part of a LiComplexe
+     *  Inline Method
+     *
+     *  \param no parameter
+     *  \return pointer to Litterale
+     */
 	Litterale* Re() { return re; }
-	Litterale* Im() { return im; }
-	Litterale* Div(const Litterale& li) { throw LiException("Error : pas de DIV entre LiComplexes"); }
-	Litterale* Mod(const Litterale& li) { throw LiException("Error : pas de MOD entre LiComplexes"); }
+
+    /*!
+     *  \brief IM() method
+     *
+     *  Method which was defined in Litterale (pure virtual)
+     *  Accessor to the imaginary part of a LiComplexe
+     *  Inline Method
+     *
+     *  \param no parameter
+     *  \return pointer to Litterale
+     */
+    Litterale* Im() { return im; }
+
+    /*!
+     *  \brief AND() method
+     *
+     *  \param const reference to Litterale
+     *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
+     */
     Litterale* And(const Litterale* li);
+
+    /*!
+     *  \brief OR() method
+     *
+     *  \param const reference to Litterale
+     *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
+     */
     Litterale* Or(const Litterale* li);
+
+    /*!
+     *  \brief NOT() method
+     *
+     *  \param no paramter
+     *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
+     */
     Litterale* Not();
     Litterale* Clone() const {
         LiNumerique* r = dynamic_cast<LiNumerique*>(re->Clone());

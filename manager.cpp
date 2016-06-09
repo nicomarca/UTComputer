@@ -114,63 +114,6 @@ void Pile::clear() {
 
 
 
-/*
-//////////////////////////////////////// ATOME ////////////////////////////////////////
-
-
-Atome::Atome(string a):atom(a) {
-    if (!(atom[0] >= 'A' && atom[0] <= 'Z')) throw LiException("Error : syntaxe de l'atome non valide");
-    for (unsigned int i = 1; i<atom.length(); i++)
-        if (!(('0' <= atom[i] && atom[i] <= '9') || ('A' <= atom[i] && atom[i] <= 'Z'))) throw LiException("Error : syntaxe de l'atome non valide");
-}
-
-
-
-Litterale* Atome::operator== (Litterale& li) {
-    if(atom == li.atom) return new
-}
-
-
-Litterale* Atome::operator!= (Litterale& li);
-
-
-Litterale* Atome::operator= (Litterale& li);
-
-
-Litterale* Atome::operator<= (const Litterale& li) const {
-    if(typeid(li) == typeid(Atome))
-        if(getAtom() <= li.getAtom())
-            return new LiEntiere(1);
-    return new LiEntiere(0);
-}
-
-
-Litterale* Atome::operator>= (const Litterale& li) const {
-    if(typeid(li) == typeid(Atome))
-        if(getAtom() >= li.getAtom())
-            return new LiEntiere(1);
-    return new LiEntiere(0);
-}
-
-
-Litterale* Atome::operator< (const Litterale& li) const {
-    if(typeid(li) == typeid(Atome))
-        if(getAtom() < li.getAtom())
-            return new LiEntiere(1);
-    return new LiEntiere(0);
-}
-
-
-Litterale* Atome::operator> (const Litterale& li) const {
-    if(typeid(li) == typeid(Atome))
-        if(getAtom() > li.getAtom())
-            return new LiEntiere(1);
-    return new LiEntiere(0);
-}
-*/
-
-
-
 
 
 //////////////////////////////////////// EXPRESSION ////////////////////////////////////////
@@ -304,16 +247,128 @@ LiExpression* LiExpression::enleverGuillemets(const QString& s) {
 
 
 
+bool estUnOperateurBinaire (const QString& s) {
+    if (s=="+") return true; if (s=="-") return true; if (s=="*") return true; if (s=="/") return true;
+    if (s=="DIV") return true; if (s=="MOD") return true;
+    if (s=="$") return true;
+    //if (s=="=") return true;
+    if (s=="==") return true; if (s=="!=") return true; if (s=="<=") return true; if (s==">=") return true; if (s=="<") return true; if (s==">") return true;
+    if (s=="AND") return true; if (s=="OR") return true;
+    if(s=="STO") return true;
+    return false;
+}
+
+bool estUnOperateurUnaire(const QString& s) {
+    if (s=="NEG") return true;
+    if (s=="NUM") return true;
+    if (s=="DEN") return true;
+    if (s=="RE") return true;
+    if (s=="IM") return true;
+    if (s=="NOT") return true;
+    if (s=="EVAL") return true;
+    if (s=="FORGET") return true;
+    return false;
+}
+
+bool estUnOperateurDePile(const QString& s) {
+    if (s=="DUP") return true; if (s=="DROP") return true; if (s=="SWAP") return true;
+    if (s=="LASTOP") return true; if (s=="LASTARGS") return true;
+    if (s=="UNDO") return true; if (s=="REDO") return true; if (s=="CLEAR") return true;
+    return false;
+}
+
+int prioriteOp(const QString& s) {
+    if(s == "$") return -1;
+    if(s == "*" || s == "/" || s == "N") return 2;
+    if(s == "+" || s == "-" || s == "<" || s == ">" || s == "<=" || s == ">=") return 1;
+    if(s == "(" || s == ")") return 0;
+    throw LiException("mauvais operateur pour priorite");
+}
+
+bool estEntier (const QString& s) {
+    QRegExp isdouble("^[0-9]+\\.?");
+    return isdouble.exactMatch(s);
+}
+
+bool estDouble (const QString& s) {
+    QRegExp isdouble("^[0-9]*\\.[0-9]+$");
+    return isdouble.exactMatch(s);
+}
+
+bool estExpression(const QString& s) {
+    QRegExp isexp("'.+'");
+    return isexp.exactMatch(s);
+}
+
+bool estAtome(const QString& s) {
+    QRegExp isatom("^[A-Z][A-Z0-9]*$");
+    return isatom.exactMatch(s);
+}
+
+bool estAtomeGuillemets(const QString& s) {
+    QRegExp isatomG("^'[A-Z][A-Z0-9]*'$");
+    return isatomG.exactMatch(s);
+}
+
+bool is2operator(const QString& s) {
+    if(s == "+" || s == "-" || s == "*" || s == "/" || s == "$" || s == "<" || s == ">" || s == "=" || s == "DIV" || s == "MOD" || s == "<=" || s == ">=" || s == "!=" || s == "AND" || s == "OR" || s == "STO") {
+        return true;
+    }
+    return false;
+}
+
+bool is1operator(const QString& s) {
+    if(s == "NOT" || s == "NEG" || s == "IM" || s == "RE" || s == "DEN" || s == "NUM" || s == "FORGET") {
+        return true;
+    }
+    return false;
+}
+
+bool isoperatorPVP(const QString& s) {
+    QRegExp qr1("^DIV\\(.+,.+\\)"); QRegExp qr2("^MOD\\(.+,.+\\)"); QRegExp qr3("^AND\\(.+,.+\\)"); QRegExp qr4("^OR\\(.+,.+\\)");
+    if(qr1.exactMatch(s) || qr2.exactMatch(s) || qr3.exactMatch(s) || qr4.exactMatch(s)) {
+        return true;
+    }
+    return false;
+}
+
+bool isoperatorPP(const QString& s) {
+    QRegExp qr("^NOT\\(.+\\)|NEG\\(.+\\)|IM\\(.+\\)|RE\\(.+\\)|DEN\\(.+\\)|NUM\\(.+\\)");
+    return qr.exactMatch(s);
+}
+
+bool PrioritePrecedentSup(const QChar qc, const QChar ptop) {
+    if(prioriteOp(qc) < prioriteOp(ptop)) {
+        return true;
+    }
+    return false;
+}
+
+
+
+
+
+
 
 
 
 //////////////////////////////////////// CALCULATRICE ////////////////////////////////////////
 
 
-// +, -, *, / (si div par 0, pas de modif de la pile mais message d’erreur)
-//DIV (qur sur LiEntiere), MOD, $, AND, OR, , ==, !=, =<, >=, <, >
-//=
 
+/*!
+ *  \brief operateur2() method
+ *
+ *  Method declared in the Calculatrice class
+ *  Used to manage all the operation with a binary operator
+ *  the binary operator are : +, -, *, /, DIV, MOD, $, AND, OR, , ==, !=, =<, >=, <, >
+ *  It takes two Litterales from the stack (pop and drop)
+ *  Then the calls the appropriate operator which was overloaded in the other classes
+ *  Throws an error when called on a wrong operator
+ *
+ *  \param const QString& s
+ *  \return void
+ */
 
 void Calculatrice::operateur2(const QString& s) {
     Litterale* l1; Litterale* l2;
@@ -346,8 +401,6 @@ void Calculatrice::operateur2(const QString& s) {
             delete l1; delete l2;
         }
 
-
-
         if(s == "DIV") {
             l1 = pile->top(); pile->drop(); l2 = pile->top(); pile->drop();
 
@@ -364,16 +417,7 @@ void Calculatrice::operateur2(const QString& s) {
                 delete l1; delete l2;
                 return;
             }
-            /*
-            if(typeid(*l1) != typeid(LiEntiere) || typeid(*l2) != typeid(LiEntiere)) {
-                pile->push(l2); pile->push(l1);
-                throw LiException("erreur : DIV uniquement entre entiers");
-                return;
-            }
-            */
         }
-
-
 
         if(s == "MOD") {
             l1 = pile->top(); pile->drop(); l2 = pile->top(); pile->drop();
@@ -391,15 +435,7 @@ void Calculatrice::operateur2(const QString& s) {
                 delete l1; delete l2;
                 return;
             }
-            /*
-            if(typeid(*l1) != typeid(LiEntiere) || typeid(*l2) != typeid(LiEntiere)) {
-                pile->push(l2); pile->push(l1);
-                throw LiException("erreur : MOD uniquement entre entiers");
-                return;
-            }
-            */
         }
-
 
         if(s == "$") {
             l1 = pile->top(); pile->drop(); l2 = pile->top(); pile->drop();
@@ -454,40 +490,33 @@ void Calculatrice::operateur2(const QString& s) {
 
         if(s == "AND") {
             l1 = pile->top(); pile->drop(); l2 = pile->top(); pile->drop();
-            //pile->push(l2); pile->push(l1);
             pile->push(l2->And(l1));
             delete l1; delete l2;
         }
         if(s == "OR") {
             l1 = pile->top(); pile->drop(); l2 = pile->top(); pile->drop();
-            //pile->push(l2); pile->push(l1);
             pile->push(l2->Or(l1));
             delete l1; delete l2;
         }
         if(s == "==") {
             l1 = pile->top(); pile->drop(); l2 = pile->top(); pile->drop();
             pile->push(l2); pile->push(l1); pile->push((*l2)==(*l1));
-            //delete l1; delete l2;
         }
         if(s == "!=") {
             l1 = pile->top(); pile->drop(); l2 = pile->top(); pile->drop();
             pile->push(l2); pile->push(l1); pile->push((*l2)!=(*l1));
-            //delete l1; delete l2;
         }
         if(s == "<=") {
             l1 = pile->top(); pile->drop(); l2 = pile->top(); pile->drop();
             pile->push(l2); pile->push(l1); pile->push((*l2)<=(*l1));
-            //delete l1; delete l2;
         }
         if(s == ">=") {
             l1 = pile->top(); pile->drop(); l2 = pile->top(); pile->drop();
             pile->push(l2); pile->push(l1); pile->push((*l2)>=(*l1));
-            //delete l1; delete l2;
         }
         if(s == ">") {
             l1 = pile->top(); pile->drop(); l2 = pile->top(); pile->drop();
             pile->push(l2); pile->push(l1); pile->push((*l2)>(*l1));
-            //delete l1; delete l2;
         }
         if(s == "<") {
             l1 = pile->top(); pile->drop(); l2 = pile->top(); pile->drop();
@@ -517,8 +546,19 @@ void Calculatrice::operateur2(const QString& s) {
 }
 
 
-//NEG, NUM, DEN, RE, IM, NOT
-
+ /*!
+ *  \brief operateur1() method
+ *
+ *  Method declared in the Calculatrice class
+ *  Used to manage all the operation with a unaire operator
+ *  the binary operator are : NEG, NUM, DEN, RE, IM, NOT, FORGET
+ *  It takes one Litterale from the stack (pop and drop)
+ *  Then the calls the appropriate operator which was overloaded in the other classes
+ *  Throws an error when called on a wrong operator
+ *
+ *  \param const QString& s
+ *  \return void
+ */
 
 void Calculatrice::operateur1(const QString& s) {
     Litterale* l1;
@@ -560,7 +600,7 @@ void Calculatrice::operateur1(const QString& s) {
             //cout << "dans evaaal" << endl;
             l1 = pile->top();
             if(typeid(*l1) != typeid(LiExpression)) {
-                throw LiException("EVAL ne peut etre appliquer que sur des litteralaes expression");
+                throw LiException("EVAL only on LiExpression");
                 return;
             }
             pile->drop();
@@ -614,6 +654,22 @@ void Calculatrice::operateur1(const QString& s) {
 }
 
 
+
+/*!
+*  \brief operateurp() method
+*
+*  Method declared in the Calculatrice class
+*  Used to manage all the operation with a stack
+*  the binary operator are : NDUP, DROP, SWAP, LASTOP, LASTARGS, CLEAR
+*  For DUP, DROP, SWAP, the function checks first if there is enough elements in the stack
+*  For LASTOP it checks first if there is an operation to call (if yes, put it in the commande function)
+*  For LASTARGS, it push the last arguments only if they exist
+*  Throws an error when called on a wrong operator, or if there is any problem (not enough element in the stack, ...)
+*
+*  \param const QString& s
+*  \return void
+*/
+
 void Calculatrice::operateurp(const QString& s) {
     if(estUnOperateurDePile(s)) {
         if(s == "DUP") { if (pile->taille() < 1) { throw LiException("Pas assez de litterales dans la pile."); return; } pile->dup(); }
@@ -648,125 +704,16 @@ void Calculatrice::operateurp(const QString& s) {
 
 
 
-bool estUnOperateurBinaire (const QString& s) {
-    if (s=="+") return true; if (s=="-") return true; if (s=="*") return true; if (s=="/") return true;
-    if (s=="DIV") return true; if (s=="MOD") return true;
-    if (s=="$") return true;
-    //if (s=="=") return true;
-    if (s=="==") return true; if (s=="!=") return true; if (s=="<=") return true; if (s==">=") return true; if (s=="<") return true; if (s==">") return true;
-    if (s=="AND") return true; if (s=="OR") return true;
-    if(s=="STO") return true;
-    return false;
-}
-
-
-bool estUnOperateurUnaire(const QString& s) {
-    if (s=="NEG") return true;
-    if (s=="NUM") return true;
-    if (s=="DEN") return true;
-    if (s=="RE") return true;
-    if (s=="IM") return true;
-    if (s=="NOT") return true;
-    if (s=="EVAL") return true;
-    if (s=="FORGET") return true;
-    return false;
-}
-
-
-bool estUnOperateurDePile(const QString& s) {
-    if (s=="DUP") return true; if (s=="DROP") return true; if (s=="SWAP") return true;
-    if (s=="LASTOP") return true; if (s=="LASTARGS") return true;
-    if (s=="UNDO") return true; if (s=="REDO") return true; if (s=="CLEAR") return true;
-    return false;
-}
-
-int prioriteOp(const QString& s) {
-    //cout << "operateur : " << s.toStdString() << endl;
-    if(s == "$") return -1;
-    if(s == "*" || s == "/" || s == "N") return 2;
-    if(s == "+" || s == "-" || s == "<" || s == ">" || s == "<=" || s == ">=") return 1;
-    if(s == "(" || s == ")") return 0;
-    throw LiException("mauvais operateur pour priorite");
-}
-
-
-bool estEntier (const QString& s) {
-    QRegExp isdouble("^[0-9]+\\.?");
-    return isdouble.exactMatch(s);
-}
-
-
-bool estDouble (const QString& s) {
-    QRegExp isdouble("^[0-9]*\\.[0-9]+$");
-    return isdouble.exactMatch(s);
-}
-
-
-bool estExpression(const QString& s) {
-    QRegExp isexp("'.+'");
-    return isexp.exactMatch(s);
-}
-
-bool estAtome(const QString& s) {
-    QRegExp isatom("^[A-Z][A-Z0-9]*$");
-    return isatom.exactMatch(s);
-}
-
-bool estAtomeGuillemets(const QString& s) {
-    QRegExp isatomG("^'[A-Z][A-Z0-9]*'$");
-    return isatomG.exactMatch(s);
-}
-
-bool estAtomeGuillemetsExp(const QString& s) {
-    QRegExp isatom("^'[A-Z][A-Z0-9]*'.*");
-    return isatom.exactMatch(s);
-}
-
-bool estAtomeExp(const QString& s) {
-    QRegExp isatomG("^[A-Z][A-Z0-9]*");
-    return isatomG.exactMatch(s);
-}
-
-bool is2operator(const QString& s) {
-    if(s == "+" || s == "-" || s == "*" || s == "/" || s == "$" || s == "<" || s == ">" || s == "=" || s == "DIV" || s == "MOD" || s == "<=" || s == ">=" || s == "!=" || s == "AND" || s == "OR" || s == "STO") {
-        return true;
-    }
-    return false;
-}
-
-bool is1operator(const QString& s) {
-    if(s == "NOT" || s == "NEG" || s == "IM" || s == "RE" || s == "DEN" || s == "NUM" || s == "FORGET") {
-        return true;
-    }
-    return false;
-}
-
-
-bool isoperatorPVP(const QString& s) {
-    QRegExp qr1("^DIV\\(.+,.+\\)"); QRegExp qr2("^MOD\\(.+,.+\\)"); QRegExp qr3("^AND\\(.+,.+\\)"); QRegExp qr4("^OR\\(.+,.+\\)");
-    if(qr1.exactMatch(s) || qr2.exactMatch(s) || qr3.exactMatch(s) || qr4.exactMatch(s)) {
-        return true;
-    }
-    return false;
-}
-
-bool isoperatorPP(const QString& s) {
-    QRegExp qr("^NOT\\(.+\\)|NEG\\(.+\\)|IM\\(.+\\)|RE\\(.+\\)|DEN\\(.+\\)|NUM\\(.+\\)");
-    return qr.exactMatch(s);
-}
-
-
-
-bool PrioritePrecedentSup(const QChar qc, const QChar ptop) {
-    if(prioriteOp(qc) < prioriteOp(ptop)) {
-        return true;
-    }
-    return false;
-}
-
-
-
-
+/*!
+ *  \brief enregistrerLast() method
+ *
+ *  Method declared in the Calculatrice class
+ *  Used to save the last operator used after each operation
+ *  Used to save the last arguments after each operation (makes a copy and delete the old ones if they have not been pushed again)
+ *
+ *  \param const QString& s
+ *  \return void
+ */
 
 void Calculatrice::enregistrerLast(const QString& s) {
     Litterale* l1; Litterale* l2;
@@ -804,13 +751,10 @@ void Calculatrice::enregistrerLast(const QString& s) {
     }
 
     if(estUnOperateurUnaire(s)) {
-        //cout << "dans opunaire1 enregistrerlast" << endl;
         lastoperateur = s;
         l1 = pile->top(); pile->drop();
         if(lastarg1!=nullptr) delete lastarg1;
-        //if(lastarg2!=nullptr) delete lastarg2;
         lastarg2=nullptr;
-        //cout << "dans opunaire2 enregistrerlast" << endl;
         if(typeid(*l1) == typeid(LiEntiere)) lastarg1 = new LiEntiere(l1->getValue());
         if(typeid(*l1) == typeid(LiReelle)) lastarg1 = new LiReelle(l1->getReel());
         if(typeid(*l1) == typeid(LiRationnelle)) lastarg1 = new LiRationnelle(l1->getNumerateur(),l1->getDenominateur());
@@ -818,36 +762,44 @@ void Calculatrice::enregistrerLast(const QString& s) {
             LiComplexe* lc = dynamic_cast<LiComplexe*>(l1);
             lastarg1 = new LiComplexe(&lc->getReelle(), &lc->getImage());
         }
-        //cout << "dans opunaire3 enregistrerlast" << endl;
         if(typeid(*l1) == typeid(LiExpression)){
-            //cout << "dans LiExpression enregistrerlast" << endl;
             LiExpression* liexp = dynamic_cast<LiExpression*>(l1);
             lastarg1 =  new LiExpression(liexp->getExpression());
         }
-        //cout << "apres LiExpression enregistrerlast" << endl;
-
         pile->push(l1);
     }
 }
 
 
+/*!
+ *  \brief commande() method
+ *
+ *  Method whichwas declare in the Calculatrice class
+ *  Takes one argument of type const QString& representing what the user entered in the calculator
+ *  if it is an integer, it pushes a new LiEntiere
+ *  if it is a double type number, it pushes a new LiReelle
+ *  if it is an expression, it pushes a new LiExpression
+ *  if it is an Atome : if it did not exist before, it creates an Expression, and if it already existed, it pushes the Litterale corresponding to this atome
+ *  if it is an operator, it calls the appropriate function (operator1, operator2, operatorp)
+ *  try ... catch block to catch all the excpetions thrown by the different function called
+ *
+ *  \param const QString& s
+ *  \return void
+ */
 
 void Calculatrice::commande(const QString& c){
     try {
-        //cout << "parametre dans commande : " << c.toStdString() << endl;
         if(c == "AFFICHEALL") {
             afficherTousAtomes();
             return;
         }
 
         if(estEntier(c)) {
-            //cout << "parametre dans estEntier : " << c.toStdString() << endl;
             pile->push(new LiEntiere(c.toDouble()));
             return;
         }
         else {
             if(estDouble(c)) {
-                    //cout << "parametre dans estDouble : " << c.toStdString() << endl;
                     if(floor(c.toDouble()) == c.toDouble()) pile->push(new LiEntiere(c.toDouble()));
                     else {
                         pile->push(new LiReelle(c.toDouble()));
@@ -870,9 +822,7 @@ void Calculatrice::commande(const QString& c){
                            throw LiException("Pas assez de litterales dans la pile.");
                            return;
                        }
-                       //cout << "avant enregistrer last" << endl;
                        enregistrerLast(c);
-                       //cout << "apres enregistrer last" << endl;
                        operateur1(c);
                        return;
                     }
@@ -885,22 +835,16 @@ void Calculatrice::commande(const QString& c){
                         else {
                             if(estExpression(c) && !estAtomeGuillemets(c)) {
                                 pile->push(LiExpression::enleverGuillemets(c));
-                                cout << "dans expression" << endl;
                                 return;
                             }
                             else {
                                 if(estAtomeGuillemets(c)) {
                                     pile->push(new LiExpression(LiExpression::enleverGuillemets(c)->getExpression()));
-                                    cout << "dans atomeGuillemets" << endl;
+                                    return;
                                 }
                                 else {
                                     if(estAtome(c)) {
-                                        cout << "dans atome" << endl;
-                                        //si il n'existe pas, on l'affiche entre guiellemets
-                                        //si il existe, on empile la litterale associée
-                                        //pile->push(new Atome(c));
                                         if(alreadyExists(c)) {
-
                                             Litterale* newli = mapAtome[c];
                                             if (typeid(*newli) == typeid(LiEntiere)) pile->push(new LiEntiere(newli->getValue()));
                                             if (typeid(*newli) == typeid(LiReelle)) pile->push(new LiReelle(newli->getReel()));
@@ -914,10 +858,12 @@ void Calculatrice::commande(const QString& c){
                                                 LiExpression* lie = dynamic_cast<LiExpression*>(newli);
                                                 pile->push(new LiExpression(lie->getExpression()));
                                             }
+                                            return;
                                         }
 
                                         else {
                                             pile->push(new LiExpression(c));
+                                            return;
                                         }
                                     }
                                 }
@@ -935,6 +881,16 @@ void Calculatrice::commande(const QString& c){
 }
 
 
+
+/*!
+ *  \brief executer() method
+ *
+ *  Method declared in the Calculatrice class
+ *  takes what the user entered and sends it to the commande function
+ *
+ *  \param no parameter
+ *  \return void
+ */
 
 void Calculatrice::executer() {
     try {
@@ -958,7 +914,21 @@ void Calculatrice::executer() {
 
 
 
-
+/*!
+ *  \brief infixePostfixe() method
+ *
+ *  Method declared in the Calculatrice class
+ *  Used to transform an expression (not wrote in RPN) in a new expression in RPN that can be interpreted by the commande function
+ *  It is, in some cases, a recursive function
+ *  If it finds in the expression a operator with parentheses like DIV(e1,e2), it calls the function again on e1 and e2
+ *  it has one QStack, an to manage the other operator found
+ *  when the function finds an operator, it pushes it on the top of the stack only if its priority is higher than the priority of the operator already on the top of the stack
+ *  if its priority is lower, it adds it to "post" which is the QString that the function will return
+ *  if the function finds a number, it also adds it to post
+ *
+ *  \param const QString&
+ *  \return QString
+ */
 
 QString Calculatrice::infixePostfixe(const QString& s) {
     int i = 0;
@@ -967,47 +937,13 @@ QString Calculatrice::infixePostfixe(const QString& s) {
     QChar qc;
     QStack<QChar> pile;
     int b;
-    //cout << "isoperatorPVP(DIV(4+4,3)) : " << s.toStdString() << isoperatorPVP(s.right(s.size())) << endl;
-    //cout << "isoperatorPP(DIV(4+4,3)) : " << s.toStdString() << isoperatorPP(s.right(s.size())) << endl;
-    //cout << "infixePostfixe() : " << s.toStdString() << endl;
-    //cout << "is2operator de * :" << is2operator("*") << endl;
-    //cout << "estAtomeGuillemetsExp('X1'+3)" << estAtomeExp("X1+3") << endl;
     while(i < exp.size()-1 ) {
 
-        //cout << "i en haut ="<< i << endl;
         qc = exp[i];
         b = 0;
-        //cout << "qc en haut  ="<< qc.toLatin1() << endl;
-
-        /*
-        if(estAtomeGuillemetsExp(s.right(s.size() - i))) {
-            b++;
-            i++;
-            QString tmp = s.right(s.size() - i);
-            QString atome = "";
-
-            while( (tmp[0]<='Z' && tmp[0]>='A') || (tmp[0]<='9' && tmp[0]>='0') ) {
-                atome += tmp[0];
-                tmp.remove(0,1);
-            }
-            i++;
-            tmp.remove(0,1);
-            if(alreadyExists(atome)) {
-                post += QString::fromStdString(mapAtome[atome]->toString());
-            }
-            else {
-                post += "'" % atome % "'";
-            }
-            if(i<exp.size() - 1) {
-                i++;
-                qc = exp[i];
-            }
-        }
-        */
 
         if(isoperatorPVP(s.right(s.size() - i))) {
             b++;
-            //cout << "j'entre dans isoperatorPVP" << endl;
             QString tmp = s.right(s.size() - i);
             QString operateur = "";
 
@@ -1021,7 +957,6 @@ QString Calculatrice::infixePostfixe(const QString& s) {
             int nbPar = 0;
             int ok = 0;
             while(j < (tmp.size() - 1) && !ok) {
-                //cout << " j vaut : " << j << endl;
                 if( tmp[j] == '(') {
                     nbPar++;
                 }
@@ -1042,7 +977,6 @@ QString Calculatrice::infixePostfixe(const QString& s) {
                 k++;
             }
             k++;
-            //cout << "je suis laaaaa" << endl;
             while(k<tmp.size()) {
                 droite += tmp[k];
                 k++;
@@ -1059,7 +993,6 @@ QString Calculatrice::infixePostfixe(const QString& s) {
 
         if(isoperatorPP( s.right(s.size() - i)) ) {
             b++;
-            //cout << "j'entre dans isoperatorPP" << endl;
             QString tmp = s.right(s.size() - i);
             QString operateur = "";
 
@@ -1074,7 +1007,6 @@ QString Calculatrice::infixePostfixe(const QString& s) {
             int ok = 0;
 
             while(j < (tmp.size() - 1) && !ok) {
-                //cout << " j vaut : " << j << endl;
                 if( tmp[j] == '(') {
                     nbPar++;
                 }
@@ -1111,7 +1043,6 @@ QString Calculatrice::infixePostfixe(const QString& s) {
 
         if(is2operator(qc)) {
             b++;
-            //cout << "entree de is2operator" << endl;
             if(!(pile.isEmpty())) {
                 while(!(pile.isEmpty()) && PrioritePrecedentSup(qc, pile.top())) {
                     if(pile.top() == 'N') post += "NEG";
@@ -1125,14 +1056,11 @@ QString Calculatrice::infixePostfixe(const QString& s) {
                 i++;
                 qc = exp[i];
             }
-            //cout << "sortie de is2operator" << endl;
-            //cout << "post = "<< post.toStdString() << endl;
         }
 
 
         if(qc.isDigit() || qc == '.') {
             b++;
-            //cout << "entree de isDigit" << endl;
             int nbdot = 0;
             QString nb;
             while((qc.isNumber() || qc == '.') && (i < exp.size() - 1) && nbdot < 2) {
@@ -1143,11 +1071,6 @@ QString Calculatrice::infixePostfixe(const QString& s) {
             }
             post += nb;
             post += " ";
-            //cout << "nb = " << nb.toStdString() << endl;
-            //cout << "sortie de isDigit" << endl;
-            //cout << "qc ="<< qc.toLatin1() << "finqc" << endl;
-            //cout << "b ="<< b << endl;
-            //cout << "post = "<< post.toStdString() << endl;
         }
 
 
@@ -1182,9 +1105,6 @@ QString Calculatrice::infixePostfixe(const QString& s) {
                 qc = exp[i];
             }
         }
-
-        //cout << "b ="<< b << endl;
-        //cout << "qc ="<< qc.toLatin1() << "finqc" << endl;
         if(b == 0) {
             throw LiException("error : caractere inconnu dans cette expression");
         }
@@ -1198,22 +1118,35 @@ QString Calculatrice::infixePostfixe(const QString& s) {
         pile.pop();
     }
 
-    //cout << "post = " << post.toStdString() << "/post" << endl;
-
     return post;
 }
 
 
 
-
+/*!
+ *  \brief addAtome() method
+ *
+ *  Use to add a new Atome
+ *  Very easy thanks to the map
+ *  If it already exists it will change its value
+ *  if not, it creates it
+ *
+ *  \param 2 parameters of type const QString& and Litteral*
+ *  \return void
+ */
 void Calculatrice::addAtom(const QString& s, Litterale* li) {
-    if( !(alreadyExists(s)) ) {
-        //mapAtome.insert(s);
         mapAtome[s] = li;
-    }
-    else throw LiException("Atome already exists");
 }
 
+/*!
+ *  \brief removeAtome() method
+ *
+ *  Use to delete an atome
+ *  use the erase method of map class
+ *
+ *  \param 2 parameters of type const QString& and Litteral*
+ *  \return void
+ */
 void Calculatrice::removeAtom(const QString& s) {
     if( alreadyExists(s) ) {
         mapAtome.erase(s);
@@ -1221,6 +1154,14 @@ void Calculatrice::removeAtom(const QString& s) {
     else throw LiException("Atome can't be deleted : doesn't exist");
 }
 
+/*!
+ *  \brief alreadyExists() method
+ *
+ *  Used to know if an atome already exists
+ *
+ *  \param const Qstring&
+ *  \return bool (true if already exists, false otherwise)
+ */
 bool Calculatrice::alreadyExists(const QString& s) {
     if( mapAtome.find(s) != mapAtome.end() ) {
         return true;
@@ -1228,8 +1169,17 @@ bool Calculatrice::alreadyExists(const QString& s) {
     return false;
 }
 
-void Calculatrice::afficherTousAtomes() {
-    for(map<QString,Litterale*>::iterator it = mapAtome.begin(); it != mapAtome.end(); ++it) {
+
+/*!
+ *  \brief afficherTousAtomes() method
+ *
+ *  Method to display all the atomes that the calculator contains
+ *
+ *  \param const Qstring&
+ *  \return void
+ */
+void Calculatrice::afficherTousAtomes() const {
+    for(map<QString,Litterale*>::const_iterator it = mapAtome.begin(); it != mapAtome.end(); ++it) {
         QString qs = it->first;
         cout << qs.toStdString() << "  " << it->second->toString() << endl;
     }
