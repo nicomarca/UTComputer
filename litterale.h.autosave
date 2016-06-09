@@ -23,10 +23,16 @@ using namespace std;
 
 /// \class The LiNumerique class
 ///
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
 /// \brief abstract class which inherits from the abstract class Litterale
 ///
 /// used to define liEntiere, LiReelle and LiRationnelle
 /// no attributes
+=======
+/// \brief abstract class which inherits from litterale
+///
+/// used to define liEntiere, LiReelle and LiRationnelle
+>>>>>>> uml
 ///
 
 class LiNumerique : public Litterale {
@@ -57,6 +63,7 @@ public:
      *  \brief Constructor
      *
      *  Constructor of the LiEntiere class
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
      *  Inline Method
      *
      *  \param without any parameters, value will be initialize to 0.
@@ -68,6 +75,8 @@ public:
      *
      *  Constructor of the LiEntiere class
      *  Inline Method
+=======
+>>>>>>> uml
      *
      *  \param with one parameter of type int to initialize value
      */
@@ -78,7 +87,10 @@ public:
      *
      *  Method which takes value (integer) transforms it into a string and returns it
      *  Pure virtual method in Litterale, used in the afficher() method
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
      *  Inline Method
+=======
+>>>>>>> uml
      *
      *  \param no parameter
      *  \return string
@@ -90,7 +102,10 @@ public:
      *
      *  Method which inform us if the attribut is 0
      *  Pure virtual method in Litterale
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
      *  Inline Method
+=======
+>>>>>>> uml
      *
      *  \param no parameter
      *  \return true if value == 0 false otherwise
@@ -102,7 +117,10 @@ public:
      *
      *  Method which returns the value of an object LiEntiere
      *  Pure virtual method in Litterale
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
      *  Inline Method
+=======
+>>>>>>> uml
      *
      *  \param no parameter
      *  \return integer
@@ -113,7 +131,10 @@ public:
      *  \brief setValue() method
      *
      *  Method to set a new value to the attribut
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
      *  Inline Method
+=======
+>>>>>>> uml
      *
      *  \param 1 parameter of type int
      *  \return integer
@@ -125,7 +146,10 @@ public:
      *
      *  Method which was defined in Litterale (pure virtual) for the LiRationnelle class
      *  Throws an error if called on an LiEntiere object (doesn't have numerateur)
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
      *  Inline Method
+=======
+>>>>>>> uml
      *
      *  \param no parameter
      *  \return int
@@ -137,7 +161,10 @@ public:
      *
      *  Method which was defined in Litterale (pure virtual) for the LiRationnelle class
      *  Throws an error if called on an LiEntiere object (doesn't have denominateur)
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
      *  Inline Method
+=======
+>>>>>>> uml
      *
      *  \param no parameter
      *  \return int
@@ -149,7 +176,10 @@ public:
      *
      *  Method which was defined in Litterale (pure virtual) for the LiReelle class
      *  Throws an error if called on an LiEntiere object (doesn't have reel attribut)
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
      *  Inline Method
+=======
+>>>>>>> uml
      *
      *  \param no parameter
      *  \return int
@@ -159,6 +189,13 @@ public:
     /*!
      *  \brief overloaded operator+
      *
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
+=======
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to add an LiEntiere object and a Litterale
+     *  const method (attribut sould not be modified)
+     *
+>>>>>>> uml
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale
      */
@@ -167,14 +204,31 @@ public:
     /*!
      *  \brief overloaded operator-
      *
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
+=======
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to substract to a LiEntiere object a Litterale
+     *  const method (attribut sould not be modified)
+     *
+>>>>>>> uml
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale
      */
 	Litterale* operator- (const Litterale& li) const;
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
 
     /*!
      *  \brief overloaded operator/
      *
+=======
+    /*!
+     *  \brief overloaded operator/
+     *
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to divide a LiEntiere by a Litterale
+     *  const method (attribut sould not be modified)
+     *
+>>>>>>> uml
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale
      */
@@ -183,6 +237,13 @@ public:
     /*!
      *  \brief overloaded operator*
      *
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
+=======
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to multiply to a LiEntiere object a Litterale oject
+     *  const method (attribut sould not be modified)
+     *
+>>>>>>> uml
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale
      */
@@ -191,14 +252,31 @@ public:
     /*!
      *  \brief overloaded operator==
      *
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
+=======
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to test if a LiEntiere equals a Litterale
+     *  const method (attribut sould not be modified)
+     *
+>>>>>>> uml
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to LiEntiere (with value = 1 if true, value = 0 otherwise)
      */
 	LiEntiere* operator== (const Litterale& li) const;
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
 
     /*!
      *  \brief overloaded operator!=
      *
+=======
+    /*!
+     *  \brief overloaded operator!=
+     *
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to test if a LiEntiere does not equal a Litterale
+     *  const method (attribut sould not be modified)
+     *
+>>>>>>> uml
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to LiEntiere (with value = 1 if true, value = 0 otherwise)
      */
@@ -207,6 +285,13 @@ public:
     /*!
      *  \brief overloaded operator<=
      *
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
+=======
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to test if a LiEntiere value is less than or equals to a Litterale value
+     *  const method (attribut sould not be modified)
+     *
+>>>>>>> uml
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
      */
@@ -215,6 +300,13 @@ public:
     /*!
      *  \brief overloaded operator>=
      *
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
+=======
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to test if a LiEntiere value is greater than or equals to a Litterale value
+     *  const method (attribut sould not be modified)
+     *
+>>>>>>> uml
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
      */
@@ -223,24 +315,47 @@ public:
     /*!
      *  \brief overloaded operator<
      *
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
+=======
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to test if a LiEntiere value is less than a Litterale value
+     *  const method (attribut sould not be modified)
+     *
+>>>>>>> uml
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
      */
 	Litterale* operator< (const Litterale& li) const;
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
 
     /*!
      *  \brief overloaded operator>
      *
+=======
+    /*!
+     *  \brief overloaded operator>
+     *
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to test if a LiEntiere value is greater than a Litterale value
+     *  const method (attribut sould not be modified)
+     *
+>>>>>>> uml
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
      */
     Litterale* operator> (const Litterale& li) const;
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
 
+=======
+>>>>>>> uml
     /*!
      *  \brief Neg() method
      *
      *  Changes the sign of value
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
      *  Inline Method
+=======
+>>>>>>> uml
      *
      *  \param no parameters
      *  \return pointer to LiEntiere (with value = 1 if true, value = 0 otherwise)
@@ -250,6 +365,11 @@ public:
     /*!
      *  \brief DIV() method
      *
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
+=======
+     *  Division euclidienne (only between LiEntiere)
+     *
+>>>>>>> uml
      *  \param const reference to Litterale
      *  \return pointer to Litterale
      */
@@ -258,6 +378,11 @@ public:
     /*!
      *  \brief MOD() method
      *
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
+=======
+     *  Modulo method (only between LiEntiere)
+     *
+>>>>>>> uml
      *  \param const reference to Litterale
      *  \return pointer to Litterale
      */
@@ -267,7 +392,11 @@ public:
      *  \brief NUM() method
      *
      *  Returns the numerator of a LiEntiere (so itself)
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
      *  Inline Method
+=======
+     *
+>>>>>>> uml
      *
      *  \param no parameter
      *  \return pointer to Litterale
@@ -278,7 +407,10 @@ public:
      *  \brief DEN() method
      *
      *  Returns the numerator of a LiEntiere (LiEntiere(1))
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
      *  Inline Method
+=======
+>>>>>>> uml
      *
      *
      *  \param no parameter
@@ -290,7 +422,10 @@ public:
      *  \brief RE() method
      *
      *  Returns the real part of a LiEntiere (so itself)
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
      *  Inline Method
+=======
+>>>>>>> uml
      *
      *
      *  \param no parameter
@@ -302,7 +437,10 @@ public:
      *  \brief IM() method
      *
      *  Returns the imaginay part of a LiEntiere (LiEntiere(0))
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
      *  Inline Method
+=======
+>>>>>>> uml
      *
      *
      *  \param no parameter
@@ -313,6 +451,13 @@ public:
     /*!
      *  \brief AND() method
      *
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
+=======
+     *  Method which was defined in Litterale (pure virtual)
+     *  Logic operator and
+     *
+     *
+>>>>>>> uml
      *  \param const reference to Litterale
      *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
      */
@@ -321,6 +466,13 @@ public:
     /*!
      *  \brief OR() method
      *
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
+=======
+     *  Method which was defined in Litterale (pure virtual)
+     *  Logic operator or
+     *
+     *
+>>>>>>> uml
      *  \param const reference to Litterale
      *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
      */
@@ -369,7 +521,10 @@ public:
      *  \brief Constructor
      *
      *  Constructor of the LiRationnelle class
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
      *  Inline Method
+=======
+>>>>>>> uml
      *
      *  \param without any parameters, numerateur will be initialize to 0 and denominateur to 1 (no division by 0)
      *
@@ -382,7 +537,10 @@ public:
      *  Constructor of the LiRationnelle class
      *  Call of the LiEntiere constructor
      *  Call of the simplification method to make an irreductible fraction
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
      *  Inline Method
+=======
+>>>>>>> uml
      *
      *  \param 2 parameters of type int to intialize numerator and denominator
      *
@@ -393,7 +551,10 @@ public:
      *  \brief Constructor
      *
      *  Constructor of the LiRationnelle class
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
      *  Inline Method
+=======
+>>>>>>> uml
      *  Call of the simplification method to make an irreductible fraction
      *
      *  \param 2 parameters (const references to LiEntiere) to intialize numerator and denominator
@@ -405,7 +566,10 @@ public:
      *  \brief toString() method
      *
      *  Pure virtual method in Litterale, used in the afficher() method
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
      *  Inline Method
+=======
+>>>>>>> uml
      *  Method which takes numerator and denominator, transforms them into a string and returns them
      *
      *  \param no parameter
@@ -428,7 +592,10 @@ public:
      *
      *  Pure virtual method in Litterale, used to test if this LiRationnelle is 0
      *  A LiRationnal is 0 if its numerator is 0 (its denominator can't be 0)
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
      *  Inline Method
+=======
+>>>>>>> uml
      *
      *  \param no parameter
      *  \return bool
@@ -439,7 +606,10 @@ public:
      *  \brief getValue() method
      *
      *  Pure virtual method in Litterale
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
      *  Inline Method
+=======
+>>>>>>> uml
      *  Throws an error used on LiRationnelle (only on LiEntiere)
      *
      *  \param no parameter
@@ -451,7 +621,10 @@ public:
      *  \brief getNumerator() method
      *
      *  Pure virtual method in Litterale
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
      *  Inline Method
+=======
+>>>>>>> uml
      *  Returns the numerator's value
      *
      *  \param no parameter
@@ -463,7 +636,10 @@ public:
      *  \brief getNumerator() method
      *
      *  Pure virtual method in Litterale
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
      *  Inline Method
+=======
+>>>>>>> uml
      *  Returns the denominator's value
      *
      *  \param no parameter
@@ -475,7 +651,10 @@ public:
      *  \brief getReel() method
      *
      *  Pure virtual method in Litterale
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
      *  Inline Method
+=======
+>>>>>>> uml
      *  Throws an error used on LiRationnelle (only on LiReelle)
      *
      *  \param no parameter
@@ -486,6 +665,13 @@ public:
     /*!
      *  \brief overloaded operator+
      *
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
+=======
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to add a LiRationnelle object and a Litterale
+     *  const method (attributs sould not be modified)
+     *
+>>>>>>> uml
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale
      */
@@ -494,6 +680,13 @@ public:
     /*!
      *  \brief overloaded operator-
      *
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
+=======
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to substract to a LiRationnelle object a Litterale
+     *  const method (attributs sould not be modified)
+     *
+>>>>>>> uml
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale
      */
@@ -502,6 +695,13 @@ public:
     /*!
      *  \brief overloaded operator/
      *
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
+=======
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to divide a LiRationnelle object by a Litterale
+     *  const method (attributs sould not be modified)
+     *
+>>>>>>> uml
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale
      */
@@ -510,6 +710,13 @@ public:
     /*!
      *  \brief overloaded operator*
      *
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
+=======
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to multiply a LiRationnelle object and a Litterale
+     *  const method (attributs sould not be modified)
+     *
+>>>>>>> uml
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale
      */
@@ -518,6 +725,13 @@ public:
     /*!
      *  \brief overloaded operator==
      *
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
+=======
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to test if a LiRationnelle equals a Litterale
+     *  const method (attributs sould not be modified)
+     *
+>>>>>>> uml
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale (LiEntiere(1) if true, LiEntiere(0) if false)
      */
@@ -526,6 +740,13 @@ public:
     /*!
      *  \brief overloaded operator!=
      *
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
+=======
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to test if a LiRationnelle does not equal a Litterale
+     *  const method (attributs sould not be modified)
+     *
+>>>>>>> uml
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale (LiEntiere(1) if true, LiEntiere(0) if false)
      */
@@ -534,6 +755,13 @@ public:
     /*!
      *  \brief overloaded operator<=
      *
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
+=======
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to test if a LiEntiere value is less than or equals to a Litterale value
+     *  const method (attribut sould not be modified)
+     *
+>>>>>>> uml
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
      */
@@ -542,6 +770,13 @@ public:
     /*!
      *  \brief overloaded operator>=
      *
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
+=======
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to test if a LiEntiere value is greater than or equals to a Litterale value
+     *  const method (attribut sould not be modified)
+     *
+>>>>>>> uml
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
      */
@@ -550,13 +785,28 @@ public:
     /*!
      *  \brief overloaded operator<
      *
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
+=======
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to test if a LiEntiere value is less than a Litterale value
+     *  const method (attribut sould not be modified)
+     *
+>>>>>>> uml
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
      */
 	Litterale* operator< (const Litterale& li) const;
 
     /*!
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
      *  \brief overloaded operator>
+=======
+     *  \brief overloaded operator>=
+     *
+     *  Method which was defined in Litterale (pure virtual)
+     *  Used to test if a LiEntiere value is greater than a Litterale value
+     *  const method (attribut sould not be modified)
+>>>>>>> uml
      *
      *  \param 1 parameter of type const Litterale&
      *  \return pointer to Litterale (with value = 1 if true, value = 0 otherwise)
@@ -566,7 +816,11 @@ public:
     /*!
      *  \brief NEG() method
      *
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
      *  Inline Method which was defined in Litterale (pure virtual)
+=======
+     *  Method which was defined in Litterale (pure virtual)
+>>>>>>> uml
      *  Changes the sign of a LiRationnelle
      *  Calls the simplification method
      *
@@ -578,7 +832,11 @@ public:
     /*!
      *  \brief NUM() method
      *
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
      *  Inline Method which was defined in Litterale (pure virtual)
+=======
+     *  Method which was defined in Litterale (pure virtual)
+>>>>>>> uml
      *  Returns a pointer to the numerator
      *
      *  \param 1 no parameters
@@ -589,7 +847,11 @@ public:
     /*!
      *  \brief DEN() method
      *
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
      *  Inline Method which was defined in Litterale (pure virtual)
+=======
+     *  Method which was defined in Litterale (pure virtual)
+>>>>>>> uml
      *  Returns a pointer to the denominator
      *
      *  \param 1 no parameters
@@ -600,7 +862,11 @@ public:
     /*!
      *  \brief RE() method
      *
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
      *  Inline Method which was defined in Litterale (pure virtual)
+=======
+     *  Method which was defined in Litterale (pure virtual)
+>>>>>>> uml
      *  Returns a pointer to the real part of a LiRationnelle (so itself)
      *
      *  \param 1 no parameters
@@ -611,7 +877,11 @@ public:
     /*!
      *  \brief IM() method
      *
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
      *  Inline Method which was defined in Litterale (pure virtual)
+=======
+     *  Method which was defined in Litterale (pure virtual)
+>>>>>>> uml
      *  Returns a pointer to the imaginary part of a LiRationnelle
      *  It does not have any so LiEntiere(0)
      *
@@ -623,6 +893,13 @@ public:
     /*!
      *  \brief AND() method
      *
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
+=======
+     *  Method which was defined in Litterale (pure virtual)
+     *  Logic operator and
+     *
+     *
+>>>>>>> uml
      *  \param const reference to Litterale
      *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
      */
@@ -631,6 +908,13 @@ public:
     /*!
      *  \brief OR() method
      *
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
+=======
+     *  Method which was defined in Litterale (pure virtual)
+     *  Logic operator or
+     *
+     *
+>>>>>>> uml
      *  \param const reference to Litterale
      *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
      */
@@ -639,13 +923,24 @@ public:
     /*!
      *  \brief NOT() method
      *
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
+=======
+     *  Method which was defined in Litterale (pure virtual)
+     *  Logic operator not
+     *
+     *
+>>>>>>> uml
      *  \param no parameter
      *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
      */
     Litterale* Not();
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
 
 
     Litterale* Clone() const {
+=======
+    virtual Litterale* Clone() const {
+>>>>>>> uml
              return new LiRationnelle(*this);
     }
 };
@@ -658,6 +953,7 @@ public:
 
 //////////////////////////////////////// LITTERALE REELLE ////////////////////////////////////////
 
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
 /// \class The LiReelle class
 ///
 /// \brief Class which inherits from LiNumerique
@@ -935,6 +1231,44 @@ public:
 
 
     Litterale* Clone() const {
+=======
+
+class LiReelle : public LiNumerique {
+	double value;
+public:
+	LiReelle(double v=0) :value(v) {}
+	string toString() const {stringstream ss; ss << value; return ss.str();}
+
+    bool isZero() const { if(value == 0.) return true; else return false;}
+	int getValue() const { throw LiException("error : pas de value dans une LiReelle"); }
+	int getNumerateur() const { throw LiException("error : pas de numerateur dans une LiReelle"); }
+	int getDenominateur() const { throw LiException("error : pas de denominateur dans une LiReelle"); }
+	double getReel() const { return value; }
+    string getAtom() const { throw LiException("error : pas d'atom dans une LiReelle"); }
+
+	Litterale* operator+ (const Litterale& li) const;
+	Litterale* operator- (const Litterale& li) const;
+	Litterale* operator/ (const Litterale& li) const;
+	Litterale* operator* (const Litterale& li) const;
+	Litterale* operator== (const Litterale& li) const;
+	Litterale* operator!= (const Litterale& li) const;
+	Litterale* operator<= (const Litterale& li) const;
+	Litterale* operator>= (const Litterale& li) const;
+	Litterale* operator< (const Litterale& li) const;
+	Litterale* operator> (const Litterale& li) const;
+	//LiReelle& operator= (Litterale& li);
+	LiReelle* Neg() { value = -value; return this; }
+	Litterale* Num() { throw LiException("Error : LiReelle pas de num"); }
+	Litterale* Den() { throw LiException("Error : LiReelle pas de den"); }
+	Litterale* Re() { return this; }
+	Litterale* Im() { return new LiEntiere(0); }
+	Litterale* Div(const Litterale& li) { throw LiException("Error : pas de DIV entre LiReelles"); }
+	Litterale* Mod(const Litterale& li) { throw LiException("Error : pas de MOD entre LiReelles"); }
+    Litterale* And(const Litterale* li);
+    Litterale* Or(const Litterale* li);
+    Litterale* Not();
+    virtual Litterale* Clone() const {
+>>>>>>> uml
              return new LiReelle(*this);
     }
 };
@@ -945,6 +1279,7 @@ public:
 
 //////////////////////////////////////// LITTERALE COMPLEXE ////////////////////////////////////////
 
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
 /// \class The LiComplexe class
 ///
 /// \brief Class which inherits from LiNumerique
@@ -1216,6 +1551,44 @@ public:
      *  \param no paramter
      *  \return pointer to Litterale : LiEntiere(1) if true, LiEntiere(0) if false
      */
+=======
+
+class LiComplexe : public Litterale {
+	LiNumerique* re;
+	LiNumerique* im;
+public:
+	LiComplexe(LiNumerique* r, LiNumerique* i);
+	LiComplexe(const LiComplexe& lc);
+	LiComplexe& operator=(const LiComplexe& lc);
+	~LiComplexe() { delete re; delete im; }
+
+	string toString() const;
+    bool isZero() const { return (re->isZero() && im->isZero()); }
+
+	LiNumerique& getReelle() const { return *re; }
+	LiNumerique& getImage() const { return *im; }
+
+	Litterale* operator+ (const Litterale& li) const;
+	Litterale* operator- (const Litterale& li) const;
+	Litterale* operator/ (const Litterale& li) const;
+	Litterale* operator* (const Litterale& li) const;
+	Litterale* operator== (const Litterale& li) const;
+	Litterale* operator!= (const Litterale& li) const;
+	Litterale* operator<= (const Litterale& li) const { throw LiException("Error : pas de comparaison LiComplexe"); }
+	Litterale* operator>= (const Litterale& li) const { throw LiException("Error : pas de comparaison LiComplexe"); }
+	Litterale* operator< (const Litterale& li) const { throw LiException("Error : pas de comparaison LiComplexe"); }
+	Litterale* operator> (const Litterale& li) const { throw LiException("Error : pas de comparaison LiComplexe"); }
+	//LiComplexe& operator= (Litterale& li);
+    LiComplexe* Neg() { re->Neg(); return this; }
+	Litterale* Num() { throw LiException("Error : LiComplexe pas de num"); }
+	Litterale* Den() { throw LiException("Error : LiComplexe pas de den"); }
+	Litterale* Re() { return re; }
+	Litterale* Im() { return im; }
+	Litterale* Div(const Litterale& li) { throw LiException("Error : pas de DIV entre LiComplexes"); }
+	Litterale* Mod(const Litterale& li) { throw LiException("Error : pas de MOD entre LiComplexes"); }
+    Litterale* And(const Litterale* li);
+    Litterale* Or(const Litterale* li);
+>>>>>>> uml
     Litterale* Not();
     Litterale* Clone() const {
         LiNumerique* r = dynamic_cast<LiNumerique*>(re->Clone());

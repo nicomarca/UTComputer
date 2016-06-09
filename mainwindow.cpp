@@ -143,132 +143,136 @@ void MainWindow::on_pushButtonBack_clicked() { ui->expression->backspace();}
 ///OPERATORS
 void MainWindow::on_pushButtonAdd_clicked() {
     //Add the "+" in the command line
-    ui->expression->setText(ui->expression->text()+ "+");
+    if (exp) ui->expression->setText(ui->expression->text()+ "+");
     //If we are not in an expression, the command line has to be directly evaluate
-    if (!exp) getNextCommande();
+    else {ui->expression->setText(ui->expression->text()+ " +"); getNextCommande();}
 }
 
 void MainWindow::on_pushButtonMinus_clicked() {
-    ui->expression->setText(ui->expression->text()+ "-");
-    if (!exp) getNextCommande();
+    //Add the "-" in the command line
+    if (exp) ui->expression->setText(ui->expression->text()+ "-");
+    //If we are not in an expression, the command line has to be directly evaluate
+    else {ui->expression->setText(ui->expression->text()+ " -"); getNextCommande();}
 }
 void MainWindow::on_pushButtonMul_clicked() {
 
-    ui->expression->setText(ui->expression->text()+ "*");
-    if (!exp) getNextCommande();
+    //Add the "*" in the command line
+    if (exp) ui->expression->setText(ui->expression->text()+ "*");
+    //If we are not in an expression, the command line has to be directly evaluate
+    else {ui->expression->setText(ui->expression->text()+ " *"); getNextCommande();}
 }
 
 void MainWindow::on_pushButtonDi_clicked() {
 
-    ui->expression->setText(ui->expression->text()+ "/");
-    if (!exp) getNextCommande();
+    if (exp) ui->expression->setText(ui->expression->text()+ "/");
+    else {ui->expression->setText(ui->expression->text()+ " /"); getNextCommande();}
 }
 
 void MainWindow::on_pushButtonDiv_clicked() {
 
-    ui->expression->setText(ui->expression->text()+ "DIV");
-    if (!exp) getNextCommande();
+    if (exp) ui->expression->setText(ui->expression->text()+ "DIV");
+    else {ui->expression->setText(ui->expression->text()+ " DIV"); getNextCommande();}
 }
 
 void MainWindow::on_pushButtonMod_clicked() {
 
-    ui->expression->setText(ui->expression->text()+ "MOD");
-    if (!exp) getNextCommande();
+    if (exp) ui->expression->setText(ui->expression->text()+ "MOD");
+    else {ui->expression->setText(ui->expression->text()+ " MOD"); getNextCommande();}
 }
 
 void MainWindow::on_pushButtonComp_clicked() {
 
-    ui->expression->setText(ui->expression->text()+ "$");
-    if (!exp) getNextCommande();
+    if (exp) ui->expression->setText(ui->expression->text()+ "$");
+    else {ui->expression->setText(ui->expression->text()+ " $"); getNextCommande();}
 }
 
 void MainWindow::on_pushButtonRe_clicked() {
 
-    ui->expression->setText(ui->expression->text()+ "RE");
-    if (!exp) getNextCommande();
+    if (exp) ui->expression->setText(ui->expression->text()+ "RE");
+    else {ui->expression->setText(ui->expression->text()+ " RE"); getNextCommande();}
 }
 
 void MainWindow::on_pushButtonIm_clicked() {
 
-    ui->expression->setText(ui->expression->text()+ "IM");
-    if (!exp) getNextCommande();
+    if (exp) ui->expression->setText(ui->expression->text()+ "IM");
+    else {ui->expression->setText(ui->expression->text()+ " IM"); getNextCommande();}
 }
 void MainWindow::on_pushButtonDen_clicked() {
 
-    ui->expression->setText(ui->expression->text()+ "DEN");
-    if (!exp) getNextCommande();
+    if (exp) ui->expression->setText(ui->expression->text()+ "DEN");
+    else {ui->expression->setText(ui->expression->text()+ " DEN"); getNextCommande();}
 }
 
 void MainWindow::on_pushButtonNum_clicked() {
 
-    ui->expression->setText(ui->expression->text()+ "NUM");
-    if (!exp) getNextCommande();
+    if (exp) ui->expression->setText(ui->expression->text()+ "NUM");
+    else {ui->expression->setText(ui->expression->text()+ " NUM"); getNextCommande();}
 }
 
 void MainWindow::on_pushButtonNeg_clicked() {
 
-    ui->expression->setText(ui->expression->text()+ "NEG");
-    if (!exp) getNextCommande();
+    if (exp) ui->expression->setText(ui->expression->text()+ "NEG");
+    else {ui->expression->setText(ui->expression->text()+ " NEG"); getNextCommande();}
 }
 
 
 void MainWindow::on_pushButtonEq_clicked() {
 
-    ui->expression->setText(ui->expression->text()+ "==");
-    if (!exp) getNextCommande();
+    if (exp) ui->expression->setText(ui->expression->text()+ "==");
+    else {ui->expression->setText(ui->expression->text()+ " =="); getNextCommande();}
 }
 
 void MainWindow::on_pushButtonDif_clicked() {
 
-    ui->expression->setText(ui->expression->text()+ "!=");
-    if (!exp) getNextCommande();
+    if (exp) ui->expression->setText(ui->expression->text()+ "!=");
+    else {ui->expression->setText(ui->expression->text()+ " !="); getNextCommande();}
 }
 
 void MainWindow::on_pushButtonInfeq_clicked() {
 
-    ui->expression->setText(ui->expression->text()+ "<=");
-    if (!exp) getNextCommande();
+    if (exp) ui->expression->setText(ui->expression->text()+ "<=");
+    else {ui->expression->setText(ui->expression->text()+ " <="); getNextCommande();}
 }
 
 void MainWindow::on_pushButtonInf_clicked() {
 
-    ui->expression->setText(ui->expression->text()+ "<");
-    if (!exp) getNextCommande();
+    if (exp) ui->expression->setText(ui->expression->text()+ "<");
+    else {ui->expression->setText(ui->expression->text()+ " <"); getNextCommande();}
 }
 
 void MainWindow::on_pushButtonSup_clicked() {
 
-    ui->expression->setText(ui->expression->text()+ ">");
-    if (!exp) getNextCommande();
+    if (exp) ui->expression->setText(ui->expression->text()+ ">");
+    else {ui->expression->setText(ui->expression->text()+ " >"); getNextCommande();}
 }
 void MainWindow::on_pushButtonSupeq_clicked() {
 
-    ui->expression->setText(ui->expression->text()+ ">=");
-    if (!exp) getNextCommande();
+    if (exp) ui->expression->setText(ui->expression->text()+ ">=");
+    else {ui->expression->setText(ui->expression->text()+ " >="); getNextCommande();}
 }
 
 void MainWindow::on_pushButtonAnd_clicked() {
 
-    ui->expression->setText(ui->expression->text()+ "AND");
-    if (!exp) getNextCommande();
+    if (exp) ui->expression->setText(ui->expression->text()+ "AND");
+    else {ui->expression->setText(ui->expression->text()+ " AND"); getNextCommande();}
 }
 
 void MainWindow::on_pushButtonOr_clicked() {
 
-    ui->expression->setText(ui->expression->text()+ "OR");
-    if (!exp) getNextCommande();
+    if (exp) ui->expression->setText(ui->expression->text()+ "OR");
+    else {ui->expression->setText(ui->expression->text()+ " OR"); getNextCommande();}
 }
 
 void MainWindow::on_pushButtonNot_clicked() {
 
-    ui->expression->setText(ui->expression->text()+ "NOT");
-    if (!exp) getNextCommande();
+    if (exp) ui->expression->setText(ui->expression->text()+ "NOT");
+    else {ui->expression->setText(ui->expression->text()+ " NOT"); getNextCommande();}
 }
 
 
-
 void MainWindow::keyPressEvent(QKeyEvent *event){
-    if(event->key() == Qt::Key_Enter) {  getNextCommande();} //enter key of the keyboard
+    if(event->key() == Qt::Key_Enter) {getNextCommande();} //enter key of the keyboard
+    if(event->key() == Qt::Key_Plus) {on_pushButtonAdd_clicked();}
 }
 
 void MainWindow::on_pushButtonEnter_clicked(){  getNextCommande();}
@@ -309,6 +313,12 @@ void MainWindow::on_pushButtonDup_clicked()
 void MainWindow::on_pushButtonSwap_clicked()
 {
     ui->expression->setText(ui->expression->text()+ "SWAP");
+    getNextCommande();
+}
+
+void MainWindow::on_pushButtonEval_clicked()
+{
+    ui->expression->setText(ui->expression->text()+ "EVAL");
     getNextCommande();
 }
 
@@ -375,4 +385,3 @@ void MainWindow::on_checkBox_clicked(bool checked)
     if (checked == true) MainWindow::setFixedSize(400,320);
     else MainWindow::setFixedSize(400,730);
 }
-

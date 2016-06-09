@@ -45,6 +45,7 @@ using namespace std;
 
 //////////////////////////////////////// LITTERALE EXCEPTION ////////////////////////////////////////
 
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
 /// \class The LiException class
 ///
 /// \brief class to manage all the exception of the calculator
@@ -55,6 +56,19 @@ using namespace std;
 
 class LiException {
         QString info; /*!< info : attribut of type QString (message send to a LiException object)*/
+=======
+/*!
+ * \brief The LiException class
+ *
+ * Handle the exception encountered in the program
+ *
+ */
+class LiException {
+    /*!
+         * \brief info
+         */
+        QString info;
+>>>>>>> uml
 
 public:
         /*!
@@ -801,6 +815,7 @@ class Pile : public QObject {
     void agrandissementCapacite();
 
 public:
+<<<<<<< 5053b611ade148341877aa723b8b13dde212b35b
 
     /*!
      *  \brief Constructor
@@ -822,6 +837,9 @@ public:
      *
      *  \param no parameters
      */
+=======
+    Pile():li(0),nb(0),nbMax(0),nbAffiche(5),message("") {agrandissementCapacite();}
+>>>>>>> uml
     ~Pile() { for (unsigned int i = 0; i < nb; i++) delete li[i]; delete[] li; }
 
     /*!
@@ -987,7 +1005,6 @@ public:
      */
     void clear();
 
-    void setMemento();
     Memento* SaveStatetoMemento() {
         Litterale** newtab = new Litterale*[nbMax];
         for(unsigned int i=0; i<nb; i++) newtab[i]= li[i]->Clone();
