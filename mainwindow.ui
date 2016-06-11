@@ -263,7 +263,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
      <string>EVAL</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButtonIft">
+   <widget class="QPushButton" name="pushButtonSto">
     <property name="geometry">
      <rect>
       <x>180</x>
@@ -301,7 +301,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
 QPushButton:hover { background-color: rgb(148,148,148); }</string>
     </property>
     <property name="text">
-     <string>IFT</string>
+     <string>STO</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButtonMod">
@@ -2099,7 +2099,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
      <string notr="true">buttonGroup</string>
     </attribute>
    </widget>
-   <widget class="QPushButton" name="pushButtonEdit">
+   <widget class="QPushButton" name="pushButtonForget">
     <property name="geometry">
      <rect>
       <x>180</x>
@@ -2137,7 +2137,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
 QPushButton:hover { background-color: rgb(148,148,148); }</string>
     </property>
     <property name="text">
-     <string>EDIT</string>
+     <string>FORGET</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButtonQuote">
@@ -4555,7 +4555,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
    <widget class="QCheckBox" name="checkBox">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>50</x>
       <y>270</y>
       <width>121</width>
       <height>31</height>
@@ -4571,14 +4571,34 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
      <string>HIDE KEYBOARD</string>
     </property>
    </widget>
+   <widget class="QComboBox" name="comboBoxAtomes">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>280</y>
+      <width>201</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox { 
+     background-color: rgb(147,165,141);
+     border-style: outset;
+	police: center;
+	 color: white;
+ }
+
+QPushButton:hover { background-color: rgb(148,148,148); }</string>
+    </property>
+   </widget>
    <zorder>pushButtonPoint</zorder>
    <zorder>pushButton3</zorder>
    <zorder>pushButtonLastargs</zorder>
    <zorder>pushButtonDup</zorder>
    <zorder>pushButtonDrop</zorder>
    <zorder>pushButtonSwap</zorder>
-   <zorder>pushButtonEdit</zorder>
-   <zorder>pushButtonIft</zorder>
+   <zorder>pushButtonForget</zorder>
+   <zorder>pushButtonSto</zorder>
    <zorder>pushButton9</zorder>
    <zorder>pushButton6</zorder>
    <zorder>pushButtonRe</zorder>
@@ -4627,6 +4647,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
    <zorder>pushButtonSpace</zorder>
    <zorder>pushButtonEnter</zorder>
    <zorder>checkBox</zorder>
+   <zorder>comboBoxAtomes</zorder>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
@@ -4634,7 +4655,7 @@ QPushButton:hover { background-color: rgb(148,148,148); }</string>
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="OpLogiques"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="OpLogiques"/>
  </buttongroups>
 </ui>

@@ -1,11 +1,12 @@
 #include "mainwindow.h"
-#include "manager.h"
 #include "ui_mainwindow.h"
 #include<QLineEdit>
 #include<QTableWidget>
 #include<QKeyEvent>
 #include<QOBject>
 #include<QMediaPlayer>
+#include<QComboBox>
+#include<qcombobox.h>
 
 MainWindow::MainWindow(QWidget *parent):QMainWindow(parent), ui(new Ui::MainWindow)
 {
@@ -39,7 +40,6 @@ MainWindow::MainWindow(QWidget *parent):QMainWindow(parent), ui(new Ui::MainWind
     ui->vuePile->horizontalHeader()->setVisible(false);
     // adjust automatically the window's width.
     ui->vuePile->horizontalHeader()->setStretchLastSection(true);
-
     //  create a list of tables "i:" for each line and the items of each list.
     QStringList numberList;
     for(unsigned int i=p->getNbLitteralesToAffiche(); i>0; i--) {
@@ -53,17 +53,18 @@ MainWindow::MainWindow(QWidget *parent):QMainWindow(parent), ui(new Ui::MainWind
 
     ui->expression->setFocus(Qt::OtherFocusReason); //Focus directly on the command line (no need to click on it)
 
+    ui->expression->installEventFilter(this);
+
+
     // connections
     connect(p,SIGNAL(modificationEtat()), this,SLOT(refresh()));
     connect(ui->expression,SIGNAL(returnPressed()),this,SLOT(getNextCommande()));
-    connect(p, SIGNAL(newMessage()), this,SLOT(playsound()));
-
-
-
+    connect(p, SIGNAL(newMessage()), this, SLOT(playsound()));
+    connect(cal, SIGNAL(newAtom(const QString&)), this, SLOT(addAtom(const QString&)));
+    connect(cal, SIGNAL(deleteAtom(const QString&)), this, SLOT(rmAtom(const QString&)));
 }
 
 MainWindow::~MainWindow() {delete ui;}
-
 
 void MainWindow::refresh() {
     //the message
@@ -80,10 +81,10 @@ void MainWindow::refresh() {
     for(it; it >= p->begin() && nb < p->getNbLitteralesToAffiche(); --it, nb++){
         ui->vuePile->item(p->getNbLitteralesToAffiche()-1-nb,0)->setText(QString::fromStdString((*it).toString()));
     }
-
 }
 
 void MainWindow::getNextCommande(){
+    if (exp) return;
     //save the pile before changing it
     m1 = p->SaveStatetoMemento();
 
@@ -106,6 +107,7 @@ void MainWindow::getNextCommande(){
         p->setMessage(e.getInfo());
     }
     ui->expression->clear(); //clear the command line
+
 }
 
 ///DEFINITION DES SLOTS
@@ -138,7 +140,12 @@ void MainWindow::on_pushButtonQuote_clicked() {
 void MainWindow::on_pushButtonAC_clicked() {ui->expression->clear();}
 
 //backspace on the command line
-void MainWindow::on_pushButtonBack_clicked() { ui->expression->backspace();}
+void MainWindow::on_pushButtonBack_clicked() {
+    QString s = ui->expression->text();
+    QCharRef c = s[s.length()-1];
+    if (c == '\'') exp=!exp;
+    ui->expression->backspace();
+}
 
 ///OPERATORS
 void MainWindow::on_pushButtonAdd_clicked() {
@@ -270,11 +277,6 @@ void MainWindow::on_pushButtonNot_clicked() {
 }
 
 
-void MainWindow::keyPressEvent(QKeyEvent *event){
-    if(event->key() == Qt::Key_Enter) {getNextCommande();} //enter key of the keyboard
-    if(event->key() == Qt::Key_Plus) {on_pushButtonAdd_clicked();}
-}
-
 void MainWindow::on_pushButtonEnter_clicked(){  getNextCommande();}
 
 ///PILE OPERATORS
@@ -342,6 +344,17 @@ void MainWindow::on_pushButtonRedo_clicked()
     p->getStateFromMemento(m2);
 }
 
+void MainWindow::on_pushButtonSto_clicked()
+{
+    ui->expression->setText(ui->expression->text()+ "STO");
+    getNextCommande();
+}
+
+void MainWindow::on_pushButtonForget_clicked()
+{
+    ui->expression->setText(ui->expression->text()+ "FORGET");
+    getNextCommande();
+}
 
 void MainWindow::on_pushButtonSound_clicked()
 {
@@ -385,3 +398,46 @@ void MainWindow::on_checkBox_clicked(bool checked)
     if (checked == true) MainWindow::setFixedSize(400,320);
     else MainWindow::setFixedSize(400,730);
 }
+
+bool MainWindow::eventFilter(QObject *object, QEvent *event)
+{
+    if (object == ui->expression && event->type() == QEvent::KeyRelease) {
+        QKeyEvent *keyEvent = static_cast<QKeyEvent*>(event);
+        if(keyEvent->key() == Qt::Key_Return) {getNextCommande();}
+        if(keyEvent->key() == Qt::Key_Enter) {getNextCommande();}
+        if(keyEvent->key() == Qt::Key_Plus) {getNextCommande();}
+        if(keyEvent->key() == Qt::Key_Minus) {getNextCommande();}
+        if(keyEvent->key() == Qt::Key_Dollar) {getNextCommande();}
+        if(keyEvent->key() == Qt::Key_division) {getNextCommande();}
+        if(keyEvent->key() == Qt::Key_Asterisk) {getNextCommande();}
+        if(keyEvent->key() == Qt::Key_Apostrophe) {exp=!exp;}
+    }
+    if (object == ui->expression && event->type() == QEvent::KeyPress) {
+        QKeyEvent *keyEvent = static_cast<QKeyEvent*>(event);
+        if(keyEvent->key() == Qt::Key_Backspace) {
+            QString s = ui->expression->text();
+            QCharRef c = s[s.length()-1];
+            if (c == '\'') exp=!exp;
+        }
+    }
+    return false;
+}
+
+void MainWindow::addAtom(const QString& qs)
+{
+    ui->comboBoxAtomes->addItem(ui->comboBoxAtomes->currentText());
+    ui->comboBoxAtomes->setCurrentIndex(0);
+    ui->comboBoxAtomes->setItemText(ui->comboBoxAtomes->currentIndex(), qs);
+}
+
+void MainWindow::rmAtom(const QString& qs)
+{
+    int n = ui->comboBoxAtomes->findText(qs);
+    if (n != -1) ui->comboBoxAtomes->removeItem(n);
+}
+
+void MainWindow::on_comboBoxAtomes_activated(const QString& arg1)
+{
+    ui->expression->setText(ui->expression->text() + arg1);
+}
+

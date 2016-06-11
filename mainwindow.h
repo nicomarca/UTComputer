@@ -7,7 +7,7 @@
 
 /**
  * \file mainwindow.h
- * \brief file where the Q_Object MainWindow is defined
+ * \brief file where the class MainWindow is defined
  * \author Virgile VANCON and Nicolas MARCADET
  * \version 0.1
  * \date 12 Juin 2016
@@ -50,11 +50,11 @@ private slots:
     /*!
      *  \brief Private SLOT when pressing a key of the keyboard
      *
-     *  \param A QKeyEvent* object which represents the pressed key of the keyboard
+     *  \param A QEvent* object which represents the pressed key of the keyboard
+     *  \param A QObject* which represent an object of the main window
      *
      */
-    void keyPressEvent(QKeyEvent *event);
-
+    bool eventFilter(QObject* target, QEvent *event);
     /*!
      *  \brief Private SLOT when the button 0 is clicked
      *
@@ -423,7 +423,39 @@ private slots:
      */
     void on_pushButtonEval_clicked();
 
+    /*!
+     *  \brief Private SLOT when a Item from the comboBox is selected
+     *
+     *  used to write an existing Atom in the command line
+     *
+     */
+    void on_comboBoxAtomes_activated(const QString &arg1);
+    /*!
+     *  \brief Private SLOT when the button STO is clicked
+     *
+     *  used to write an existing Atom in the command line
+     *
+     */
+    void on_pushButtonSto_clicked();
+    /*!
+     *  \brief Private SLOT when the button FORGET is clicked
+     *
+     *  used to write an existing Atom in the command line
+     *
+     */
+    void on_pushButtonForget_clicked();
+
 public slots:
+    /*!
+     *  \brief Public SLOT to add the string of an Atom in the comboBox
+     *
+     */
+    void addAtom(const QString&);
+    /*!
+     *  \brief Public SLOT to remove the string of an Atom in the comboBox
+     *
+     */
+    void rmAtom(const QString&);
     /*!
      *  \brief Public SLOT to refresh the pile's display
      *
@@ -444,7 +476,6 @@ public slots:
         if (pop->state()== QMediaPlayer::PlayingState) pop->setPosition(0);
         else if (pop->state() == QMediaPlayer::StoppedState) pop->play();
     }
-
 private:
     Ui::MainWindow *ui; /*!< ui : attribut of type Ui::MainWindow* */
     Calculatrice* cal; /*!< cal : attribut of type Calculatrice* */

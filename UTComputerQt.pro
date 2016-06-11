@@ -17,14 +17,24 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    litterale.cpp \
     manager.cpp \
-    reste.cpp
+    licomplexe.cpp \
+    lientiere.cpp \
+    lirationnelle.cpp \
+    lireelle.cpp \
+    liexpression.cpp
 
 HEADERS  += mainwindow.h \
     litterale.h \
     manager.h \
-    fetchThread.h
+    fetchThread.h \
+    liexception.h \
+    linumerique.h \
+    lientiere.h \
+    lirationnelle.h \
+    licomplexe.h \
+    liexpression.h \
+    lireelle.h
     operateur.h
 
 FORMS    += mainwindow.ui
