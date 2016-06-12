@@ -1,6 +1,5 @@
 var hierarchy =
 [
-    [ "Calculatrice", "class_calculatrice.html", null ],
     [ "Pile::iterator", "class_pile_1_1iterator.html", null ],
     [ "LiException", "class_li_exception.html", null ],
     [ "Litterale", "class_litterale.html", [
@@ -17,6 +16,7 @@ var hierarchy =
       [ "MainWindow", "class_main_window.html", null ]
     ] ],
     [ "QObject", null, [
+      [ "Calculatrice", "class_calculatrice.html", null ],
       [ "Pile", "class_pile.html", null ]
     ] ],
     [ "The", "class_the.html", null ]

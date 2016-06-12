@@ -125,17 +125,7 @@ void MainWindow::getNextCommande(){
     do {
         stream>>com; // element extraction
         if (com!="") {
-            /*
-            QStack <Memento*> newMem;
-            if(tailleMemento != 0) {
-                int i =0;
-                for(i=0; i < tailleMemento; i++) {
-                    newMem.push(m[i]);
-                }
 
-                m = newMem;
-            }
-            */
             if(com == "UNDO") {
                 on_pushButtonUndo_clicked();
             }
@@ -385,9 +375,6 @@ void MainWindow::on_pushButtonEval_clicked()
 
 void MainWindow::on_pushButtonUndo_clicked()
 {
-
-    std::cout << "tailleMemento : " << tailleMemento << std::endl;
-    std::cout << "m.size : " << m.size() << std::endl;
     if(tailleMemento > 0) {
         tailleMemento--;
         p->getStateFromMemento(m[tailleMemento]);

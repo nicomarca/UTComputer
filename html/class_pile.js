@@ -19,7 +19,6 @@ var class_pile =
     [ "push", "class_pile.html#abf3bd33dc3b024dabeda45f020256637", null ],
     [ "redo", "class_pile.html#aa8319a2921d86236d135cff700a5f833", null ],
     [ "SaveStatetoMemento", "class_pile.html#a52e78ba1556a05e299926d5a72a48458", null ],
-    [ "setMemento", "class_pile.html#a1578c472a450e669d182910d1b1fc33e", null ],
     [ "setMessage", "class_pile.html#adf9495ba02a31d3be1bb8bc5763ec50f", null ],
     [ "setNbLitteralesToAffiche", "class_pile.html#a0092075cec9c06331a86c4c9dc12ebca", null ],
     [ "swap", "class_pile.html#a2c9967dc8f5dcb4372475dee52ed64c6", null ],

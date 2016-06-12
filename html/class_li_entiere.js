@@ -3,7 +3,7 @@ var class_li_entiere =
     [ "LiEntiere", "class_li_entiere.html#ac49b914ca5fc86f212095bc750375959", null ],
     [ "LiEntiere", "class_li_entiere.html#a5bef763146703f9a49b723715a39973b", null ],
     [ "And", "class_li_entiere.html#acda292c445dfc7175a8c3112a2f626b6", null ],
-    [ "Clone", "class_li_entiere.html#af1408dce9e7b0e2d714732e2bd8cc0d1", null ],
+    [ "Clone", "class_li_entiere.html#a51edcb3255bd12575e58dc1338a2a5e8", null ],
     [ "Den", "class_li_entiere.html#ac8936753e6ecfe460e14966b81f0b7e6", null ],
     [ "Div", "class_li_entiere.html#ac8dff5087eff515905a3d20764ed4095", null ],
     [ "getDenominateur", "class_li_entiere.html#aed4e11ecdfc99dfaba9f41e460ef71fb", null ],

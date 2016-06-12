@@ -1,25 +1,27 @@
 \hypertarget{class_pile}{}\section{Pile Class Reference}
 \label{class_pile}\index{Pile@{Pile}}
-Inheritance diagram for Pile\+:\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[height=2.000000cm]{class_pile}
-\end{center}
-\end{figure}
+
+
+Inheritance diagram for Pile\+:
+% FIG 0
+
+
+Collaboration diagram for Pile\+:
+% FIG 1
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 class \hyperlink{class_pile_1_1iterator}{iterator}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_the}{The} iterator class. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Signals}
 \begin{DoxyCompactItemize}
 \item 
-void {\bfseries modification\+Etat} ()\hypertarget{class_pile_ac55a0afb626baffd1019567cbaa7f4b2}{}\label{class_pile_ac55a0afb626baffd1019567cbaa7f4b2}
+void \hyperlink{class_pile_ac55a0afb626baffd1019567cbaa7f4b2}{modification\+Etat} ()\hypertarget{class_pile_ac55a0afb626baffd1019567cbaa7f4b2}{}\label{class_pile_ac55a0afb626baffd1019567cbaa7f4b2}
 
-\item 
-void {\bfseries new\+Message} ()\hypertarget{class_pile_a9ee28bbf0994bc8f75873b567ba98834}{}\label{class_pile_a9ee28bbf0994bc8f75873b567ba98834}
+\begin{DoxyCompactList}\small\item\em modification\+Etat signal sent when an attribut of the stack is modified \end{DoxyCompactList}\item 
+void \hyperlink{class_pile_a9ee28bbf0994bc8f75873b567ba98834}{new\+Message} ()\hypertarget{class_pile_a9ee28bbf0994bc8f75873b567ba98834}{}\label{class_pile_a9ee28bbf0994bc8f75873b567ba98834}
 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em new\+Messag signal sent when the message of the stack is modified \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -39,7 +41,7 @@ void {\bfseries set\+Message} (const Q\+String \&m)\hypertarget{class_pile_adf94
 Q\+String \hyperlink{class_pile_ab04b223738a2fa12b627b138a9c102ed}{get\+Message} () const 
 \begin{DoxyCompactList}\small\item\em \hyperlink{class_pile_ab04b223738a2fa12b627b138a9c102ed}{get\+Message()} method \end{DoxyCompactList}\item 
 unsigned int \hyperlink{class_pile_acd055c6426813bac9a127c1477c739af}{get\+Nb\+Litterales\+To\+Affiche} () const 
-\begin{DoxyCompactList}\small\item\em \hyperlink{class_pile_ab04b223738a2fa12b627b138a9c102ed}{get\+Message()} method \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_pile_acd055c6426813bac9a127c1477c739af}{get\+Nb\+Litterales\+To\+Affiche()} method \end{DoxyCompactList}\item 
 \hyperlink{class_litterale}{Litterale} $\ast$$\ast$ \hyperlink{class_pile_a6123bd7fb1405c98bf91f3b094a67c2f}{get\+Li} () const 
 \begin{DoxyCompactList}\small\item\em \hyperlink{class_pile_a6123bd7fb1405c98bf91f3b094a67c2f}{get\+Li()} method \end{DoxyCompactList}\item 
 void \hyperlink{class_pile_a0092075cec9c06331a86c4c9dc12ebca}{set\+Nb\+Litterales\+To\+Affiche} (int n)
@@ -60,21 +62,14 @@ void \hyperlink{class_pile_aa8319a2921d86236d135cff700a5f833}{redo} ()
 \begin{DoxyCompactList}\small\item\em \hyperlink{class_pile_af91a4b277236024aa5aab9ef410881bb}{undo()} method \end{DoxyCompactList}\item 
 void \hyperlink{class_pile_aa3991438f190580607d7bbbd50ecc0c3}{clear} ()
 \begin{DoxyCompactList}\small\item\em \hyperlink{class_pile_aa3991438f190580607d7bbbd50ecc0c3}{clear()} method \end{DoxyCompactList}\item 
-void {\bfseries set\+Memento} ()\hypertarget{class_pile_a1578c472a450e669d182910d1b1fc33e}{}\label{class_pile_a1578c472a450e669d182910d1b1fc33e}
-
-\item 
-\hyperlink{class_memento}{Memento} $\ast$ {\bfseries Save\+Stateto\+Memento} ()\hypertarget{class_pile_a52e78ba1556a05e299926d5a72a48458}{}\label{class_pile_a52e78ba1556a05e299926d5a72a48458}
-
-\item 
-void {\bfseries get\+State\+From\+Memento} (\hyperlink{class_memento}{Memento} $\ast$m)\hypertarget{class_pile_a0917465783378b47191cecf459234bc3}{}\label{class_pile_a0917465783378b47191cecf459234bc3}
-
-\item 
-\hyperlink{class_pile_1_1iterator}{iterator} {\bfseries begin} ()\hypertarget{class_pile_a88900a542fe0be61e8f4da0a601e7924}{}\label{class_pile_a88900a542fe0be61e8f4da0a601e7924}
-
-\item 
-\hyperlink{class_pile_1_1iterator}{iterator} {\bfseries end} ()\hypertarget{class_pile_a02e13ab6c7171a3d98a82bf0d908ca07}{}\label{class_pile_a02e13ab6c7171a3d98a82bf0d908ca07}
-
-\end{DoxyCompactItemize}
+\hyperlink{class_memento}{Memento} $\ast$ \hyperlink{class_pile_a52e78ba1556a05e299926d5a72a48458}{Save\+Stateto\+Memento} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_pile_a52e78ba1556a05e299926d5a72a48458}{Save\+Stateto\+Memento()} method. \end{DoxyCompactList}\item 
+void \hyperlink{class_pile_a0917465783378b47191cecf459234bc3}{get\+State\+From\+Memento} (\hyperlink{class_memento}{Memento} $\ast$m)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_pile_a0917465783378b47191cecf459234bc3}{get\+State\+From\+Memento()} method \end{DoxyCompactList}\item 
+\hyperlink{class_pile_1_1iterator}{iterator} \hyperlink{class_pile_a88900a542fe0be61e8f4da0a601e7924}{begin} ()
+\begin{DoxyCompactList}\small\item\em begin to set the iterator at the beginning of the stack \end{DoxyCompactList}\item 
+\hyperlink{class_pile_1_1iterator}{iterator} \hyperlink{class_pile_a02e13ab6c7171a3d98a82bf0d908ca07}{end} ()
+\begin{DoxyCompactList}\small\item\em end to set the iterator at the end of the stack \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Constructor \& Destructor Documentation}
@@ -138,6 +133,20 @@ Method to print the stack Const Method
 \begin{DoxyReturn}{Returns}
 void 
 \end{DoxyReturn}
+\index{Pile@{Pile}!begin@{begin}}
+\index{begin@{begin}!Pile@{Pile}}
+\subsubsection[{\texorpdfstring{begin()}{begin()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf iterator} Pile\+::begin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_pile_a88900a542fe0be61e8f4da0a601e7924}{}\label{class_pile_a88900a542fe0be61e8f4da0a601e7924}
+
+
+begin to set the iterator at the beginning of the stack 
+
+\begin{DoxyReturn}{Returns}
+an iterator 
+\end{DoxyReturn}
 \index{Pile@{Pile}!clear@{clear}}
 \index{clear@{clear}!Pile@{Pile}}
 \subsubsection[{\texorpdfstring{clear()}{clear()}}]{\setlength{\rightskip}{0pt plus 5cm}void Pile\+::clear (
@@ -200,6 +209,20 @@ Method to duplicate the element on the top of the stack If the stack is full, ca
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 void 
+\end{DoxyReturn}
+\index{Pile@{Pile}!end@{end}}
+\index{end@{end}!Pile@{Pile}}
+\subsubsection[{\texorpdfstring{end()}{end()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf iterator} Pile\+::end (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_pile_a02e13ab6c7171a3d98a82bf0d908ca07}{}\label{class_pile_a02e13ab6c7171a3d98a82bf0d908ca07}
+
+
+end to set the iterator at the end of the stack 
+
+\begin{DoxyReturn}{Returns}
+an iterator 
 \end{DoxyReturn}
 \index{Pile@{Pile}!est\+Vide@{est\+Vide}}
 \index{est\+Vide@{est\+Vide}!Pile@{Pile}}
@@ -273,7 +296,7 @@ Q\+String
 ) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_pile_acd055c6426813bac9a127c1477c739af}{}\label{class_pile_acd055c6426813bac9a127c1477c739af}
 
 
-\hyperlink{class_pile_ab04b223738a2fa12b627b138a9c102ed}{get\+Message()} method 
+\hyperlink{class_pile_acd055c6426813bac9a127c1477c739af}{get\+Nb\+Litterales\+To\+Affiche()} method 
 
 Accessor to the number of element of the stack to display Inline const Method
 
@@ -285,6 +308,24 @@ Accessor to the number of element of the stack to display Inline const Method
 \begin{DoxyReturn}{Returns}
 unsigned int 
 \end{DoxyReturn}
+\index{Pile@{Pile}!get\+State\+From\+Memento@{get\+State\+From\+Memento}}
+\index{get\+State\+From\+Memento@{get\+State\+From\+Memento}!Pile@{Pile}}
+\subsubsection[{\texorpdfstring{get\+State\+From\+Memento(\+Memento $\ast$m)}{getStateFromMemento(Memento *m)}}]{\setlength{\rightskip}{0pt plus 5cm}void Pile\+::get\+State\+From\+Memento (
+\begin{DoxyParamCaption}
+\item[{{\bf Memento} $\ast$}]{m}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_pile_a0917465783378b47191cecf459234bc3}{}\label{class_pile_a0917465783378b47191cecf459234bc3}
+
+
+\hyperlink{class_pile_a0917465783378b47191cecf459234bc3}{get\+State\+From\+Memento()} method 
+
+Method to get back the state of the stack at a T-\/1 moment Make a deep copy of all the Litterales of the stack using Clone() method
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & \+: a pointer to an object of the class \hyperlink{class_memento}{Memento} \\
+\hline
+\end{DoxyParams}
 \index{Pile@{Pile}!push@{push}}
 \index{push@{push}!Pile@{Pile}}
 \subsubsection[{\texorpdfstring{push(\+Litterale $\ast$li)}{push(Litterale *li)}}]{\setlength{\rightskip}{0pt plus 5cm}void Pile\+::push (
@@ -326,6 +367,22 @@ Method to cancel the action of a redo
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 void 
+\end{DoxyReturn}
+\index{Pile@{Pile}!Save\+Stateto\+Memento@{Save\+Stateto\+Memento}}
+\index{Save\+Stateto\+Memento@{Save\+Stateto\+Memento}!Pile@{Pile}}
+\subsubsection[{\texorpdfstring{Save\+Stateto\+Memento()}{SaveStatetoMemento()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Memento}$\ast$ Pile\+::\+Save\+Stateto\+Memento (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_pile_a52e78ba1556a05e299926d5a72a48458}{}\label{class_pile_a52e78ba1556a05e299926d5a72a48458}
+
+
+\hyperlink{class_pile_a52e78ba1556a05e299926d5a72a48458}{Save\+Stateto\+Memento()} method. 
+
+Method to save the state of the pile at a t moment Make a deep copy of all the Litterales of the stack using Clone() method Create a new \hyperlink{class_memento}{Memento}
+
+\begin{DoxyReturn}{Returns}
+a pointer to an object of the class \hyperlink{class_memento}{Memento} 
 \end{DoxyReturn}
 \index{Pile@{Pile}!set\+Nb\+Litterales\+To\+Affiche@{set\+Nb\+Litterales\+To\+Affiche}}
 \index{set\+Nb\+Litterales\+To\+Affiche@{set\+Nb\+Litterales\+To\+Affiche}!Pile@{Pile}}
@@ -436,5 +493,5 @@ void
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-manager.\+h\item 
-manager.\+cpp\end{DoxyCompactItemize}
+\hyperlink{pile_8h}{pile.\+h}\item 
+\hyperlink{pile_8cpp}{pile.\+cpp}\end{DoxyCompactItemize}

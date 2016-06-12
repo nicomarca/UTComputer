@@ -486,13 +486,11 @@ private:
     Ui::MainWindow *ui; /*!< ui : attribut of type Ui::MainWindow* */
     Calculatrice* cal; /*!< cal : attribut of type Calculatrice* */
     Pile* p; /*!< cal : attribut of type Calculatrice* */
-    //Memento* m1; /*!< m1 : attribut of type Memento* */
-    //Memento* m2; /*!< m2 : attribut of type Calculatrice* */
     bool exp; /*!< exp : attribut of type bool*/
     bool undo; /*!< undo : attribut of type bool*/
 
-    QStack <Memento*> m;
-    unsigned int tailleMemento;
+    QStack <Memento*> m; /*!< m : attribut of type QStack<Memento*>*/
+    unsigned int tailleMemento; /*!< tailleMemento : attribut of type unsigned int* */
 
     QMediaPlayer* pop; /*!< pop : attribut of type QMediaPlayer* */
 };

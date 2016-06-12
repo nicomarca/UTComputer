@@ -1,6 +1,6 @@
 var NAVTREE =
 [
-  [ "essaiDoxygen", "index.html", [
+  [ "UTComputer_Doxygen", "index.html", [
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -11,7 +11,11 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Files", null, [
-      [ "File List", "files.html", "files" ]
+      [ "File List", "files.html", "files" ],
+      [ "File Members", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ]
+      ] ]
     ] ]
   ] ]
 ];
@@ -19,7 +23,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"files.html"
+"class_pile.html#a0917465783378b47191cecf459234bc3"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
