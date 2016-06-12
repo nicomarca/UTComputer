@@ -1,10 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-
-#include "manager.h"
-#include <QMediaPlayer>
-
 /**
  * \file mainwindow.h
  * \brief file where the class MainWindow is defined
@@ -13,6 +9,10 @@
  * \date 12 Juin 2016
  *
  */
+
+#include "calculatrice.h"
+#include <QMediaPlayer>
+
 
 ///
 ///
@@ -450,7 +450,7 @@ public slots:
      *  \brief Public SLOT to add the string of an Atom in the comboBox
      *
      */
-    void addAtom(const QString&);
+    void addAtom(const QString&, const QString&);
     /*!
      *  \brief Public SLOT to remove the string of an Atom in the comboBox
      *

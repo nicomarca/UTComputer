@@ -1,8 +1,6 @@
 #ifndef LIRATIONNELLE_H
 #define LIRATIONNELLE_H
 
-#include "lireelle.h"
-
 /**
  * \file lirationnelle.h
  * \brief file where the class LiRationnelle is defined
@@ -11,6 +9,9 @@
  * \date 12 Juin 2016
  *
  */
+
+
+#include "lireelle.h"
 
 //////////////////////////////////////// LITTERALE RATIONNELLE ////////////////////////////////////////
 

@@ -1,8 +1,6 @@
 #ifndef LICOMPLEXE_H
 #define LICOMPLEXE_H
 
-#include "lirationnelle.h"
-
 /**
  * \file licomplexe.h
  * \brief file where the class LiComplexe is defined
@@ -11,6 +9,10 @@
  * \date 12 Juin 2016
  *
  */
+
+#include "lirationnelle.h"
+
+
 
 //////////////////////////////////////// LITTERALE COMPLEXE ////////////////////////////////////////
 

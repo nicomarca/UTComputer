@@ -17,16 +17,16 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    manager.cpp \
     licomplexe.cpp \
     lientiere.cpp \
     lirationnelle.cpp \
     lireelle.cpp \
-    liexpression.cpp
+    liexpression.cpp \
+    pile.cpp \
+    calculatrice.cpp
 
 HEADERS  += mainwindow.h \
     litterale.h \
-    manager.h \
     fetchThread.h \
     liexception.h \
     linumerique.h \
@@ -34,7 +34,9 @@ HEADERS  += mainwindow.h \
     lirationnelle.h \
     licomplexe.h \
     liexpression.h \
-    lireelle.h
+    lireelle.h \
+    pile.h \
+    calculatrice.h
     operateur.h
 
 FORMS    += mainwindow.ui

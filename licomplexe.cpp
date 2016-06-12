@@ -1,3 +1,13 @@
+/**
+ * \file licomplexe.cpp
+ * \brief file where the methods of the LiComplexe class are defined
+ *
+ * \author Virgile VANCON and Nicolas MARCADET
+ * \version 0.1
+ * \date 12 Juin 2016
+ *
+ */
+
 #include "liexpression.h"
 
 

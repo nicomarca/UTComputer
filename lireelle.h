@@ -1,8 +1,6 @@
 #ifndef LIREELLE_H
 #define LIREELLE_H
 
-#include"lientiere.h"
-
 /**
  * \file lireelle.h
  * \brief file where the class LiRationnelle is defined
@@ -11,6 +9,9 @@
  * \date 12 Juin 2016
  *
  */
+
+#include"lientiere.h"
+
 
 //////////////////////////////////////// LITTERALE REELLE ////////////////////////////////////////
 

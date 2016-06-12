@@ -1,3 +1,13 @@
+/**
+ * \file mainwindow.cpp
+ * \brief file where the methods of the MainWindow class are defined
+ *
+ * \author Virgile VANCON and Nicolas MARCADET
+ * \version 0.1
+ * \date 12 Juin 2016
+ *
+ */
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include<QLineEdit>
@@ -7,6 +17,10 @@
 #include<QMediaPlayer>
 #include<QComboBox>
 #include<qcombobox.h>
+#include<QShortcut>
+#include<QKeySequence>
+
+
 
 MainWindow::MainWindow(QWidget *parent):QMainWindow(parent), ui(new Ui::MainWindow)
 {
@@ -60,8 +74,15 @@ MainWindow::MainWindow(QWidget *parent):QMainWindow(parent), ui(new Ui::MainWind
     connect(p,SIGNAL(modificationEtat()), this,SLOT(refresh()));
     connect(ui->expression,SIGNAL(returnPressed()),this,SLOT(getNextCommande()));
     connect(p, SIGNAL(newMessage()), this, SLOT(playsound()));
-    connect(cal, SIGNAL(newAtom(const QString&)), this, SLOT(addAtom(const QString&)));
+    connect(cal, SIGNAL(newAtom(const QString&, const QString&)), this, SLOT(addAtom(const QString&,const QString&)));
     connect(cal, SIGNAL(deleteAtom(const QString&)), this, SLOT(rmAtom(const QString&)));
+
+    QKeySequence* CtrlZ = new QKeySequence(Qt::CTRL + Qt::Key_Z);
+    QShortcut* raccourci = new QShortcut(*CtrlZ, this );
+    connect(raccourci, SIGNAL(activated()), this, SLOT(on_pushButtonUndo_clicked()));
+    QKeySequence* CtrlY = new QKeySequence(Qt::CTRL + Qt::Key_Y);
+    QShortcut* raccourci2 = new QShortcut(*CtrlY, this );
+    connect(raccourci2, SIGNAL(activated()), this, SLOT(on_pushButtonRedo_clicked()));
 }
 
 MainWindow::~MainWindow() {delete ui;}
@@ -142,6 +163,7 @@ void MainWindow::on_pushButtonAC_clicked() {ui->expression->clear();}
 //backspace on the command line
 void MainWindow::on_pushButtonBack_clicked() {
     QString s = ui->expression->text();
+    if (s == "") return;
     QCharRef c = s[s.length()-1];
     if (c == '\'') exp=!exp;
     ui->expression->backspace();
@@ -277,7 +299,7 @@ void MainWindow::on_pushButtonNot_clicked() {
 }
 
 
-void MainWindow::on_pushButtonEnter_clicked(){  getNextCommande();}
+void MainWindow::on_pushButtonEnter_clicked(){getNextCommande();}
 
 ///PILE OPERATORS
 void MainWindow::on_pushButtonLastargs_clicked()
@@ -403,8 +425,8 @@ bool MainWindow::eventFilter(QObject *object, QEvent *event)
 {
     if (object == ui->expression && event->type() == QEvent::KeyRelease) {
         QKeyEvent *keyEvent = static_cast<QKeyEvent*>(event);
-        if(keyEvent->key() == Qt::Key_Return) {getNextCommande();}
-        if(keyEvent->key() == Qt::Key_Enter) {getNextCommande();}
+        //if(keyEvent->key() == Qt::Key_Return) {getNextCommande();}
+        //if(keyEvent->key() == Qt::Key_Enter) {getNextCommande();}
         if(keyEvent->key() == Qt::Key_Plus) {getNextCommande();}
         if(keyEvent->key() == Qt::Key_Minus) {getNextCommande();}
         if(keyEvent->key() == Qt::Key_Dollar) {getNextCommande();}
@@ -416,6 +438,7 @@ bool MainWindow::eventFilter(QObject *object, QEvent *event)
         QKeyEvent *keyEvent = static_cast<QKeyEvent*>(event);
         if(keyEvent->key() == Qt::Key_Backspace) {
             QString s = ui->expression->text();
+            if (s=="") return false;
             QCharRef c = s[s.length()-1];
             if (c == '\'') exp=!exp;
         }
@@ -423,11 +446,12 @@ bool MainWindow::eventFilter(QObject *object, QEvent *event)
     return false;
 }
 
-void MainWindow::addAtom(const QString& qs)
+void MainWindow::addAtom(const QString& qs, const QString& li)
 {
+    QString res = qs % " : " % li;
     ui->comboBoxAtomes->addItem(ui->comboBoxAtomes->currentText());
     ui->comboBoxAtomes->setCurrentIndex(0);
-    ui->comboBoxAtomes->setItemText(ui->comboBoxAtomes->currentIndex(), qs);
+    ui->comboBoxAtomes->setItemText(ui->comboBoxAtomes->currentIndex(), res);
 }
 
 void MainWindow::rmAtom(const QString& qs)

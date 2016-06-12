@@ -1,8 +1,6 @@
 #ifndef LITTERALE_H_INCLUDED
 #define LITTERALE_H_INCLUDED
 
-#include "liexception.h"
-
 /**
  * \file litterale.h
  * \brief file where the class LiRationnelle is defined
@@ -11,6 +9,10 @@
  * \date 12 Juin 2016
  *
  */
+
+#include "liexception.h"
+
+
 
 //////////////////////////////////////// LITTERALE ////////////////////////////////////////
 

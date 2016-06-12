@@ -1,8 +1,6 @@
 #ifndef LIENTIERE_H
 #define LIENTIERE_H
 
-#include "linumerique.h"
-
 /**
  * \file lientiere.h
  * \brief file where the class LiEntiere is defined
@@ -11,6 +9,10 @@
  * \date 12 Juin 2016
  *
  */
+
+#include "linumerique.h"
+
+
 
 
 //////////////////////////////////////// LITTERALE ENTIERE ////////////////////////////////////////
