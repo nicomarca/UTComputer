@@ -216,7 +216,7 @@ signals:
      * \param constQString&
      * \return void
      */
-    void deleteAtom(const QString&);
+    void deleteAtom(const QString&,const QString&);
 };
 
 

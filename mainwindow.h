@@ -44,7 +44,19 @@ public:
      *  Destructor of the MainWindow class.
      *
      */
-    ~MainWindow();
+    ~MainWindow() {
+        for(unsigned int i=0; i<tailleMemento; i++) {
+            delete m[i];
+        }
+        delete cal;
+        delete p;
+        delete ui;
+    }
+    /*!
+     *  \brief Annalyses the command line
+     *
+     */
+    void getNextCommande();
 
 private slots:
     /*!
@@ -445,7 +457,6 @@ private slots:
      */
     void on_pushButtonForget_clicked();
 
-public slots:
     /*!
      *  \brief Public SLOT to add the string of an Atom in the comboBox
      *
@@ -455,17 +466,12 @@ public slots:
      *  \brief Public SLOT to remove the string of an Atom in the comboBox
      *
      */
-    void rmAtom(const QString&);
+    void rmAtom(const QString&, const QString&);
     /*!
      *  \brief Public SLOT to refresh the pile's display
      *
      */
     void refresh();
-    /*!
-     *  \brief Public SLOT to annalyse the command line
-     *
-     */
-    void getNextCommande();
     /*!
      *  \brief Public SLOT to play the sound's message
      *
@@ -480,10 +486,13 @@ private:
     Ui::MainWindow *ui; /*!< ui : attribut of type Ui::MainWindow* */
     Calculatrice* cal; /*!< cal : attribut of type Calculatrice* */
     Pile* p; /*!< cal : attribut of type Calculatrice* */
-    Memento* m1; /*!< m1 : attribut of type Memento* */
-    Memento* m2; /*!< m2 : attribut of type Calculatrice* */
+    //Memento* m1; /*!< m1 : attribut of type Memento* */
+    //Memento* m2; /*!< m2 : attribut of type Calculatrice* */
     bool exp; /*!< exp : attribut of type bool*/
     bool undo; /*!< undo : attribut of type bool*/
+
+    QStack <Memento*> m;
+    unsigned int tailleMemento;
 
     QMediaPlayer* pop; /*!< pop : attribut of type QMediaPlayer* */
 };

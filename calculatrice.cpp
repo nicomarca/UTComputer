@@ -915,8 +915,8 @@ void Calculatrice::addAtom(const QString& s, Litterale* li) {
 void Calculatrice::removeAtom(const QString& s) {
     if( alreadyExists(s) ) {
         nbAtoms--;
+        deleteAtom(s, QString::fromStdString(mapAtome[s]->toString()));
         mapAtome.erase(s);
-        deleteAtom(s);
     }
     else throw LiException("Atome can't be deleted : doesn't exist");
 }

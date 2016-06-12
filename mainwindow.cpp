@@ -28,8 +28,10 @@ MainWindow::MainWindow(QWidget *parent):QMainWindow(parent), ui(new Ui::MainWind
     exp = false;
     undo = false;
     p = new Pile;
-    m1 = p->SaveStatetoMemento();
-    m2 = p->SaveStatetoMemento();
+    //m1 = p->SaveStatetoMemento();
+    //m2 = p->SaveStatetoMemento();
+    m.push(p->SaveStatetoMemento());
+    tailleMemento = 1;
     cal = new Calculatrice(p);
     ui->setupUi(this);
     pop = new QMediaPlayer();
@@ -72,10 +74,9 @@ MainWindow::MainWindow(QWidget *parent):QMainWindow(parent), ui(new Ui::MainWind
 
     // connections
     connect(p,SIGNAL(modificationEtat()), this,SLOT(refresh()));
-    connect(ui->expression,SIGNAL(returnPressed()),this,SLOT(getNextCommande()));
     connect(p, SIGNAL(newMessage()), this, SLOT(playsound()));
     connect(cal, SIGNAL(newAtom(const QString&, const QString&)), this, SLOT(addAtom(const QString&,const QString&)));
-    connect(cal, SIGNAL(deleteAtom(const QString&)), this, SLOT(rmAtom(const QString&)));
+    connect(cal, SIGNAL(deleteAtom(const QString&, const QString&)), this, SLOT(rmAtom(const QString&, const QString&)));
 
     QKeySequence* CtrlZ = new QKeySequence(Qt::CTRL + Qt::Key_Z);
     QShortcut* raccourci = new QShortcut(*CtrlZ, this );
@@ -85,7 +86,6 @@ MainWindow::MainWindow(QWidget *parent):QMainWindow(parent), ui(new Ui::MainWind
     connect(raccourci2, SIGNAL(activated()), this, SLOT(on_pushButtonRedo_clicked()));
 }
 
-MainWindow::~MainWindow() {delete ui;}
 
 void MainWindow::refresh() {
     //the message
@@ -107,9 +107,11 @@ void MainWindow::refresh() {
 void MainWindow::getNextCommande(){
     if (exp) return;
     //save the pile before changing it
-    m1 = p->SaveStatetoMemento();
+    //m1 = p->SaveStatetoMemento();
 
-    undo = false; //impossible to do an undo now
+
+
+
 
     p->setMessage(""); //the message is not usefull anymore
 
@@ -122,7 +124,42 @@ void MainWindow::getNextCommande(){
     try{
     do {
         stream>>com; // element extraction
-        if (com!="") cal->commande(com); // send the command to the controller
+        if (com!="") {
+            /*
+            QStack <Memento*> newMem;
+            if(tailleMemento != 0) {
+                int i =0;
+                for(i=0; i < tailleMemento; i++) {
+                    newMem.push(m[i]);
+                }
+
+                m = newMem;
+            }
+            */
+            if(com == "UNDO") {
+                on_pushButtonUndo_clicked();
+            }
+            else {
+                if(com == "REDO") {
+                    on_pushButtonRedo_clicked();
+                }
+                else {
+                    undo = false;
+                    cal->commande(com); // send the command to the controller
+                }
+            }
+
+            if(com != "UNDO" && com != "REDO") {
+                while(m.size() != tailleMemento) {
+                    m.pop_back();
+                }
+                m.push(p->SaveStatetoMemento());
+                tailleMemento++;
+                std::cout << "taille memento :" <<tailleMemento << endl;
+                std::cout << "taille m.size :" << m.size() << endl;
+            }
+
+        }
     }while (com!="");
     } catch(LiException e) {
         p->setMessage(e.getInfo());
@@ -348,22 +385,32 @@ void MainWindow::on_pushButtonEval_clicked()
 
 void MainWindow::on_pushButtonUndo_clicked()
 {
-    //saves the state of the pile into m2
-    m2 = p->SaveStatetoMemento();
-    //the pile gets back its previous state from m1
-    p->getStateFromMemento(m1);
-    //authorizes the redo
-    undo = true;
+
+    std::cout << "tailleMemento : " << tailleMemento << std::endl;
+    std::cout << "m.size : " << m.size() << std::endl;
+    if(tailleMemento > 0) {
+        tailleMemento--;
+        p->getStateFromMemento(m[tailleMemento]);
+        //Authorizes to redo
+        if (!undo) undo = true;
+    }
 }
 
 void MainWindow::on_pushButtonRedo_clicked()
 {
     //check if an undo was done juste before
-    if (!undo) {p->setMessage("Il faut effectuer un UNDO avant un REDO"); return;}
-    //saves the state of the pile into m1
-    m1 = p->SaveStatetoMemento();
-    //the pile gets back the state it had before doing the UNDO
-    p->getStateFromMemento(m2);
+    if (!undo) { p->setMessage("Il faut effectuer un UNDO avant un REDO"); return; }
+
+
+
+    if (tailleMemento < m.size()) {
+        p->getStateFromMemento(m[tailleMemento]);
+        tailleMemento++;
+    }
+    else {
+        p->setMessage("REDO impossible");
+        return;
+    }
 }
 
 void MainWindow::on_pushButtonSto_clicked()
@@ -425,7 +472,7 @@ bool MainWindow::eventFilter(QObject *object, QEvent *event)
 {
     if (object == ui->expression && event->type() == QEvent::KeyRelease) {
         QKeyEvent *keyEvent = static_cast<QKeyEvent*>(event);
-        //if(keyEvent->key() == Qt::Key_Return) {getNextCommande();}
+        if(keyEvent->key() == Qt::Key_Return) {getNextCommande();}
         //if(keyEvent->key() == Qt::Key_Enter) {getNextCommande();}
         if(keyEvent->key() == Qt::Key_Plus) {getNextCommande();}
         if(keyEvent->key() == Qt::Key_Minus) {getNextCommande();}
@@ -454,14 +501,19 @@ void MainWindow::addAtom(const QString& qs, const QString& li)
     ui->comboBoxAtomes->setItemText(ui->comboBoxAtomes->currentIndex(), res);
 }
 
-void MainWindow::rmAtom(const QString& qs)
+void MainWindow::rmAtom(const QString& qs, const QString& li)
 {
-    int n = ui->comboBoxAtomes->findText(qs);
+
+    int n = ui->comboBoxAtomes->findText(qs % " : " % li);
     if (n != -1) ui->comboBoxAtomes->removeItem(n);
 }
 
 void MainWindow::on_comboBoxAtomes_activated(const QString& arg1)
 {
-    ui->expression->setText(ui->expression->text() + arg1);
+    unsigned int i=0;
+    for (i; i<arg1.length(); i++) if (arg1[i]==':') break;
+    QString res = arg1;
+    res.truncate(i-1);
+    ui->expression->setText(ui->expression->text() + res);
 }
 
