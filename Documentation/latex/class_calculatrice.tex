@@ -1,0 +1,571 @@
+\hypertarget{class_calculatrice}{}\section{Calculatrice Class Reference}
+\label{class_calculatrice}\index{Calculatrice@{Calculatrice}}
+Inheritance diagram for Calculatrice\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_calculatrice}
+\end{center}
+\end{figure}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_calculatrice_a5b379ff16856c59cd94d0f460b0d0d73}{new\+Atom} (const Q\+String \&, const Q\+String \&)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_calculatrice_a5b379ff16856c59cd94d0f460b0d0d73}{new\+Atom()} Signal sent when a new Atome is created \end{DoxyCompactList}\item 
+void \hyperlink{class_calculatrice_a5c1b210bef9aa7bd162478d35412b36b}{delete\+Atom} (const Q\+String \&, const Q\+String \&)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_calculatrice_a5c1b210bef9aa7bd162478d35412b36b}{delete\+Atom()} Signal sent when a new Atome is created \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+map$<$ Q\+String, \hyperlink{class_litterale}{Litterale} $\ast$ $>$ {\bfseries get\+Map\+Atome} () const \hypertarget{class_calculatrice_a7052dd37aa1976d3deef76e4a0ba8d79}{}\label{class_calculatrice_a7052dd37aa1976d3deef76e4a0ba8d79}
+
+\item 
+unsigned int {\bfseries get\+Nb\+Atoms} () const \hypertarget{class_calculatrice_a3a4fad24caff85518b77c61adc5e730e}{}\label{class_calculatrice_a3a4fad24caff85518b77c61adc5e730e}
+
+\item 
+\hyperlink{class_calculatrice_a2350ed13f91c824c7cd6c4a65ab42dde}{Calculatrice} (\hyperlink{class_pile}{Pile} $\ast$p)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{class_calculatrice_acb4b6278eb955ce932e16df29276be52}{$\sim$\+Calculatrice} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+Q\+String \hyperlink{class_calculatrice_a05f1ea7ed7113ee8d4f92fd13d6e9591}{get\+Last\+Op} () const 
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_calculatrice_a05f1ea7ed7113ee8d4f92fd13d6e9591}{get\+Last\+Op()} method \end{DoxyCompactList}\item 
+\hyperlink{class_litterale}{Litterale} $\ast$ \hyperlink{class_calculatrice_adb12970d2534774f003cc790b2a87f43}{get\+Last\+Arg1} () const 
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_calculatrice_adb12970d2534774f003cc790b2a87f43}{get\+Last\+Arg1()} method \end{DoxyCompactList}\item 
+\hyperlink{class_litterale}{Litterale} $\ast$ \hyperlink{class_calculatrice_aeb2562cb73e9140652f3de990999e795}{get\+Last\+Arg2} () const 
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_calculatrice_aeb2562cb73e9140652f3de990999e795}{get\+Last\+Arg2()} method \end{DoxyCompactList}\item 
+\hyperlink{class_pile}{Pile} $\ast$ \hyperlink{class_calculatrice_ae2d0c9c7d1d378d65d1cab56124d29c8}{get\+Pile} () const 
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_calculatrice_ae2d0c9c7d1d378d65d1cab56124d29c8}{get\+Pile()} method \end{DoxyCompactList}\item 
+void \hyperlink{class_calculatrice_a48c8aa03ff4562c5794a62e4e485fc39}{operateur2} (const Q\+String \&s)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_calculatrice_a48c8aa03ff4562c5794a62e4e485fc39}{operateur2()} method \end{DoxyCompactList}\item 
+void \hyperlink{class_calculatrice_ae82762b5bb2cadd28af3534353ce0431}{operateur1} (const Q\+String \&s)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_calculatrice_ae82762b5bb2cadd28af3534353ce0431}{operateur1()} method \end{DoxyCompactList}\item 
+void \hyperlink{class_calculatrice_a567873272e220894b3ddc5909c20b0a7}{operateurp} (const Q\+String \&s)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_calculatrice_a567873272e220894b3ddc5909c20b0a7}{operateurp()} method \end{DoxyCompactList}\item 
+void \hyperlink{class_calculatrice_aeda02ec9d861a66f67d75757db227504}{enregistrer\+Last} (const Q\+String \&s)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_calculatrice_aeda02ec9d861a66f67d75757db227504}{enregistrer\+Last()} method \end{DoxyCompactList}\item 
+void \hyperlink{class_calculatrice_ae96458c336f6b14ead0ae2086828d9bb}{commande} (const Q\+String \&s)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_calculatrice_ae96458c336f6b14ead0ae2086828d9bb}{commande()} method \end{DoxyCompactList}\item 
+void \hyperlink{class_calculatrice_a18952ea12781a4b3ca6147ff10298db7}{executer} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_calculatrice_a18952ea12781a4b3ca6147ff10298db7}{executer()} method \end{DoxyCompactList}\item 
+void \hyperlink{class_calculatrice_a579462aa5abe19ab51bd9b7e8fb9c5a1}{Eval} (const Q\+String \&exp1)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_calculatrice_a579462aa5abe19ab51bd9b7e8fb9c5a1}{Eval()} method. \end{DoxyCompactList}\item 
+Q\+String \hyperlink{class_calculatrice_a0fcf62f423e31fd182a74b76bb90e47d}{infixe\+Postfixe} (const Q\+String \&s)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_calculatrice_a0fcf62f423e31fd182a74b76bb90e47d}{infixe\+Postfixe()} method \end{DoxyCompactList}\item 
+void \hyperlink{class_calculatrice_ae6b03960bfed7c9d96893124acf2ae67}{add\+Atom} (const Q\+String \&s, \hyperlink{class_litterale}{Litterale} $\ast$li)
+\begin{DoxyCompactList}\small\item\em add\+Atome() method \end{DoxyCompactList}\item 
+void \hyperlink{class_calculatrice_a34ab6178729e5906fb38ccb09122f5b4}{remove\+Atom} (const Q\+String \&s)
+\begin{DoxyCompactList}\small\item\em remove\+Atome() method \end{DoxyCompactList}\item 
+bool \hyperlink{class_calculatrice_aeae79a2854c5341568391fe6399526c4}{already\+Exists} (const Q\+String \&s)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_calculatrice_aeae79a2854c5341568391fe6399526c4}{already\+Exists()} method \end{DoxyCompactList}\item 
+void \hyperlink{class_calculatrice_a8d75e506f620a940f66ab15583da6020}{afficher\+Tous\+Atomes} () const 
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_calculatrice_a8d75e506f620a940f66ab15583da6020}{afficher\+Tous\+Atomes()} method \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Calculatrice@{Calculatrice}!Calculatrice@{Calculatrice}}
+\index{Calculatrice@{Calculatrice}!Calculatrice@{Calculatrice}}
+\subsubsection[{\texorpdfstring{Calculatrice(\+Pile $\ast$p)}{Calculatrice(Pile *p)}}]{\setlength{\rightskip}{0pt plus 5cm}Calculatrice\+::\+Calculatrice (
+\begin{DoxyParamCaption}
+\item[{{\bf Pile} $\ast$}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_calculatrice_a2350ed13f91c824c7cd6c4a65ab42dde}{}\label{class_calculatrice_a2350ed13f91c824c7cd6c4a65ab42dde}
+
+
+Constructor. 
+
+Constructor of the \hyperlink{class_calculatrice}{Calculatrice} class the stack is initialize with the argument lastoperateur is initialize with an empty Q\+String lastarg1 and lastarg2 with nullptr Inline method
+
+
+\begin{DoxyParams}{Parameters}
+{\em 1} & parameter of type Pile$\ast$ \\
+\hline
+\end{DoxyParams}
+\index{Calculatrice@{Calculatrice}!````~Calculatrice@{$\sim$\+Calculatrice}}
+\index{````~Calculatrice@{$\sim$\+Calculatrice}!Calculatrice@{Calculatrice}}
+\subsubsection[{\texorpdfstring{$\sim$\+Calculatrice()}{~Calculatrice()}}]{\setlength{\rightskip}{0pt plus 5cm}Calculatrice\+::$\sim$\+Calculatrice (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_calculatrice_acb4b6278eb955ce932e16df29276be52}{}\label{class_calculatrice_acb4b6278eb955ce932e16df29276be52}
+
+
+Destructor. 
+
+Destructor of the \hyperlink{class_calculatrice}{Calculatrice} class (inline method) Needed because we have to delete the stack which was allocated dynamically
+
+
+\begin{DoxyParams}{Parameters}
+{\em no} & parameter \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Calculatrice@{Calculatrice}!add\+Atom@{add\+Atom}}
+\index{add\+Atom@{add\+Atom}!Calculatrice@{Calculatrice}}
+\subsubsection[{\texorpdfstring{add\+Atom(const Q\+String \&s, Litterale $\ast$li)}{addAtom(const QString &s, Litterale *li)}}]{\setlength{\rightskip}{0pt plus 5cm}void Calculatrice\+::add\+Atom (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{s, }
+\item[{{\bf Litterale} $\ast$}]{li}
+\end{DoxyParamCaption}
+)}\hypertarget{class_calculatrice_ae6b03960bfed7c9d96893124acf2ae67}{}\label{class_calculatrice_ae6b03960bfed7c9d96893124acf2ae67}
+
+
+add\+Atome() method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em 2} & parameters of type const Q\+String\& and Litteral$\ast$ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+Use to add a new Atome Very easy thanks to the map If it already exists it will change its value if not, it creates it
+
+
+\begin{DoxyParams}{Parameters}
+{\em 2} & parameters of type const Q\+String\& and Litteral$\ast$ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{Calculatrice@{Calculatrice}!afficher\+Tous\+Atomes@{afficher\+Tous\+Atomes}}
+\index{afficher\+Tous\+Atomes@{afficher\+Tous\+Atomes}!Calculatrice@{Calculatrice}}
+\subsubsection[{\texorpdfstring{afficher\+Tous\+Atomes() const }{afficherTousAtomes() const }}]{\setlength{\rightskip}{0pt plus 5cm}void Calculatrice\+::afficher\+Tous\+Atomes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{class_calculatrice_a8d75e506f620a940f66ab15583da6020}{}\label{class_calculatrice_a8d75e506f620a940f66ab15583da6020}
+
+
+\hyperlink{class_calculatrice_a8d75e506f620a940f66ab15583da6020}{afficher\+Tous\+Atomes()} method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & Qstring\& \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+Method to display all the atomes that the calculator contains
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & Qstring\& \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{Calculatrice@{Calculatrice}!already\+Exists@{already\+Exists}}
+\index{already\+Exists@{already\+Exists}!Calculatrice@{Calculatrice}}
+\subsubsection[{\texorpdfstring{already\+Exists(const Q\+String \&s)}{alreadyExists(const QString &s)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Calculatrice\+::already\+Exists (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{class_calculatrice_aeae79a2854c5341568391fe6399526c4}{}\label{class_calculatrice_aeae79a2854c5341568391fe6399526c4}
+
+
+\hyperlink{class_calculatrice_aeae79a2854c5341568391fe6399526c4}{already\+Exists()} method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & Qstring\& \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool
+\end{DoxyReturn}
+Used to know if an atome already exists
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & Qstring\& \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool (true if already exists, false otherwise) 
+\end{DoxyReturn}
+\index{Calculatrice@{Calculatrice}!commande@{commande}}
+\index{commande@{commande}!Calculatrice@{Calculatrice}}
+\subsubsection[{\texorpdfstring{commande(const Q\+String \&s)}{commande(const QString &s)}}]{\setlength{\rightskip}{0pt plus 5cm}void Calculatrice\+::commande (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{c}
+\end{DoxyParamCaption}
+)}\hypertarget{class_calculatrice_ae96458c336f6b14ead0ae2086828d9bb}{}\label{class_calculatrice_ae96458c336f6b14ead0ae2086828d9bb}
+
+
+\hyperlink{class_calculatrice_ae96458c336f6b14ead0ae2086828d9bb}{commande()} method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & Q\+String\& s \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+Method whichwas declare in the \hyperlink{class_calculatrice}{Calculatrice} class Takes one argument of type const Q\+String\& representing what the user entered in the calculator if it is an integer, it pushes a new \hyperlink{class_li_entiere}{Li\+Entiere} if it is a double type number, it pushes a new \hyperlink{class_li_reelle}{Li\+Reelle} if it is an expression, it pushes a new \hyperlink{class_li_expression}{Li\+Expression} if it is an Atome \+: if it did not exist before, it creates an Expression, and if it already existed, it pushes the \hyperlink{class_litterale}{Litterale} corresponding to this atome if it is an operator, it calls the appropriate function (operator1, operator2, operatorp) try ... catch block to catch all the excpetions thrown by the different function called
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & Q\+String\& s \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{Calculatrice@{Calculatrice}!delete\+Atom@{delete\+Atom}}
+\index{delete\+Atom@{delete\+Atom}!Calculatrice@{Calculatrice}}
+\subsubsection[{\texorpdfstring{delete\+Atom}{deleteAtom}}]{\setlength{\rightskip}{0pt plus 5cm}void Calculatrice\+::delete\+Atom (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{, }
+\item[{const Q\+String \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\hypertarget{class_calculatrice_a5c1b210bef9aa7bd162478d35412b36b}{}\label{class_calculatrice_a5c1b210bef9aa7bd162478d35412b36b}
+
+
+\hyperlink{class_calculatrice_a5c1b210bef9aa7bd162478d35412b36b}{delete\+Atom()} Signal sent when a new Atome is created 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const\+Q\+String\&} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{Calculatrice@{Calculatrice}!enregistrer\+Last@{enregistrer\+Last}}
+\index{enregistrer\+Last@{enregistrer\+Last}!Calculatrice@{Calculatrice}}
+\subsubsection[{\texorpdfstring{enregistrer\+Last(const Q\+String \&s)}{enregistrerLast(const QString &s)}}]{\setlength{\rightskip}{0pt plus 5cm}void Calculatrice\+::enregistrer\+Last (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{class_calculatrice_aeda02ec9d861a66f67d75757db227504}{}\label{class_calculatrice_aeda02ec9d861a66f67d75757db227504}
+
+
+\hyperlink{class_calculatrice_aeda02ec9d861a66f67d75757db227504}{enregistrer\+Last()} method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & Q\+String\& s \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+Method declared in the \hyperlink{class_calculatrice}{Calculatrice} class Used to save the last operator used after each operation Used to save the last arguments after each operation (makes a copy and delete the old ones if they have not been pushed again)
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & Q\+String\& s \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{Calculatrice@{Calculatrice}!Eval@{Eval}}
+\index{Eval@{Eval}!Calculatrice@{Calculatrice}}
+\subsubsection[{\texorpdfstring{Eval(const Q\+String \&exp1)}{Eval(const QString &exp1)}}]{\setlength{\rightskip}{0pt plus 5cm}void Calculatrice\+::\+Eval (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{exp1}
+\end{DoxyParamCaption}
+)}\hypertarget{class_calculatrice_a579462aa5abe19ab51bd9b7e8fb9c5a1}{}\label{class_calculatrice_a579462aa5abe19ab51bd9b7e8fb9c5a1}
+
+
+\hyperlink{class_calculatrice_a579462aa5abe19ab51bd9b7e8fb9c5a1}{Eval()} method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & Q\+String\& \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{Calculatrice@{Calculatrice}!executer@{executer}}
+\index{executer@{executer}!Calculatrice@{Calculatrice}}
+\subsubsection[{\texorpdfstring{executer()}{executer()}}]{\setlength{\rightskip}{0pt plus 5cm}void Calculatrice\+::executer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_calculatrice_a18952ea12781a4b3ca6147ff10298db7}{}\label{class_calculatrice_a18952ea12781a4b3ca6147ff10298db7}
+
+
+\hyperlink{class_calculatrice_a18952ea12781a4b3ca6147ff10298db7}{executer()} method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em no} & parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+Method declared in the \hyperlink{class_calculatrice}{Calculatrice} class takes what the user entered and sends it to the commande function
+
+
+\begin{DoxyParams}{Parameters}
+{\em no} & parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{Calculatrice@{Calculatrice}!get\+Last\+Arg1@{get\+Last\+Arg1}}
+\index{get\+Last\+Arg1@{get\+Last\+Arg1}!Calculatrice@{Calculatrice}}
+\subsubsection[{\texorpdfstring{get\+Last\+Arg1() const }{getLastArg1() const }}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Litterale}$\ast$ Calculatrice\+::get\+Last\+Arg1 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_calculatrice_adb12970d2534774f003cc790b2a87f43}{}\label{class_calculatrice_adb12970d2534774f003cc790b2a87f43}
+
+
+\hyperlink{class_calculatrice_adb12970d2534774f003cc790b2a87f43}{get\+Last\+Arg1()} method 
+
+Accessor to lastarg1 Const inline method (attribut should not be modified)
+
+
+\begin{DoxyParams}{Parameters}
+{\em no} & parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Litterale$\ast$ 
+\end{DoxyReturn}
+\index{Calculatrice@{Calculatrice}!get\+Last\+Arg2@{get\+Last\+Arg2}}
+\index{get\+Last\+Arg2@{get\+Last\+Arg2}!Calculatrice@{Calculatrice}}
+\subsubsection[{\texorpdfstring{get\+Last\+Arg2() const }{getLastArg2() const }}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Litterale}$\ast$ Calculatrice\+::get\+Last\+Arg2 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_calculatrice_aeb2562cb73e9140652f3de990999e795}{}\label{class_calculatrice_aeb2562cb73e9140652f3de990999e795}
+
+
+\hyperlink{class_calculatrice_aeb2562cb73e9140652f3de990999e795}{get\+Last\+Arg2()} method 
+
+Accessor to lastarg2 Const inline method (attribut should not be modified)
+
+
+\begin{DoxyParams}{Parameters}
+{\em no} & parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Litterale$\ast$ 
+\end{DoxyReturn}
+\index{Calculatrice@{Calculatrice}!get\+Last\+Op@{get\+Last\+Op}}
+\index{get\+Last\+Op@{get\+Last\+Op}!Calculatrice@{Calculatrice}}
+\subsubsection[{\texorpdfstring{get\+Last\+Op() const }{getLastOp() const }}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Calculatrice\+::get\+Last\+Op (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_calculatrice_a05f1ea7ed7113ee8d4f92fd13d6e9591}{}\label{class_calculatrice_a05f1ea7ed7113ee8d4f92fd13d6e9591}
+
+
+\hyperlink{class_calculatrice_a05f1ea7ed7113ee8d4f92fd13d6e9591}{get\+Last\+Op()} method 
+
+Accessor to lastoperator Const inline method (attribut should not be modified)
+
+
+\begin{DoxyParams}{Parameters}
+{\em no} & parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Q\+String 
+\end{DoxyReturn}
+\index{Calculatrice@{Calculatrice}!get\+Pile@{get\+Pile}}
+\index{get\+Pile@{get\+Pile}!Calculatrice@{Calculatrice}}
+\subsubsection[{\texorpdfstring{get\+Pile() const }{getPile() const }}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Pile}$\ast$ Calculatrice\+::get\+Pile (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_calculatrice_ae2d0c9c7d1d378d65d1cab56124d29c8}{}\label{class_calculatrice_ae2d0c9c7d1d378d65d1cab56124d29c8}
+
+
+\hyperlink{class_calculatrice_ae2d0c9c7d1d378d65d1cab56124d29c8}{get\+Pile()} method 
+
+Accessor to the stack Const inline method (attribut should not be modified)
+
+
+\begin{DoxyParams}{Parameters}
+{\em no} & parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pile$\ast$ 
+\end{DoxyReturn}
+\index{Calculatrice@{Calculatrice}!infixe\+Postfixe@{infixe\+Postfixe}}
+\index{infixe\+Postfixe@{infixe\+Postfixe}!Calculatrice@{Calculatrice}}
+\subsubsection[{\texorpdfstring{infixe\+Postfixe(const Q\+String \&s)}{infixePostfixe(const QString &s)}}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Calculatrice\+::infixe\+Postfixe (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{class_calculatrice_a0fcf62f423e31fd182a74b76bb90e47d}{}\label{class_calculatrice_a0fcf62f423e31fd182a74b76bb90e47d}
+
+
+\hyperlink{class_calculatrice_a0fcf62f423e31fd182a74b76bb90e47d}{infixe\+Postfixe()} method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & Q\+String\& \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Q\+String
+\end{DoxyReturn}
+Method declared in the \hyperlink{class_calculatrice}{Calculatrice} class Used to transform an expression (not wrote in R\+PN) in a new expression in R\+PN that can be interpreted by the commande function It is, in some cases, a recursive function If it finds in the expression a operator with parentheses like D\+I\+V(e1,e2), it calls the function again on e1 and e2 it has one Q\+Stack, an to manage the other operator found when the function finds an operator, it pushes it on the top of the stack only if its priority is higher than the priority of the operator already on the top of the stack if its priority is lower, it adds it to \char`\"{}post\char`\"{} which is the Q\+String that the function will return if the function finds a number, it also adds it to post
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & Q\+String\& \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Q\+String 
+\end{DoxyReturn}
+\index{Calculatrice@{Calculatrice}!new\+Atom@{new\+Atom}}
+\index{new\+Atom@{new\+Atom}!Calculatrice@{Calculatrice}}
+\subsubsection[{\texorpdfstring{new\+Atom}{newAtom}}]{\setlength{\rightskip}{0pt plus 5cm}void Calculatrice\+::new\+Atom (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{, }
+\item[{const Q\+String \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\hypertarget{class_calculatrice_a5b379ff16856c59cd94d0f460b0d0d73}{}\label{class_calculatrice_a5b379ff16856c59cd94d0f460b0d0d73}
+
+
+\hyperlink{class_calculatrice_a5b379ff16856c59cd94d0f460b0d0d73}{new\+Atom()} Signal sent when a new Atome is created 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const\+Q\+String\&} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{Calculatrice@{Calculatrice}!operateur1@{operateur1}}
+\index{operateur1@{operateur1}!Calculatrice@{Calculatrice}}
+\subsubsection[{\texorpdfstring{operateur1(const Q\+String \&s)}{operateur1(const QString &s)}}]{\setlength{\rightskip}{0pt plus 5cm}void Calculatrice\+::operateur1 (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{class_calculatrice_ae82762b5bb2cadd28af3534353ce0431}{}\label{class_calculatrice_ae82762b5bb2cadd28af3534353ce0431}
+
+
+\hyperlink{class_calculatrice_ae82762b5bb2cadd28af3534353ce0431}{operateur1()} method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & Q\+String\& s \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+Method declared in the \hyperlink{class_calculatrice}{Calculatrice} class Used to manage all the operation with a unaire operator the binary operator are \+: N\+EG, N\+UM, D\+EN, RE, IM, N\+OT, F\+O\+R\+G\+ET It takes one \hyperlink{class_litterale}{Litterale} from the stack (pop and drop) Then the calls the appropriate operator which was overloaded in the other classes Throws an error when called on a wrong operator
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & Q\+String\& s \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{Calculatrice@{Calculatrice}!operateur2@{operateur2}}
+\index{operateur2@{operateur2}!Calculatrice@{Calculatrice}}
+\subsubsection[{\texorpdfstring{operateur2(const Q\+String \&s)}{operateur2(const QString &s)}}]{\setlength{\rightskip}{0pt plus 5cm}void Calculatrice\+::operateur2 (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{class_calculatrice_a48c8aa03ff4562c5794a62e4e485fc39}{}\label{class_calculatrice_a48c8aa03ff4562c5794a62e4e485fc39}
+
+
+\hyperlink{class_calculatrice_a48c8aa03ff4562c5794a62e4e485fc39}{operateur2()} method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & Q\+String\& s \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+Method declared in the \hyperlink{class_calculatrice}{Calculatrice} class Used to manage all the operation with a binary operator the binary operator are \+: +, -\/, $\ast$, /, D\+IV, M\+OD, \$, A\+ND, OR, , ==, !=, =$<$, $>$=, $<$, $>$ It takes two Litterales from the stack (pop and drop) Then the calls the appropriate operator which was overloaded in the other classes Throws an error when called on a wrong operator
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & Q\+String\& s \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{Calculatrice@{Calculatrice}!operateurp@{operateurp}}
+\index{operateurp@{operateurp}!Calculatrice@{Calculatrice}}
+\subsubsection[{\texorpdfstring{operateurp(const Q\+String \&s)}{operateurp(const QString &s)}}]{\setlength{\rightskip}{0pt plus 5cm}void Calculatrice\+::operateurp (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{class_calculatrice_a567873272e220894b3ddc5909c20b0a7}{}\label{class_calculatrice_a567873272e220894b3ddc5909c20b0a7}
+
+
+\hyperlink{class_calculatrice_a567873272e220894b3ddc5909c20b0a7}{operateurp()} method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & Q\+String\& s \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+Method declared in the \hyperlink{class_calculatrice}{Calculatrice} class Used to manage all the operation with a stack the binary operator are \+: N\+D\+UP, D\+R\+OP, S\+W\+AP, L\+A\+S\+T\+OP, L\+A\+S\+T\+A\+R\+GS, C\+L\+E\+AR For D\+UP, D\+R\+OP, S\+W\+AP, the function checks first if there is enough elements in the stack For L\+A\+S\+T\+OP it checks first if there is an operation to call (if yes, put it in the commande function) For L\+A\+S\+T\+A\+R\+GS, it push the last arguments only if they exist Throws an error when called on a wrong operator, or if there is any problem (not enough element in the stack, ...)
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & Q\+String\& s \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{Calculatrice@{Calculatrice}!remove\+Atom@{remove\+Atom}}
+\index{remove\+Atom@{remove\+Atom}!Calculatrice@{Calculatrice}}
+\subsubsection[{\texorpdfstring{remove\+Atom(const Q\+String \&s)}{removeAtom(const QString &s)}}]{\setlength{\rightskip}{0pt plus 5cm}void Calculatrice\+::remove\+Atom (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{class_calculatrice_a34ab6178729e5906fb38ccb09122f5b4}{}\label{class_calculatrice_a34ab6178729e5906fb38ccb09122f5b4}
+
+
+remove\+Atome() method 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & Q\+String\& \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+Use to delete an atome use the erase method of map class
+
+
+\begin{DoxyParams}{Parameters}
+{\em 2} & parameters of type const Q\+String\& and Litteral$\ast$ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{calculatrice_8h}{calculatrice.\+h}\item 
+\hyperlink{calculatrice_8cpp}{calculatrice.\+cpp}\end{DoxyCompactItemize}

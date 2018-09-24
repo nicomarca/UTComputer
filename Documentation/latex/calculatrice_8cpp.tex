@@ -1,0 +1,253 @@
+\hypertarget{calculatrice_8cpp}{}\section{calculatrice.\+cpp File Reference}
+\label{calculatrice_8cpp}\index{calculatrice.\+cpp@{calculatrice.\+cpp}}
+
+
+file where the methods of the \hyperlink{class_calculatrice}{Calculatrice} class are defined  
+
+
+{\ttfamily \#include \char`\"{}calculatrice.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{calculatrice_8cpp_a6ae3100d316a03f46973ad326c11f038}{est\+Un\+Operateur\+Binaire} (const Q\+String \&s)
+\begin{DoxyCompactList}\small\item\em \hyperlink{calculatrice_8h_a6ae3100d316a03f46973ad326c11f038}{est\+Un\+Operateur\+Binaire()} method \end{DoxyCompactList}\item 
+bool {\bfseries est\+Un\+Operateur\+Unaire} (const Q\+String \&s)\hypertarget{calculatrice_8cpp_a3cc1e3db95f48e3ca8f7716d49c104ef}{}\label{calculatrice_8cpp_a3cc1e3db95f48e3ca8f7716d49c104ef}
+
+\item 
+bool \hyperlink{calculatrice_8cpp_aaa1ac3d006923b4d0cf4bc99aa43c1f3}{est\+Un\+Operateur\+De\+Pile} (const Q\+String \&s)
+\begin{DoxyCompactList}\small\item\em operateur2() method \end{DoxyCompactList}\item 
+int \hyperlink{calculatrice_8cpp_a853a007dad172b583f23c1570f16b02e}{priorite\+Op} (const Q\+String \&s)
+\begin{DoxyCompactList}\small\item\em \hyperlink{calculatrice_8h_a76c3d1b85beb68eaa390fd356d07f1d8}{est\+Atome\+Guillemets()} method \end{DoxyCompactList}\item 
+bool \hyperlink{calculatrice_8cpp_a1c8a6de19df58bdd91993528eb54944e}{est\+Entier} (const Q\+String \&s)
+\begin{DoxyCompactList}\small\item\em \hyperlink{calculatrice_8h_a1c8a6de19df58bdd91993528eb54944e}{est\+Entier()} method \end{DoxyCompactList}\item 
+bool \hyperlink{calculatrice_8cpp_a8fb667d9e02a9ff4127bada083433de0}{est\+Double} (const Q\+String \&s)
+\begin{DoxyCompactList}\small\item\em \hyperlink{calculatrice_8h_a8fb667d9e02a9ff4127bada083433de0}{est\+Double()} method \end{DoxyCompactList}\item 
+bool \hyperlink{calculatrice_8cpp_aa2ab97d82a097fc21f182826172d0e61}{est\+Expression} (const Q\+String \&s)
+\begin{DoxyCompactList}\small\item\em \hyperlink{calculatrice_8h_aa2ab97d82a097fc21f182826172d0e61}{est\+Expression()} method \end{DoxyCompactList}\item 
+bool \hyperlink{calculatrice_8cpp_ae70d9e7f492982ade1d91c5071c9a3d8}{est\+Atome} (const Q\+String \&s)
+\begin{DoxyCompactList}\small\item\em \hyperlink{calculatrice_8h_ae70d9e7f492982ade1d91c5071c9a3d8}{est\+Atome()} method \end{DoxyCompactList}\item 
+bool \hyperlink{calculatrice_8cpp_a76c3d1b85beb68eaa390fd356d07f1d8}{est\+Atome\+Guillemets} (const Q\+String \&s)
+\begin{DoxyCompactList}\small\item\em \hyperlink{calculatrice_8h_a76c3d1b85beb68eaa390fd356d07f1d8}{est\+Atome\+Guillemets()} method \end{DoxyCompactList}\item 
+bool {\bfseries is2operator} (const Q\+String \&s)\hypertarget{calculatrice_8cpp_aeb7fd694744ba8368072dc46c752abef}{}\label{calculatrice_8cpp_aeb7fd694744ba8368072dc46c752abef}
+
+\item 
+bool {\bfseries is1operator} (const Q\+String \&s)\hypertarget{calculatrice_8cpp_a4a20a4deccf548a7c6b4217ae50a2efc}{}\label{calculatrice_8cpp_a4a20a4deccf548a7c6b4217ae50a2efc}
+
+\item 
+bool {\bfseries isoperator\+P\+VP} (const Q\+String \&s)\hypertarget{calculatrice_8cpp_a5287ef669796c969d0fadc790bc1dafd}{}\label{calculatrice_8cpp_a5287ef669796c969d0fadc790bc1dafd}
+
+\item 
+bool {\bfseries isoperator\+PP} (const Q\+String \&s)\hypertarget{calculatrice_8cpp_a4c878c19746815c84d2612831e51e701}{}\label{calculatrice_8cpp_a4c878c19746815c84d2612831e51e701}
+
+\item 
+bool \hyperlink{calculatrice_8cpp_a67c2112828c3f10d1d9d64cf756a47b1}{Priorite\+Precedent\+Sup} (const Q\+Char qc, const Q\+Char ptop)
+\begin{DoxyCompactList}\small\item\em \hyperlink{calculatrice_8h_a76c3d1b85beb68eaa390fd356d07f1d8}{est\+Atome\+Guillemets()} method \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+file where the methods of the \hyperlink{class_calculatrice}{Calculatrice} class are defined 
+
+\begin{DoxyAuthor}{Author}
+Virgile V\+A\+N\+C\+ON and Nicolas M\+A\+R\+C\+A\+D\+ET 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+12 Juin 2016 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\index{calculatrice.\+cpp@{calculatrice.\+cpp}!est\+Atome@{est\+Atome}}
+\index{est\+Atome@{est\+Atome}!calculatrice.\+cpp@{calculatrice.\+cpp}}
+\subsubsection[{\texorpdfstring{est\+Atome(const Q\+String \&s)}{estAtome(const QString &s)}}]{\setlength{\rightskip}{0pt plus 5cm}bool est\+Atome (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{calculatrice_8cpp_ae70d9e7f492982ade1d91c5071c9a3d8}{}\label{calculatrice_8cpp_ae70d9e7f492982ade1d91c5071c9a3d8}
+
+
+\hyperlink{calculatrice_8h_ae70d9e7f492982ade1d91c5071c9a3d8}{est\+Atome()} method 
+
+Method used to know if a Q\+String is an atome without quotes Use regular expressions
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & Q\+String\& s \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\index{calculatrice.\+cpp@{calculatrice.\+cpp}!est\+Atome\+Guillemets@{est\+Atome\+Guillemets}}
+\index{est\+Atome\+Guillemets@{est\+Atome\+Guillemets}!calculatrice.\+cpp@{calculatrice.\+cpp}}
+\subsubsection[{\texorpdfstring{est\+Atome\+Guillemets(const Q\+String \&s)}{estAtomeGuillemets(const QString &s)}}]{\setlength{\rightskip}{0pt plus 5cm}bool est\+Atome\+Guillemets (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{calculatrice_8cpp_a76c3d1b85beb68eaa390fd356d07f1d8}{}\label{calculatrice_8cpp_a76c3d1b85beb68eaa390fd356d07f1d8}
+
+
+\hyperlink{calculatrice_8h_a76c3d1b85beb68eaa390fd356d07f1d8}{est\+Atome\+Guillemets()} method 
+
+Method used to know if a Q\+String is an atome with quotes Use regular expressions
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & Q\+String\& s \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\index{calculatrice.\+cpp@{calculatrice.\+cpp}!est\+Double@{est\+Double}}
+\index{est\+Double@{est\+Double}!calculatrice.\+cpp@{calculatrice.\+cpp}}
+\subsubsection[{\texorpdfstring{est\+Double(const Q\+String \&s)}{estDouble(const QString &s)}}]{\setlength{\rightskip}{0pt plus 5cm}bool est\+Double (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{calculatrice_8cpp_a8fb667d9e02a9ff4127bada083433de0}{}\label{calculatrice_8cpp_a8fb667d9e02a9ff4127bada083433de0}
+
+
+\hyperlink{calculatrice_8h_a8fb667d9e02a9ff4127bada083433de0}{est\+Double()} method 
+
+Method used to know if a Q\+String is an double Use regular expressions
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & Q\+String\& s \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\index{calculatrice.\+cpp@{calculatrice.\+cpp}!est\+Entier@{est\+Entier}}
+\index{est\+Entier@{est\+Entier}!calculatrice.\+cpp@{calculatrice.\+cpp}}
+\subsubsection[{\texorpdfstring{est\+Entier(const Q\+String \&s)}{estEntier(const QString &s)}}]{\setlength{\rightskip}{0pt plus 5cm}bool est\+Entier (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{calculatrice_8cpp_a1c8a6de19df58bdd91993528eb54944e}{}\label{calculatrice_8cpp_a1c8a6de19df58bdd91993528eb54944e}
+
+
+\hyperlink{calculatrice_8h_a1c8a6de19df58bdd91993528eb54944e}{est\+Entier()} method 
+
+Method used to know if a Q\+String is an integer Use regular expressions
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & Q\+String\& s \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\index{calculatrice.\+cpp@{calculatrice.\+cpp}!est\+Expression@{est\+Expression}}
+\index{est\+Expression@{est\+Expression}!calculatrice.\+cpp@{calculatrice.\+cpp}}
+\subsubsection[{\texorpdfstring{est\+Expression(const Q\+String \&s)}{estExpression(const QString &s)}}]{\setlength{\rightskip}{0pt plus 5cm}bool est\+Expression (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{calculatrice_8cpp_aa2ab97d82a097fc21f182826172d0e61}{}\label{calculatrice_8cpp_aa2ab97d82a097fc21f182826172d0e61}
+
+
+\hyperlink{calculatrice_8h_aa2ab97d82a097fc21f182826172d0e61}{est\+Expression()} method 
+
+Method used to know if a Q\+String is an Expression Use regular expressions
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & Q\+String\& s \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\index{calculatrice.\+cpp@{calculatrice.\+cpp}!est\+Un\+Operateur\+Binaire@{est\+Un\+Operateur\+Binaire}}
+\index{est\+Un\+Operateur\+Binaire@{est\+Un\+Operateur\+Binaire}!calculatrice.\+cpp@{calculatrice.\+cpp}}
+\subsubsection[{\texorpdfstring{est\+Un\+Operateur\+Binaire(const Q\+String \&s)}{estUnOperateurBinaire(const QString &s)}}]{\setlength{\rightskip}{0pt plus 5cm}bool est\+Un\+Operateur\+Binaire (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{calculatrice_8cpp_a6ae3100d316a03f46973ad326c11f038}{}\label{calculatrice_8cpp_a6ae3100d316a03f46973ad326c11f038}
+
+
+\hyperlink{calculatrice_8h_a6ae3100d316a03f46973ad326c11f038}{est\+Un\+Operateur\+Binaire()} method 
+
+Method used to know if a Q\+String is a binary operator
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & Q\+String\& s \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\index{calculatrice.\+cpp@{calculatrice.\+cpp}!est\+Un\+Operateur\+De\+Pile@{est\+Un\+Operateur\+De\+Pile}}
+\index{est\+Un\+Operateur\+De\+Pile@{est\+Un\+Operateur\+De\+Pile}!calculatrice.\+cpp@{calculatrice.\+cpp}}
+\subsubsection[{\texorpdfstring{est\+Un\+Operateur\+De\+Pile(const Q\+String \&s)}{estUnOperateurDePile(const QString &s)}}]{\setlength{\rightskip}{0pt plus 5cm}bool est\+Un\+Operateur\+De\+Pile (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{calculatrice_8cpp_aaa1ac3d006923b4d0cf4bc99aa43c1f3}{}\label{calculatrice_8cpp_aaa1ac3d006923b4d0cf4bc99aa43c1f3}
+
+
+operateur2() method 
+
+est\+Un\+Operateur\+Unaire() method
+
+Method used to know if a Q\+String is a stack operator
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & Q\+String\& s \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\index{calculatrice.\+cpp@{calculatrice.\+cpp}!priorite\+Op@{priorite\+Op}}
+\index{priorite\+Op@{priorite\+Op}!calculatrice.\+cpp@{calculatrice.\+cpp}}
+\subsubsection[{\texorpdfstring{priorite\+Op(const Q\+String \&s)}{prioriteOp(const QString &s)}}]{\setlength{\rightskip}{0pt plus 5cm}int priorite\+Op (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{s}
+\end{DoxyParamCaption}
+)}\hypertarget{calculatrice_8cpp_a853a007dad172b583f23c1570f16b02e}{}\label{calculatrice_8cpp_a853a007dad172b583f23c1570f16b02e}
+
+
+\hyperlink{calculatrice_8h_a76c3d1b85beb68eaa390fd356d07f1d8}{est\+Atome\+Guillemets()} method 
+
+Method used to know the priority of an operator Throws an error if the parameter is not an operator
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & Q\+String\& s \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\index{calculatrice.\+cpp@{calculatrice.\+cpp}!Priorite\+Precedent\+Sup@{Priorite\+Precedent\+Sup}}
+\index{Priorite\+Precedent\+Sup@{Priorite\+Precedent\+Sup}!calculatrice.\+cpp@{calculatrice.\+cpp}}
+\subsubsection[{\texorpdfstring{Priorite\+Precedent\+Sup(const Q\+Char qc, const Q\+Char ptop)}{PrioritePrecedentSup(const QChar qc, const QChar ptop)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Priorite\+Precedent\+Sup (
+\begin{DoxyParamCaption}
+\item[{const Q\+Char}]{qc, }
+\item[{const Q\+Char}]{ptop}
+\end{DoxyParamCaption}
+)}\hypertarget{calculatrice_8cpp_a67c2112828c3f10d1d9d64cf756a47b1}{}\label{calculatrice_8cpp_a67c2112828c3f10d1d9d64cf756a47b1}
+
+
+\hyperlink{calculatrice_8h_a76c3d1b85beb68eaa390fd356d07f1d8}{est\+Atome\+Guillemets()} method 
+
+Method used to know if the priority of the operator ptop is higher than the priority of the operator qc
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & Q\+String\& s \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
